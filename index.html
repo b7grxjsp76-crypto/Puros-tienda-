@@ -419,6 +419,11 @@ h1, h2, h3, h4, .brand { font-family: 'Playfair Display', serif; }
   <ul id="cart-list" class="cart-list"></ul>
   <div id="cart-total" style="font-weight: 900; font-size: 20px; text-align: center; border-top: 1px solid #333; padding-top: 15px;"></div>
   <button onclick="sendOrder()" class="btn-buy" style="margin-top: 20px; background: #25D366; color: white;">Finalizar Pedido</button>
+   <button onclick="clearCart()" 
+  class="btn-buy" 
+  style="margin-top: 10px; background: #444; color: white;">
+  Vaciar carrito
+</button> 
 </div>
 
 <a href="https://wa.me/56998644532" class="whatsapp-float" target="_blank">W</a>
@@ -484,24 +489,54 @@ function addToCart(name, price, qtyId) {
   document.getElementById('cart-ui').style.display = 'block';
   renderCart();
 }
+function clearCart() {
+  cart = [];
+  document.getElementById('cart-ui').style.display = 'none';
+  renderCart();
+}   
 
 function renderCart() {
   const list = document.getElementById('cart-list');
   list.innerHTML = "";
   let totalUSD = 0;
-  
-  cart.forEach(item => {
-    list.innerHTML += `<li><span>${item.name} (x${item.qty})</span> <b>$${item.price * item.qty} USD</b></li>`;
+
+  cart.forEach((item, index) => {
+    list.innerHTML += `
+      <li>
+        <span>${item.name}</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button onclick="updateQty(${index}, -1)" style="padding:5px 10px;">-</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty(${index}, 1)" style="padding:5px 10px;">+</button>
+        </div>
+        <b>$${item.price * item.qty} USD</b>
+      </li>
+    `;
     totalUSD += item.price * item.qty;
   });
-  
+
   const totalCLP = totalUSD * tasaCLP;
+
   document.getElementById('cart-total').innerHTML = `
     Total: $${totalUSD} USD<br>
-    <span style="font-size: 14px; color: var(--dorado);">≈ $${totalCLP.toLocaleString()} CLP</span>
+    <span style="font-size: 14px; color: var(--dorado);">
+      ≈ $${totalCLP.toLocaleString()} CLP
+    </span>
   `;
 }
+function updateQty(index, change) {
+  cart[index].qty += change;
 
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  if (cart.length === 0) {
+    document.getElementById('cart-ui').style.display = 'none';
+  }
+
+  renderCart();
+}
 function sendOrder() {
   let msg = "Hola MAFU Cuban Soul, deseo adquirir:%0A";
   cart.forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
