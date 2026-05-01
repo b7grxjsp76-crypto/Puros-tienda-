@@ -3,380 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | El Epicentro del Tabaco de Culto</title>
+    <title>MAFU | Humidor Virtual</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --oro: #c5a059;
-            --oro-dark: #8e6d31;
-            --negro-puro: #050505;
-            --negro-suave: #0d0d0d;
-            --gris-borde: #1a1a1a;
-            --blanco-hueso: #f4f1ea;
-            --wa-green: #25d366;
-            --transition-master: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --negro: #050505;
+            --gris-card: #0f0f0f;
+            --borde: #1d1d1d;
+            --blanco: #f4f1ea;
         }
 
-        /* --- RESET & SCROLLBAR --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--negro-puro); }
-        ::-webkit-scrollbar-thumb { background: var(--oro); border-radius: 10px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: var(--negro-puro); 
-            color: var(--blanco-hueso); 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- COMPONENTES DE DISEÑO --- */
-        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); border: 1px solid var(--gris-borde); }
-        .gold-gradient { background: linear-gradient(45deg, var(--oro-dark), var(--oro), var(--oro-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* --- NAVEGACIÓN MAESTRA --- */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 20px 60px;
+        /* HEADER */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 20px 50px;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; transition: var(--transition-master);
-            border-bottom: 1px solid transparent;
+            background: rgba(5,5,5,0.98); border-bottom: 1px solid var(--borde); z-index: 1000;
         }
-        header.scrolled { background: rgba(5, 5, 5, 0.98); padding: 10px 60px; border-bottom: 1px solid var(--oro); }
 
-        .brand { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        .brand img { height: 75px; width: auto; filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3)); transition: 0.3s; }
-        .brand:hover img { transform: scale(1.05); }
-        .brand span { font-family: 'Cinzel', serif; font-size: 28px; letter-spacing: 6px; color: var(--oro); }
+        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand img { height: 60px; width: auto; }
+        .brand span { font-family: 'Cinzel', serif; color: var(--oro); font-size: 26px; letter-spacing: 4px; }
 
-        .nav-menu { display: flex; gap: 35px; }
-        .nav-menu a { 
-            text-decoration: none; color: var(--blanco-hueso); font-size: 11px; 
-            text-transform: uppercase; letter-spacing: 3px; font-weight: 700;
-            transition: 0.3s; position: relative;
+        .cart-trigger { color: var(--oro); cursor: pointer; font-weight: 700; position: relative; }
+        .cart-badge { background: var(--oro); color: #000; font-size: 10px; padding: 2px 6px; border-radius: 50%; margin-left: 5px; }
+
+        /* GRID TÉCNICO */
+        .container { max-width: 1300px; margin: 140px auto; padding: 0 25px; }
+        .grid-puros { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 30px; }
+
+        .card-puro {
+            background: var(--gris-card); border: 1px solid var(--borde);
+            padding: 25px; display: grid; grid-template-columns: 150px 1fr; gap: 20px;
+            cursor: pointer; transition: 0.3s;
         }
-        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--oro); transition: 0.3s; }
-        .nav-menu a:hover::after { width: 100%; }
-        .nav-menu a:hover { color: var(--oro); }
+        .card-puro:hover { border-color: var(--oro); transform: translateY(-5px); }
 
-        .cart-status { cursor: pointer; display: flex; align-items: center; gap: 10px; color: var(--oro); font-weight: 700; }
-        .cart-count { background: var(--oro); color: #000; font-size: 10px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 900; }
+        .puro-img { background: #000; display: flex; align-items: center; justify-content: center; }
+        .puro-img img { width: 100%; height: 240px; object-fit: contain; }
 
-        /* --- HERO SECTION --- */
-        #hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542125387-c7128488903c?auto=format&fit=crop&w=1920');
-            background-size: cover; background-position: center; text-align: center;
-        }
-        .hero-content h1 { font-family: 'Cinzel', serif; font-size: clamp(40px, 8vw, 90px); line-height: 1; margin-bottom: 20px; }
-        .hero-content p { font-size: clamp(12px, 2vw, 16px); letter-spacing: 10px; text-transform: uppercase; opacity: 0.7; }
-
-        /* --- SECCIONES DE TEXTO ROBUSTO --- */
-        section { padding: 120px 10%; max-width: 1600px; margin: auto; }
-        .sec-title { font-family: 'Cinzel', serif; color: var(--oro); font-size: 45px; margin-bottom: 60px; position: relative; }
-        .sec-title::before { content: 'MAFU'; position: absolute; top: -30px; left: 0; font-size: 14px; letter-spacing: 15px; opacity: 0.3; }
-
-        .grid-info { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .info-text h3 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 25px; font-style: italic; }
-        .info-text p { color: #aaa; margin-bottom: 20px; font-size: 17px; }
-
-        /* --- CATÁLOGO TÉCNICO --- */
-        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
-        .puro-card {
-            background: var(--negro-suave); border: 1px solid var(--gris-borde); padding: 35px;
-            display: grid; grid-template-columns: 160px 1fr; gap: 30px; transition: var(--transition-master);
-            cursor: pointer; position: relative; overflow: hidden;
-        }
-        .puro-card:hover { border-color: var(--oro); transform: translateY(-10px); }
-        .puro-card::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.05), transparent);
-            transition: 0.6s;
-        }
-        .puro-card:hover::before { left: 100%; }
-
-        .puro-card .img-box { background: #000; border: 1px solid #151515; display: flex; align-items: center; justify-content: center; }
-        .puro-card .img-box img { width: 90%; height: 260px; object-fit: contain; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.8)); }
-
-        .puro-info h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 22px; margin-bottom: 15px; }
-        .tech-spec { font-size: 11px; text-transform: uppercase; width: 100%; border-collapse: collapse; }
-        .tech-spec td { padding: 10px 0; border-bottom: 1px solid #1a1a1a; }
-        .tech-spec .lbl { color: var(--oro); font-weight: 700; letter-spacing: 1px; }
-        .tech-spec .val { text-align: right; color: #777; }
-
-        .buy-zone { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; }
-        .buy-zone .price { font-size: 26px; font-weight: 200; font-family: 'Montserrat'; }
-        .buy-zone .clp { display: block; font-size: 12px; color: #555; }
+        .puro-data h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 20px; margin-bottom: 15px; }
         
-        .btn-main { 
-            background: var(--oro); color: #000; border: none; padding: 12px 25px; 
-            font-weight: 700; font-size: 11px; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
-        }
-        .btn-main:hover { background: #fff; transform: scale(1.05); }
+        .data-table { width: 100%; font-size: 11px; text-transform: uppercase; margin-bottom: 20px; }
+        .data-table tr { border-bottom: 1px solid #1a1a1a; }
+        .data-table td { padding: 8px 0; }
+        .data-table .lbl { color: var(--oro); font-weight: 700; }
+        .data-table .val { text-align: right; color: #888; }
 
-        /* --- MODAL SYSTEM --- */
-        #modal-overlay { 
+        .action-row { display: flex; justify-content: space-between; align-items: center; }
+        .action-row b { font-size: 24px; font-weight: 300; }
+        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; cursor: pointer; }
+
+        /* MODAL */
+        .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); z-index: 5000; overflow-y: auto;
+            background: rgba(0,0,0,0.98); z-index: 2000;
         }
-        .modal-body { 
-            max-width: 1200px; margin: 80px auto; display: grid; grid-template-columns: 1fr 1fr; 
-            gap: 60px; padding: 50px; position: relative;
-        }
-        .modal-close { position: fixed; top: 40px; right: 60px; color: var(--oro); font-size: 40px; cursor: pointer; }
+        .modal-content { max-width: 1100px; margin: 60px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px; }
+        .close { position: absolute; top: 30px; right: 50px; color: var(--oro); font-size: 35px; cursor: pointer; }
 
-        /* --- CARRITO (HUMIDOR) --- */
-        #humidor-panel {
-            position: fixed; top: 0; right: -500px; width: 500px; height: 100vh;
-            background: var(--negro-suave); border-left: 2px solid var(--oro); z-index: 6000;
-            padding: 60px 40px; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        /* CARRITO PANEL */
+        #cart-panel {
+            position: fixed; top: 0; right: -500px; width: 450px; height: 100vh;
+            background: #080808; border-left: 1px solid var(--oro); z-index: 3000; padding: 40px; transition: 0.5s;
         }
-        #humidor-panel.active { right: 0; }
-        .humidor-title { font-family: 'Cinzel'; font-size: 28px; color: var(--oro); margin-bottom: 40px; text-align: center; }
-        
+        #cart-panel.open { right: 0; }
+
         .cart-item { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 0; border-bottom: 1px solid #222;
+            margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px;
         }
-        .cart-item-info b { display: block; color: var(--oro); font-family: 'Cinzel'; }
-        .qty-box { display: flex; align-items: center; gap: 15px; }
-        .qty-btn { width: 30px; height: 30px; border: 1px solid var(--oro); background: none; color: var(--oro); cursor: pointer; transition: 0.2s; }
+        .qty-controls { display: flex; align-items: center; gap: 15px; }
+        .qty-btn { background: none; border: 1px solid var(--oro); color: var(--oro); padding: 2px 8px; cursor: pointer; }
         .qty-btn:hover { background: var(--oro); color: #000; }
 
-        .total-box { margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--oro); }
-        .total-row { display: flex; justify-content: space-between; font-size: 22px; margin-bottom: 10px; }
-
-        .whatsapp-link {
-            display: block; width: 100%; background: var(--wa-green); color: #fff;
-            text-align: center; padding: 22px; text-decoration: none; font-weight: 700;
-            margin-top: 30px; border-radius: 4px; font-size: 14px;
+        .wa-btn {
+            display: block; width: 100%; background: #25d366; color: #fff; text-align: center;
+            padding: 20px; text-decoration: none; font-weight: 700; margin-top: 30px;
         }
 
-        /* --- ANIMACIONES --- */
-        [data-aos] { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-        [data-aos].visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 1100px) {
-            .grid-info, .catalog-grid, .modal-body { grid-template-columns: 1fr; }
-            header { padding: 20px; }
-            .nav-menu { display: none; }
-            #humidor-panel { width: 100%; }
-        }
+        @media (max-width: 900px) { .card-puro, .modal-content { grid-template-columns: 1fr; } #cart-panel { width: 100%; } }
     </style>
 </head>
 <body>
 
-<header id="main-nav">
+<header class="navbar">
     <a href="#" class="brand">
         <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU">
         <span>MAFU</span>
     </a>
-    <nav class="nav-menu">
-        <a href="#hero">Inicio</a>
-        <a href="#historia">Cuba</a>
-        <a href="#catalogo">Colección</a>
-        <a href="#ritual">El Ritual</a>
-    </nav>
-    <div class="cart-status" onclick="toggleHumidor()">
-        HUMIDOR <span class="cart-count" id="count-global">0</span>
+    <div class="cart-trigger" onclick="toggleCart()">
+        HUMIDOR <span class="cart-badge" id="cart-qty">0</span>
     </div>
 </header>
 
-<div id="hero">
-    <div class="hero-content">
-        <p>Tradición • Legado • Excelencia</p>
-        <h1 class="gold-gradient">MAFU CIGARS</h1>
-    </div>
-</div>
-
-<section id="historia">
-    <h2 class="sec-title" data-aos>La Cuna del Humo Sagrado</h2>
-    <div class="grid-info">
-        <div class="info-img" data-aos>
-            <img src="https://images.unsplash.com/photo-1542125387-c7128488903c?auto=format&fit=crop&w=800" style="width:100%; border: 1px solid var(--oro); filter: grayscale(1);">
-        </div>
-        <div class="info-text" data-aos>
-            <h3>Donde el suelo besa la hoja</h3>
-            <p>Todo comienza en la región de <span class="highlight">Vuelta Abajo</span>, el único lugar en la tierra donde se cultivan todos los tipos de hojas necesarios para crear un Habano de clase mundial.</p>
-            <p>En MAFU, honramos a los pueblos originales de Cuba, los taínos, quienes nos legaron el "Cohiba". No vendemos tabaco; vendemos la culminación de 500 años de historia artesanal.</p>
-        </div>
-    </div>
-</section>
-
-<section id="catalogo" style="background: #080808;">
-    <h2 class="sec-title" data-aos>Vitrinas de Culto</h2>
-    <div class="catalog-grid">
-        <div class="puro-card" onclick="showPuro('clasico')" data-aos>
-            <div class="img-box"><img src="Screenshot_20260501-034528.png"></div>
-            <div class="puro-info">
+<div class="container">
+    <div class="grid-puros">
+        <div class="card-puro" onclick="openDetails('clasico')">
+            <div class="puro-img"><img src="Screenshot_20260501-034528.png"></div>
+            <div class="puro-data">
                 <h3>MAFU Clásico</h3>
-                <table class="tech-spec">
-                    <tr><td class="lbl">Vitola</td><td class="val">Robusto Especial</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">50 x 124mm</td></tr>
-                    <tr><td class="lbl">Notas</td><td class="val">Cedro, Nuez, Crema</td></tr>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Robusto</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">50</td></tr>
+                    <tr><td class="lbl">Maridaje</td><td class="val">Café Suave</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">2 Años</td></tr>
                 </table>
-                <div class="buy-zone">
-                    <div>
-                        <span class="price">$12 USD</span>
-                        <span class="clp" id="clp-clasico">≈ $11.400 CLP</span>
-                    </div>
-                    <button class="btn-main" onclick="event.stopPropagation(); addToHumidor('clasico')">ADQUIRIR</button>
+                <div class="action-row">
+                    <b>$12 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('clasico')">AÑADIR</button>
                 </div>
             </div>
         </div>
 
-        <div class="puro-card" onclick="showPuro('reserva')" data-aos>
-            <div class="img-box"><img src="Screenshot_20260501-034604.png"></div>
-            <div class="puro-info">
+        <div class="card-puro" onclick="openDetails('reserva')">
+            <div class="puro-img"><img src="Screenshot_20260501-034604.png"></div>
+            <div class="puro-data">
                 <h3>MAFU Reserva</h3>
-                <table class="tech-spec">
-                    <tr><td class="lbl">Vitola</td><td class="val">Toro Noble</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">52 x 150mm</td></tr>
-                    <tr><td class="lbl">Notas</td><td class="val">Cuero, Pimienta, Tierra</td></tr>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Toro</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">52</td></tr>
+                    <tr><td class="lbl">Maridaje</td><td class="val">Whisky</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">4 Años</td></tr>
                 </table>
-                <div class="buy-zone">
-                    <div>
-                        <span class="price">$18 USD</span>
-                        <span class="clp" id="clp-reserva">≈ $17.100 CLP</span>
-                    </div>
-                    <button class="btn-main" onclick="event.stopPropagation(); addToHumidor('reserva')">ADQUIRIR</button>
+                <div class="action-row">
+                    <b>$18 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('reserva')">AÑADIR</button>
                 </div>
             </div>
         </div>
 
-        <div class="puro-card" onclick="showPuro('premium')" data-aos>
-            <div class="img-box"><img src="Screenshot_20260501-034637.png"></div>
-            <div class="puro-info">
+        <div class="card-puro" onclick="openDetails('premium')">
+            <div class="puro-img"><img src="Screenshot_20260501-034637.png"></div>
+            <div class="puro-data">
                 <h3>MAFU Premium</h3>
-                <table class="tech-spec">
-                    <tr><td class="lbl">Vitola</td><td class="val">Churchill Master</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">48 x 178mm</td></tr>
-                    <tr><td class="lbl">Notas</td><td class="val">Cacao, Melaza, Especias</td></tr>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Churchill</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">48</td></tr>
+                    <tr><td class="lbl">Maridaje</td><td class="val">Cognac</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">5+ Años</td></tr>
                 </table>
-                <div class="buy-zone">
-                    <div>
-                        <span class="price">$25 USD</span>
-                        <span class="clp" id="clp-premium">≈ $23.750 CLP</span>
-                    </div>
-                    <button class="btn-main" onclick="event.stopPropagation(); addToHumidor('premium')">ADQUIRIR</button>
+                <div class="action-row">
+                    <b>$25 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('premium')">AÑADIR</button>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<section id="ritual">
-    <h2 class="sec-title" data-aos>El Ritual del Tercio</h2>
-    <div class="grid-info">
-        <div class="info-text" data-aos>
-            <h3>Cómo entender tu MAFU</h3>
-            <p><b style="color:var(--oro)">Primer Tercio (El Heno):</b> Aromas suaves y herbáceos. Es el despertar de la hoja.</p>
-            <p><b style="color:var(--oro)">Segundo Tercio (El Divino):</b> El corazón del puro. Se asientan las notas de madera y frutos secos.</p>
-            <p><b style="color:var(--oro)">Tercer Tercio (La Potencia):</b> El final. Se intensifican los sabores. Solo para quienes saben despedir un buen humo.</p>
-        </div>
-        <div class="info-img" data-aos>
-            <div style="padding:40px; background:var(--negro-suave); border-left: 3px solid var(--oro);">
-                <h4 style="font-family:'Cinzel'; margin-bottom:20px;">Consejo del Maestro</h4>
-                <p style="font-style:italic; font-size:14px; color:#777;">"Nunca sacudas la ceniza. Deja que caiga por su propio peso. La ceniza es el termómetro de la calidad de un torcido manual."</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div id="modal-overlay">
-    <span class="modal-close" onclick="closeModal()">✕</span>
-    <div id="modal-content" class="modal-body"></div>
 </div>
 
-<div id="humidor-panel">
-    <h2 class="humidor-title">MI HUMIDOR</h2>
-    <div id="humidor-list" style="overflow-y:auto; max-height:55vh;"></div>
-    
-    <div class="total-box">
-        <div class="total-row"><span>Subtotal USD:</span><span id="total-usd">$0</span></div>
-        <div class="total-row" style="color:var(--oro); font-weight:700;"><span>Total CLP:</span><span id="total-clp">$0</span></div>
-        <a href="#" class="whatsapp-link" onclick="checkoutWA()">PEDIR SELECCIÓN VÍA WHATSAPP</a>
-        <p onclick="toggleHumidor()" style="text-align:center; margin-top:20px; font-size:10px; letter-spacing:4px; cursor:pointer; opacity:0.5;">CERRAR PANEL</p>
+<div id="modal" class="modal">
+    <span class="close" onclick="closeDetails()">✕</span>
+    <div id="modal-inner" class="modal-content"></div>
+</div>
+
+<div id="cart-panel">
+    <h2 style="font-family:'Cinzel'; color:var(--oro); margin-bottom:40px;">MI SELECCIÓN</h2>
+    <div id="cart-items" style="max-height:60vh; overflow-y:auto;"></div>
+    <div style="margin-top:40px; border-top:1px solid #333; padding-top:20px;">
+        <h3 id="cart-total" style="font-size:28px;">TOTAL: $0 USD</h3>
+        <a href="#" class="wa-btn" onclick="sendOrder()">PEDIR POR WHATSAPP</a>
+        <p onclick="toggleCart()" style="text-align:center; color:var(--oro); margin-top:20px; cursor:pointer;">CERRAR</p>
     </div>
 </div>
 
 <script>
-    // --- LÓGICA DE NEGOCIO ---
-    const CLP_VAL = 950; // Tipo de cambio referencial
-    const database = {
-        clasico: { id:'clasico', name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", longDesc: "Un Robusto con 2 años de añejamiento. Perfecto para mañanas con café.", strength: "Media", wrapper: "Habana 2000" },
-        reserva: { id:'reserva', name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", longDesc: "Un Toro potente con 4 años de reserva. Notas intensas de cuero y bosque.", strength: "Media-Alta", wrapper: "Criollo 98" },
-        premium: { id:'premium', name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", longDesc: "El Churchill de la casa. 5 años de reposo. Una evolución maestra de sabores.", strength: "Alta", wrapper: "Maduro Cubano" }
+    const db = {
+        clasico: { name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", desc: "Equilibrio perfecto de Vuelta Abajo.", specs: { Largo: "124mm", Fortaleza: "Media", Capa: "Ecuador" }},
+        reserva: { name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", desc: "Añejamiento prolongado para expertos.", specs: { Largo: "150mm", Fortaleza: "Fuerte", Capa: "Habana" }},
+        premium: { name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", desc: "La joya de la corona, evolución magistral.", specs: { Largo: "178mm", Fortaleza: "Intensa", Capa: "Maduro" }}
     };
 
-    let humidor = JSON.parse(localStorage.getItem('mafu_cart')) || {};
+    let cart = {};
 
-    // --- FUNCIONES CARRITO ---
-    function addToHumidor(id) {
-        if(humidor[id]) humidor[id].qty++;
-        else humidor[id] = { ...database[id], qty: 1 };
-        updateStorage();
-        if(!document.getElementById('humidor-panel').classList.contains('active')) toggleHumidor();
+    function addToCart(id) {
+        if(cart[id]) cart[id].qty++;
+        else cart[id] = { ...db[id], qty: 1 };
+        renderCart();
+        if(!document.getElementById('cart-panel').classList.contains('open')) toggleCart();
     }
 
-    function changeQty(id, delta) {
-        if(humidor[id]) {
-            humidor[id].qty += delta;
-            if(humidor[id].qty <= 0) delete humidor[id];
-            updateStorage();
+    function updateQty(id, delta) {
+        if(cart[id]) {
+            cart[id].qty += delta;
+            if(cart[id].qty <= 0) delete cart[id];
+            renderCart();
         }
     }
 
-    function updateStorage() {
-        localStorage.setItem('mafu_cart', JSON.stringify(humidor));
-        renderHumidor();
-    }
+    function renderCart() {
+        const container = document.getElementById('cart-items');
+        container.innerHTML = "";
+        let total = 0; let totalQty = 0;
 
-    function renderHumidor() {
-        const list = document.getElementById('humidor-list');
-        list.innerHTML = "";
-        let tUSD = 0; let count = 0;
-
-        Object.keys(humidor).forEach(key => {
-            const item = humidor[key];
-            tUSD += (item.price * item.qty);
-            count += item.qty;
-            list.innerHTML += `
+        Object.keys(cart).forEach(id => {
+            const item = cart[id];
+            total += (item.price * item.qty);
+            totalQty += item.qty;
+            container.innerHTML += `
                 <div class="cart-item">
-                    <div class="cart-item-info">
-                        <b>${item.name}</b>
-                        <small>$${item.price} USD /u</small>
-                    </div>
-                    <div class="qty-box">
-                        <button class="qty-btn" onclick="changeQty('${key}', -1)">-</button>
+                    <div><b>${item.name}</b><br><small>$${item.price} c/u</small></div>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="updateQty('${id}', -1)">-</button>
                         <span>${item.qty}</span>
-                        <button class="qty-btn" onclick="changeQty('${key}', 1)">+</button>
+                        <button class="qty-btn" onclick="updateQty('${id}', 1)">+</button>
                     </div>
                 </div>`;
         });
 
-        document.getElementById('count-global').innerText = count;
-        document.getElementById('total-usd').innerText = `$${tUSD} USD`;
-        document.getElementById('total-clp').innerText = `$${(tUSD * CLP_VAL).toLocaleString('es-CL')} CLP`;
+        document.getElementById('cart-qty').innerText = totalQty;
+        document.getElementById('cart-total').innerText = `TOTAL: $${total} USD`;
     }
 
-    // --- UI FUNCTIONS ---
-    function toggleHumidor() { document.getElementById('humidor-panel').classList.toggle('active'); }
-
-    function showPuro(id) {
-        const p = database[id];
-        const modal = document.getElementById('modal-content');
-        modal.innerHTML = `
-            <div style="text-align:center;"><img src="${p.img}" style="max-height:600px; filter: drop-shadow(0 20px 40px #000);"></div>
+    function openDetails(id) {
+        const p = db[id];
+        document.getElementById('modal-inner').innerHTML = `
+            <div style="text-align:center;"><img src="${p.img}" style="max-height:500px;"></div>
             <div>
-                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:48px; margin-bottom:20px;">${p.name}</h2>
-                <p style="font-size:18px; line-height:1.8; color:#ccc; margin-bottom:30px;">${p.longDesc}</p>
-                <div style="background:#0a0a0a; padding:30px; border:1px solid #222;">
-                    <p style="margin-bottom:15px; display:flex; justify-content:space-between;"><span>Fortaleza</span><b style="color:var(--oro)">${p.strength}</b></p>
-                    <p style="margin-bottom:15px; display:flex; justify-content:space-between;"><span>Capa</span><b style="color:var(--oro)">${p.wrapper}</b></p>
-                    <p style="display:flex; justify-content:space-between;"><span>Precio Unitario</span><b style="color:var(--oro)">$${p.price} USD</b></p>
+                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:40px;">${p.name}</h2>
+                <p style="margin:20px 0; color:#aaa;">${p.desc}</p>
+                <div style="background:#111; padding:20px;">
+                    ${Object.entries(p.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
                 </div>
-                <button class="whatsapp-link" style="background:var(--oro); color:#000; cursor:pointer;" onclick="addToHumidor('${id}'); closeModal();">AÑADIR AL PEDIDO</button>
+                <button class="wa-btn" style="background:var(--oro); color:#000; margin-top:30px;" onclick="addToCart('${id}'); closeDetails();">AÑADIR AL PEDIDO</button>
+            </div>`;
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeDetails() { document.getElementById('modal').style.display = 'none'; }
+    function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
+
+    function sendOrder() {
+        let msg = "Hola MAFU, deseo encargar:%0A";
+        Object.values(cart).forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
+        window.open(`https://wa.me/56998644532?text=${msg}`);
+    }
+</script>
+</body>
+</html>
