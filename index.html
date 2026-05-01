@@ -3,237 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | La Excelencia del Tabaco Cubano</title>
+    <title>MAFU | Catálogo Maestro de Tabacos</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================================================================
-           1. CORE & LUXURY DESIGN SYSTEM
-           ========================================================================== */
         :root {
             --oro: #c5a059;
-            --oro-fade: rgba(197, 160, 89, 0.15);
-            --papel: #fdfaf5;
-            --negro-obsidiana: #030303;
-            --gris-carbon: #0f0f0f;
-            --borde: rgba(197, 160, 89, 0.2);
-            --font-serif: 'Playfair Display', serif;
-            --font-accent: 'Cinzel', serif;
-            --ease: cubic-bezier(0.19, 1, 0.22, 1);
+            --negro: #050505;
+            --gris: #121212;
+            --papel: #f4f1ea;
+            --fuente-titulo: 'Cinzel', serif;
+            --fuente-texto: 'Montserrat', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; cursor: default; }
+        body { background-color: var(--negro); color: var(--papel); font-family: var(--fuente-texto); overflow-x: hidden; }
 
-        body {
-            background-color: var(--negro-obsidiana);
-            color: var(--papel);
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Textura de fondo sutil: Piel y Madera */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
-            opacity: 0.2; z-index: -1; pointer-events: none;
-        }
-
-        /* ==========================================================================
-           2. HEADER & LOGO file_000000009bac
-           ========================================================================== */
-        .navbar {
+        /* HEADER & LOGO CORRECTO */
+        .header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 25px 60px;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10000;
-            background: linear-gradient(to bottom, rgba(3,3,3,1) 0%, rgba(3,3,3,0.8) 100%);
-            border-bottom: 1px solid var(--borde);
-            backdrop-filter: blur(20px);
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-decoration: none;
-        }
+        .logo-box { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 65px; width: auto; object-fit: contain; }
+        .logo-name { font-family: var(--fuente-titulo); color: var(--oro); font-size: 28px; letter-spacing: 4px; font-weight: 900; }
 
-        /* Integración del Logo 9bac */
-        .nav-logo {
-            height: 70px; /* Tamaño optimizado para visibilidad */
-            width: auto;
-            filter: brightness(1.1) contrast(1.1);
-            transition: transform 0.6s var(--ease);
-        }
-        .nav-brand:hover .nav-logo { transform: rotate(-5deg) scale(1.05); }
+        /* CONTENEDOR PRINCIPAL */
+        .container { max-width: 1300px; margin: 150px auto 100px; padding: 0 20px; }
+        .section-intro { text-align: center; margin-bottom: 80px; }
+        .section-intro h2 { font-family: var(--fuente-titulo); color: var(--oro); font-size: 45px; margin-bottom: 10px; }
+        .section-intro p { opacity: 0.5; letter-spacing: 5px; text-transform: uppercase; font-size: 12px; }
 
-        .brand-title {
-            font-family: var(--font-accent);
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--oro);
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
-        }
-
-        .nav-menu { display: flex; gap: 40px; }
-        .nav-menu a {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--papel);
-            text-decoration: none;
-            opacity: 0.5;
-            transition: 0.4s;
-        }
-        .nav-menu a:hover { opacity: 1; color: var(--oro); }
-
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-            color: var(--oro);
-            font-size: 20px;
-            transition: 0.3s;
-        }
-        .cart-icon:hover { transform: scale(1.15); }
-        .cart-qty {
-            position: absolute;
-            top: -10px; right: -15px;
-            background: var(--oro);
-            color: black;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 3px 6px;
-            border-radius: 50%;
-        }
-
-        /* ==========================================================================
-           3. HERO (THE SOUL)
-           ========================================================================== */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(3,3,3,1)), 
-                        url('file_00000000e124720eacda71c2b88a43d3.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero-tag { font-family: var(--font-accent); font-size: 14px; letter-spacing: 12px; color: var(--oro); margin-bottom: 25px; }
-        .hero h1 { font-family: var(--font-serif); font-size: clamp(80px, 15vw, 200px); font-style: italic; line-height: 0.8; color: var(--oro); margin-bottom: 20px; }
-        .hero p { font-size: 12px; letter-spacing: 10px; text-transform: uppercase; opacity: 0.4; }
-
-        /* ==========================================================================
-           4. SECCIONES DE NARRATIVA (CONTENIDO EXTENSO)
-           ========================================================================== */
-        .section { padding: 150px 10%; border-bottom: 1px solid var(--gris-carbon); }
-        .tagline { color: var(--oro); font-family: var(--font-accent); font-size: 11px; letter-spacing: 6px; display: block; margin-bottom: 30px; }
-        .section-title { font-size: 70px; font-family: var(--font-serif); font-style: italic; margin-bottom: 80px; line-height: 1.1; }
-
-        .split-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 120px;
-            align-items: center;
-        }
-
-        .text-block h3 { font-size: 40px; font-family: var(--font-serif); margin-bottom: 40px; color: var(--oro); }
-        .text-block p { font-size: 18px; color: #888; text-align: justify; margin-bottom: 30px; }
-
-        .visual-block {
-            position: relative;
-            padding: 20px;
-            border: 1px solid var(--borde);
-        }
-        .visual-block img { width: 100%; height: 700px; object-fit: cover; filter: grayscale(0.5) contrast(1.2); transition: 1s; }
-        .visual-block:hover img { filter: grayscale(0); }
-
-        /* Mosaico de Herencia */
-        .heritage-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
-            margin-top: 100px;
-        }
-        .heritage-card { background: #080808; padding: 50px; border: 1px solid #111; transition: 0.5s; }
-        .heritage-card:hover { border-color: var(--oro); background: #0a0a0a; }
-        .heritage-card i { font-size: 30px; color: var(--oro); margin-bottom: 30px; display: block; }
-        .heritage-card h4 { font-family: var(--font-accent); color: var(--oro); margin-bottom: 20px; letter-spacing: 2px; }
-        .heritage-card p { font-size: 14px; color: #666; }
-
-        /* ==========================================================================
-           5. CATÁLOGO / LA CAVA DE AUTOR
-           ========================================================================== */
+        /* RECUADROS DETALLADOS (LA ESENCIA) */
         .cava-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
 
-        .product-card {
-            background: #060606;
-            border: 1px solid #151515;
-            padding: 80px 40px;
-            text-align: center;
-            transition: var(--ease) 0.8s;
+        .puro-card {
+            background: var(--gris);
+            border: 1px solid #222;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 25px;
+            transition: 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            cursor: pointer;
             position: relative;
         }
-        .product-card:hover { border-color: var(--oro); transform: translateY(-15px); }
 
-        .product-card .img-container {
-            width: 100%; height: 450px; margin-bottom: 40px;
-            background: radial-gradient(circle, #111 0%, #030303 100%);
-            display: flex; align-items: center; justify-content: center;
+        .puro-card:hover { border-color: var(--oro); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .puro-img-box { background: #000; display: flex; align-items: center; justify-content: center; padding: 10px; border: 1px solid #1a1a1a; }
+        .puro-img-box img { width: 100%; height: 220px; object-fit: contain; }
+
+        .puro-info h3 { font-family: var(--fuente-titulo); color: var(--oro); font-size: 22px; margin-bottom: 15px; }
+
+        /* TABLA DE INFORMACIÓN TÉCNICA */
+        .tech-data { width: 100%; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-collapse: collapse; }
+        .tech-data tr { border-bottom: 1px solid #1a1a1a; }
+        .tech-data td { padding: 8px 0; }
+        .tech-data td.label { color: var(--oro); font-weight: 700; width: 40%; }
+        .tech-data td.value { color: #ccc; text-align: right; }
+
+        .price-tag { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .price-tag b { font-size: 24px; color: var(--papel); font-weight: 300; }
+        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; font-size: 10px; cursor: pointer; }
+
+        /* MODAL (LEVANTAR INFORMACIÓN) */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); z-index: 5000; padding: 50px;
         }
-        .product-card img { width: 90%; height: 90%; object-fit: contain; cursor: zoom-in; transition: 0.6s; }
-        .product-card:hover img { transform: scale(1.1); }
-
-        .product-card h3 { font-family: var(--font-accent); font-size: 32px; color: var(--oro); margin-bottom: 10px; }
-        .product-card .vitola { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; color: #444; margin-bottom: 40px; display: block; }
-
-        .price-section { margin-bottom: 50px; }
-        .price-usd { font-size: 42px; font-weight: 200; display: block; letter-spacing: -2px; }
-        .price-clp { font-size: 13px; color: #444; text-transform: uppercase; }
-
-        .btn-lujo {
-            width: 100%; padding: 22px;
-            background: var(--oro); color: black;
-            border: none; font-family: var(--font-accent);
-            font-weight: 900; letter-spacing: 3px; font-size: 11px;
-            cursor: pointer; transition: 0.4s;
+        .modal-content {
+            max-width: 1000px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; height: 100%;
         }
-        .btn-lujo:hover { background: white; box-shadow: 0 15px 40px rgba(197, 160, 89, 0.4); }
+        .modal-close { position: absolute; top: 40px; right: 40px; color: var(--oro); font-size: 30px; cursor: pointer; }
 
-        /* ==========================================================================
-           6. FICHA MAESTRA (SISTEMA DE DETALLES)
-           ========================================================================== */
-        #master-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--negro-obsidiana);
-            z-index: 20000;
-            overflow-y: auto;
+        /* CARRITO */
+        #cart-panel {
+            position: fixed; top: 0; right: -400px; width: 400px; height: 100vh;
+            background: #080808; z-index: 6000; padding: 40px; transition: 0.5s;
+            border-left: 1px solid var(--oro);
+        }
+        #cart-panel.open { right: 0; }
+
+        .wa-btn {
+            display: block; width: 100%; background: #25d366; color: #fff; text-align: center;
+            padding: 20px; text-decoration: none; font-weight: 700; margin-top: 30px;
         }
 
-        .overlay-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-        .overlay-left { background: #000; position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--borde); }
-        .overlay-left img { max-width: 80%; max-height: 80%; object-fit: contain; }
+        @media (max-width: 800px) {
+            .puro-card { grid-template-columns: 1fr; text-align: center; }
+            .modal-content { grid-template-columns: 1fr; padding-top: 100px; overflow-y: auto; }
+        }
+    </style>
+</head>
+<body>
 
-        .overlay-right { padding: 120px 10%; align-self: center; }
-        .overlay-right h2 { font-family: var(--font-serif); font-size: 80px; font-style: italic; color: var(--oro); margin-bottom: 30px; }
-        .overlay-right .p-story { font-size: 22px; color: #888; margin-bottom: 60
+<header class="header">
+    <a href="#" class="logo-box">
+        <img src="file_000000009bac.png" alt="MAFU" class="logo-img">
+        <span class="logo-name">MAFU</span>
+    </a>
+    <div onclick="toggleCart()" style="cursor:pointer; color:var(--oro);">
+        CARRITO (<span id="cart-count">0</span>)
+    </div>
+</header>
+
+<div class="container">
+    <div class="section-intro">
+        <p>Tradición y Legado</p>
+        <h2>Nuestra Cava</h2>
+    </div>
+
+    <div class="cava-grid">
+        <div class="puro-card" onclick="openDetails('clasico')">
+            <div class="puro-img-box">
+                <img src="Screenshot_20260501-034528.png">
+            </div>
+            <div class="puro-info">
+                <h3>MAFU Clásico</h3>
+                <table class="tech-data">
+                    <tr><td class="label">Tamaño</td><td class="value">Robusto</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="value">50 (Cepo)</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="value">2 Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="value">Café / Ron</td></tr>
+                </table>
+                <div class="price-tag">
+                    <b>$12 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Clásico', 12)">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="puro-card" onclick="openDetails('reserva')">
+            <div class="puro-img-box">
+                <img src="Screenshot_20260501-034604.png">
+            </div>
+            <div class="puro-info">
+                <h3>MAFU Reserva</h3>
+                <table class="tech-data">
+                    <tr><td class="label">Tamaño</td><td class="value">Toro</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="value">52 (Cepo)</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="value">4 Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="value">Whisky</td></tr>
+                </table>
+                <div class="price-tag">
+                    <b>$18 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Reserva', 18)">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="puro-card" onclick="openDetails('premium')">
+            <div class="puro-img-box">
+                <img src="Screenshot_20260501-034637.png">
+            </div>
+            <div class="puro-info">
+                <h3>MAFU Premium</h3>
+                <table class="tech-data">
+                    <tr><td class="label">Tamaño</td><td class="value">Churchill</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="value">48 (Cepo)</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="value">5+ Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="value">Cognac</td></tr>
+                </table>
+                <div class="price-tag">
+                    <b>$25 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Premium', 25)">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="puro-modal" class="modal">
+    <span class="modal-close" onclick="closeDetails()">✕</span>
+    <div id="modal-body" class="modal-content">
+        </div>
+</div>
+
+<div id="cart-panel">
+    <h3 style="color:var(--oro); font-family:var(--fuente-titulo); margin-bottom:30px;">PEDIDO</h3>
+    <div id="cart-items" style="max-height:60vh; overflow-y:auto;"></div>
+    <div style="border-top:1px solid #333; margin-top:20px; padding-top:20px;">
+        <h4 id="cart-total" style="font-size:24px;">TOTAL: $0 USD</h4>
+        <a href="#" class="wa-btn" onclick="sendWhatsApp()">PEDIR POR WHATSAPP</a>
+        <button onclick="toggleCart()" style="background:none; border:none; color:var(--oro); margin-top:20px; cursor:pointer;">CERRAR</button>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+    const products = {
+        clasico: { 
+            name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", 
+            desc: "Un puro equilibrado con notas de cedro y vainilla. Ideal para una tarde tranquila.",
+            tech: { Largo: "124mm", Cepo: "50", Fortaleza: "Media", Origen: "Vuelta Abajo" }
+        },
+        reserva: { 
+            name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", 
+            desc: "Complejidad superior. Notas de cuero noble y pimienta negra añejada.",
+            tech: { Largo: "150mm", Cepo: "52", Fortaleza: "Media-Fuerte", Origen: "Pinar del Río" }
+        },
+        premium: { 
+            name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", 
+            desc: "La joya de la corona. Humo denso, aceitoso y sumamente complejo.",
+            tech: { Largo: "178mm", Cepo: "48", Fortaleza: "Fuerte", Origen: "Selección Especial" }
+        }
+    };
+
+    function openDetails(id) {
+        const p = products[id];
+        const body = document.getElementById('modal-body');
+        body.innerHTML = `
+            <div style="text-align:center"><img src="${p.img}" style="max-height:500px; width:auto;"></div>
+            <div>
+                <h2 style="font-family:var(--fuente-titulo); color:var(--oro); font-size:40px; margin-bottom:20px;">${p.name}</h2>
+                <p style="font-size:18px; line-height:1.6; margin-bottom:30px; color:#aaa;">${p.desc}</p>
+                <div style="background:#111; padding:20px; border:1px solid #222;">
+                    <h5 style="color:var(--oro); margin-bottom:15px; text-transform:uppercase;">Ficha Técnica de Autor</h5>
+                    ${Object.entries(p.tech).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:13px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
+                </div>
+                <button class="wa-btn" style="background:var(--oro); color:#000; margin-top:40px;" onclick="addToCart('${p.name}', ${p.price}); closeDetails();">AÑADIR AL CARRITO - $${p.price} USD</button>
+            </div>
+        `;
+        document.getElementById('puro-modal').style.display = 'block';
+    }
+
+    function closeDetails() { document.getElementById('puro-modal').style.display = 'none'; }
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        updateCart();
+    }
+
+    function updateCart() {
+        document.getElementById('cart-count').innerText = cart.length;
+        const list = document.getElementById('cart-items');
+        list.innerHTML = cart.map((item, i) => `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span>${item.name}</span><b>$${item.price}</b></div>`).join('');
+        const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+        document.getElementById('cart-total').innerText = `TOTAL: $${total} USD`;
+    }
+
+    function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
+
+    function sendWhatsApp() {
+        if(cart.length === 0) return alert("El carrito está vacío");
+        let text = "Hola MAFU, quiero pedir:%0A";
+        cart.forEach(i => text += `- ${i.name} ($${i.price})%0A`);
+        window.open(`https://wa.me/56998644532?text=${text}`);
+    }
+</script>
+</body>
+</html>
