@@ -1,0 +1,5 @@
+function comprar(nombre, precio){
+  let mensaje = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
+  let url = "https://wa.me/56998644532?text=" + encodeURIComponent(mensaje);
+  window.open(url, "_blank");
+}
