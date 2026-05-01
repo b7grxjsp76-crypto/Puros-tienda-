@@ -2,47 +2,69 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Puro Reserva - Detalles | MAFU Cuban Soul</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puro Reserva - MAFU Cuban Soul</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background: #0b0b0b; color: white; font-family: 'Playfair Display', serif; margin: 0; }
-        .container { max-width: 900px; margin: 50px auto; padding: 20px; line-height: 1.6; }
-        .back-btn { color: #d4af37; text-decoration: none; display: inline-block; margin-bottom: 20px; font-weight: bold; }
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        img { width: 100%; border-radius: 10px; border: 1px solid #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-        h1 { color: #d4af37; font-size: 2.5rem; margin-top: 0; }
-        .specs { margin-top: 20px; border-top: 1px solid #333; padding-top: 20px; }
-        .specs b { color: #d4af37; }
-        .origin-box { background: #1a1a1a; padding: 25px; margin-top: 20px; border-radius: 8px; border-left: 4px solid #d4af37; }
-        h3 { color: #d4af37; margin-top: 0; }
+        body { background: #0b0b0b; color: white; font-family: 'Playfair Display', serif; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .back { color: #d4af37; text-decoration: none; margin-bottom: 20px; display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+        img { width: 100%; border-radius: 10px; border: 1px solid #d4af37; }
+        h1 { color: #d4af37; }
+        .info-box { background: #1a1a1a; padding: 20px; border-radius: 10px; border-left: 4px solid #d4af37; margin-bottom: 20px; }
+        .buy-box { padding: 20px; border: 1px solid #333; border-radius: 10px; text-align: center; }
+        .controls { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; }
+        .controls button { width: 40px; height: 40px; background: #d4af37; border: none; cursor: pointer; font-size: 20px; font-weight: bold; }
+        .btn-whatsapp { background: #25D366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; text-decoration: none; display: inline-block; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-btn">← Volver al catálogo</a>
-        <div class="detail-grid">
-            <div>
-                <img src="Screenshot_20260501-034604.png" alt="Puro Reserva">
-            </div>
-            <div>
-                <h1>Puro Reserva</h1>
-                <p>El <b>Reserva</b> es una oda a la paciencia. Las hojas utilizadas en este blend han sido añejadas por un mínimo de 3 años, logrando una armonía perfecta entre potencia y suavidad sedosa.</p>
-                
-                <div class="specs">
-                    <p><b>Fortaleza:</b> Media</p>
-                    <p><b>Vitola:</b> Toro (6" x 52)</p>
-                    <p><b>Notas de Cata:</b> Cedro, cacao amargo y frutos secos.</p>
-                </div>
 
-                <div class="origin-box">
-                    <h3>Composición del Blend</h3>
-                    <p><b>Capa:</b> Habano 2000 (Ecuador)</p>
-                    <p><b>Capote:</b> Criollo 98 (Honduras)</p>
-                    <p><b>Tripa:</b> Selección de hojas de Estelí y Condega (Nicaragua)</p>
-                    <p><i>Un puro diseñado para paladares que buscan complejidad sin agresividad.</i></p>
+<div class="container">
+    <a href="index.html" class="back">← Volver al Catálogo</a>
+    
+    <div class="grid">
+        <img src="Screenshot_20260501-034604.png">
+        <div>
+            <h1>Puro Reserva</h1>
+            <p>Nuestra edición Reserva destaca por un añejamiento prolongado de sus hojas, otorgando una fumada cremosa con un final dulce y amaderado.</p>
+            
+            <div class="info-box">
+                <h3>Origen y Notas</h3>
+                <p><b>Capa:</b> Habano 2000 (Ecuador)</p>
+                <p><b>Capote:</b> Criollo 98 (Nicaragua)</p>
+                <p><b>Tripa:</b> Valle de Estelí (Nicaragua) y Jamastrán (Honduras)</p>
+                <p><b>Fortaleza:</b> Media</p>
+                <p><b>Notas:</b> Frutos secos, cedro y especias suaves.</p>
+            </div>
+
+            <div class="buy-box">
+                <div style="font-size: 24px; color: #d4af37;">$18 USD</div>
+                <div class="controls">
+                    <button onclick="cambiar(-1)">-</button>
+                    <span id="cantidad" style="font-size: 24px;">1</span>
+                    <button onclick="cambiar(1)">+</button>
                 </div>
+                <button class="btn-whatsapp" onclick="pedir()">Pedir por WhatsApp</button>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    function cambiar(val) {
+        let el = document.getElementById("cantidad");
+        let num = parseInt(el.innerText) + val;
+        if(num < 1) num = 1;
+        el.innerText = num;
+    }
+    function pedir() {
+        let cant = document.getElementById("cantidad").innerText;
+        let msg = `Hola MAFU, me interesa el Puro Reserva. Quisiera pedir ${cant} unidades.`;
+        window.open(`https://wa.me/56998644532?text=${encodeURIComponent(msg)}`);
+    }
+</script>
+
 </body>
 </html>
