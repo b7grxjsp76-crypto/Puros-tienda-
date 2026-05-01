@@ -1,232 +1,61 @@
-/* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* ==========================================================================
+   ESTILO MAESTRO MAFU CUBAN SOUL
+   ========================================================================== */
+:root {
+    --gold: #d4af37;
+    --gold-bright: #f1c40f;
+    --black: #050505;
+    --black-soft: #0e0e0e;
+    --white: #f5f5f5;
+    --tobacco: #3d2b1f;
 }
 
-:root{
-  --dorado:#d4af37;
-  --negro:#0b0b0b;
-  --gris:#111;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
 }
 
-body{
-  font-family:'Playfair Display', serif;
-  background:var(--negro);
-  color:white;
+h1, h2, h3, .luxury-font { font-family: 'Playfair Display', serif; }
+
+/* NAVEGACIÓN */
+.header {
+    background: #000; padding: 20px; border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 1000; text-align: center;
 }
+.logo img { height: 70px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.4)); }
+.nav { display: flex; justify-content: center; gap: 25px; margin-top: 15px; }
+.nav a { color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; font-weight: 700; }
 
-/* ===== HEADER ===== */
-.header{
-  background:#000;
-  padding:15px 20px;
-  border-bottom:1px solid var(--dorado);
-  position:sticky;
-  top:0;
-  z-index:1000;
+/* CONTENEDORES */
+.container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+
+/* TARJETAS DE PRODUCTO (INDEX) */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.card {
+    background: var(--black-soft); border-radius: 15px; padding: 30px;
+    border: 1px solid #222; text-align: center; transition: 0.4s;
 }
+.card:hover { border-color: var(--gold); transform: translateY(-10px); }
+.card img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
 
-.header .logo{
-  text-align:center;
+/* BOTONES */
+.btn {
+    display: inline-block; padding: 12px 25px; background: var(--gold);
+    color: #000; text-decoration: none; font-weight: 900; border-radius: 50px;
+    text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none;
 }
+.btn:hover { background: #fff; }
+.btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); margin-top: 10px; }
 
-.logo img{
-  height:60px;
-}
+/* DISEÑO DE PÁGINA DE PURO (INDIVIDUAL) */
+.puro-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+.puro-img-large { width: 100%; border-radius: 20px; border: 1px solid var(--gold); }
+.tech-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+.tech-table td { padding: 15px; border-bottom: 1px solid #222; }
+.tech-table b { color: var(--gold); text-transform: uppercase; font-size: 12px; }
 
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  margin-top:10px;
-}
-
-.nav a{
-  color:var(--dorado);
-  text-decoration:none;
-  font-size:14px;
-  letter-spacing:1px;
-  transition:.3s;
-}
-
-.nav a:hover{
-  color:white;
-}
-
-/* ===== HERO ===== */
-.hero{
-  display:flex;
-  justify-content:center;
-  padding:40px 20px;
-}
-
-.hero-box{
-  width:100%;
-  max-width:1100px;
-  height:420px;
-  border-radius:10px;
-  overflow:hidden;
-
-  background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-    url('file_00000000e124720eacda71c2b88a43d3.png') center/cover;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.hero h1{
-  font-size:42px;
-  color:var(--dorado);
-  margin-bottom:10px;
-}
-
-.hero p{
-  color:#ccc;
-  font-size:16px;
-}
-
-/* ===== PRODUCTOS ===== */
-.productos{
-  padding:60px 20px;
-  background:var(--gris);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-  max-width:1100px;
-  margin:auto;
-}
-
-/* CARD */
-.card{
-  background:#1a1a1a;
-  border:1px solid #222;
-  border-radius:10px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  border-color:var(--dorado);
-  box-shadow:0 10px 25px rgba(212,175,55,0.15);
-}
-
-.card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.card h3{
-  color:var(--dorado);
-  margin:10px;
-}
-
-.precio{
-  margin:0 10px;
-  color:var(--dorado);
-  font-weight:bold;
-}
-
-/* INPUT CANTIDAD */
-.cantidad{
-  width:70px;
-  margin:10px;
-  padding:5px;
-  background:#000;
-  color:white;
-  border:1px solid #333;
-}
-
-/* BOTÓN */
-button{
-  margin:10px;
-  padding:10px;
-  width:calc(100% - 20px);
-  background:var(--dorado);
-  border:none;
-  cursor:pointer;
-  transition:.3s;
-}
-
-button:hover{
-  background:white;
-}
-
-/* ===== HISTORIA ===== */
-#historia{
-  padding:60px 20px;
-  max-width:900px;
-  margin:auto;
-}
-
-#historia h2{
-  color:var(--dorado);
-  margin-bottom:15px;
-}
-
-#historia p{
-  color:#bbb;
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-/* ===== CARRITO ===== */
-.carrito{
-  position:fixed;
-  right:20px;
-  bottom:90px;
-  width:260px;
-  background:#111;
-  border:1px solid var(--dorado);
-  border-radius:10px;
-  padding:15px;
-  box-shadow:0 0 20px rgba(0,0,0,.5);
-}
-
-.carrito h3{
-  color:var(--dorado);
-  margin-bottom:10px;
-}
-
-.carrito ul{
-  list-style:none;
-  max-height:150px;
-  overflow:auto;
-}
-
-.carrito li{
-  margin-bottom:5px;
-  font-size:14px;
-}
-
-#promo{
-  margin-top:10px;
-  color:gold;
-  font-size:13px;
-}
-
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  width:60px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:24px;
-  color:white;
-  text-decoration:none;
-  box-shadow:0 5
+@media (max-width: 768px) { .puro-layout { grid-template-columns: 1fr; } }
