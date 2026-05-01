@@ -1,294 +1,232 @@
-/* ==================== RESET ==================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* ==================== BODY ==================== */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: url('tabaco.jpg') no-repeat center/cover;
-    color: white;
-    scroll-behavior: smooth;
+:root{
+  --dorado:#d4af37;
+  --negro:#0b0b0b;
+  --gris:#111;
 }
 
-/* capa oscura */
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    top: 0;
-    left: 0;
-    z-index: -1;
+body{
+  font-family:'Playfair Display', serif;
+  background:var(--negro);
+  color:white;
 }
 
-/* ==================== CONTENEDOR ==================== */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* ===== HEADER ===== */
+.header{
+  background:#000;
+  padding:15px 20px;
+  border-bottom:1px solid var(--dorado);
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-/* ==================== HEADER ==================== */
-.header {
-    background: rgba(0,0,0,0.95);
-    color: #d4af37;
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #d4af37;
+.header .logo{
+  text-align:center;
 }
 
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 55px;
+.logo img{
+  height:60px;
 }
 
 /* NAV */
-.nav {
-    display: flex;
-    gap: 25px;
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-top:10px;
 }
 
-.nav a {
-    color: #d4af37;
-    text-decoration: none;
-    letter-spacing: 1px;
-    position: relative;
+.nav a{
+  color:var(--dorado);
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:1px;
+  transition:.3s;
 }
 
-.nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 1px;
-    background: #d4af37;
-    left: 0;
-    bottom: -5px;
-    transition: .3s;
+.nav a:hover{
+  color:white;
 }
 
-.nav a:hover::after {
-    width: 100%;
+/* ===== HERO ===== */
+.hero{
+  display:flex;
+  justify-content:center;
+  padding:40px 20px;
 }
 
-/* ==================== HERO ==================== */
-.hero {
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.hero-box{
+  width:100%;
+  max-width:1100px;
+  height:420px;
+  border-radius:10px;
+  overflow:hidden;
+
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url('file_00000000e124720eacda71c2b88a43d3.png') center/cover;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.hero h2 {
-    font-size: 50px;
-    color: #d4af37;
-    letter-spacing: 2px;
+.hero h1{
+  font-size:42px;
+  color:var(--dorado);
+  margin-bottom:10px;
 }
 
-.hero p {
-    color: #ccc;
-    margin-top: 10px;
+.hero p{
+  color:#ccc;
+  font-size:16px;
 }
 
-/* ==================== BOTÓN ==================== */
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 35px;
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    text-decoration: none;
-    transition: .3s;
+/* ===== PRODUCTOS ===== */
+.productos{
+  padding:60px 20px;
+  background:var(--gris);
 }
 
-.btn:hover {
-    background: #d4af37;
-    color: black;
-}
-
-/* ==================== PRODUCTOS ==================== */
-.productos {
-    padding: 80px 0;
-    background: #0f0f0f;
-}
-
-/* GRID */
-.productos .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
 }
 
 /* CARD */
-.producto-card {
-    background: #1a1a1a;
-    border: 1px solid #222;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: .4s;
+.card{
+  background:#1a1a1a;
+  border:1px solid #222;
+  border-radius:10px;
+  overflow:hidden;
+  transition:.3s;
 }
 
-.producto-card:hover {
-    transform: translateY(-12px);
-    border-color: #d4af37;
-    box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+.card:hover{
+  transform:translateY(-8px);
+  border-color:var(--dorado);
+  box-shadow:0 10px 25px rgba(212,175,55,0.15);
 }
 
-.producto-imagen {
-    overflow: hidden;
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
 }
 
-.producto-imagen img {
-    width: 100%;
-    transition: .4s;
+.card h3{
+  color:var(--dorado);
+  margin:10px;
 }
 
-.producto-card:hover img {
-    transform: scale(1.1);
+.precio{
+  margin:0 10px;
+  color:var(--dorado);
+  font-weight:bold;
 }
 
-.producto-info {
-    padding: 20px;
+/* INPUT CANTIDAD */
+.cantidad{
+  width:70px;
+  margin:10px;
+  padding:5px;
+  background:#000;
+  color:white;
+  border:1px solid #333;
 }
 
-.producto-info h3 {
-    color: #d4af37;
-    margin-bottom: 10px;
+/* BOTÓN */
+button{
+  margin:10px;
+  padding:10px;
+  width:calc(100% - 20px);
+  background:var(--dorado);
+  border:none;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.descripcion {
-    color: #bbb;
-    font-size: 14px;
+button:hover{
+  background:white;
 }
 
-/* PRECIO */
-.precio-compra {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
+/* ===== HISTORIA ===== */
+#historia{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
 }
 
-.precio {
-    color: #d4af37;
-    font-weight: bold;
+#historia h2{
+  color:var(--dorado);
+  margin-bottom:15px;
 }
 
-/* BOTÓN COMPRA */
-.btn-comprar {
-    background: #d4af37;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: .3s;
+#historia p{
+  color:#bbb;
+  line-height:1.7;
+  margin-bottom:10px;
 }
 
-.btn-comprar:hover {
-    background: #fff;
+/* ===== CARRITO ===== */
+.carrito{
+  position:fixed;
+  right:20px;
+  bottom:90px;
+  width:260px;
+  background:#111;
+  border:1px solid var(--dorado);
+  border-radius:10px;
+  padding:15px;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
 }
 
-/* ==================== SECCIÓN EXPERIENCIA ==================== */
-.experiencia {
-    padding: 80px 20px;
-    text-align: center;
-    background: #111;
+.carrito h3{
+  color:var(--dorado);
+  margin-bottom:10px;
 }
 
-.experiencia h2 {
-    color: #d4af37;
-    margin-bottom: 20px;
+.carrito ul{
+  list-style:none;
+  max-height:150px;
+  overflow:auto;
 }
 
-.experiencia p {
-    max-width: 700px;
-    margin: auto;
-    color: #bbb;
-    line-height: 1.6;
+.carrito li{
+  margin-bottom:5px;
+  font-size:14px;
 }
 
-/* ==================== CONTACTO ==================== */
-.contacto {
-    padding: 60px 0;
-    background: #0f0f0f;
+#promo{
+  margin-top:10px;
+  color:gold;
+  font-size:13px;
 }
 
-.formulario {
-    max-width: 500px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.formulario input,
-.formulario textarea {
-    padding: 12px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    color: white;
-}
-
-.formulario button {
-    background: #d4af37;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-}
-
-/* ==================== WHATSAPP ==================== */
-.whatsapp-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25D366;
-    color: white;
-    font-size: 28px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 0 15px rgba(0,0,0,.4);
-    z-index: 1000;
-    transition: .3s;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.1);
-}
-
-/* ==================== FOOTER ==================== */
-.footer {
-    text-align: center;
-    padding: 30px;
-    background: black;
-    color: #777;
-    border-top: 1px solid #222;
-}
-
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 768px) {
-
-    .hero h2 {
-        font-size: 32px;
-    }
-
-    .nav {
-        flex-direction: column;
-        align-items: center;
-    }
-}
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:24px;
+  color:white;
+  text-decoration:none;
+  box-shadow:0 5
