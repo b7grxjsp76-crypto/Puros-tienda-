@@ -148,4 +148,195 @@
         </div>
         <div class="text-content">
             <h4 style="color:var(--oro); margin-bottom:15px;">2. Fermentación</h4>
-            <p>Crucial para la
+            <p>Crucial para la suavidad. El tabaco reposa en pilones, eliminando resinas y acidez, refinando el perfil de sabor que llegará a su paladar.</p>
+        </div>
+        <div class="text-content">
+            <h4 style="color:var(--oro); margin-bottom:15px;">3. Torcido a Mano</h4>
+            <p>Nuestros maestros torcedores utilizan la técnica de "entubado" para garantizar un tiro perfecto en cada ejemplar, sin excepciones.</p>
+        </div>
+    </div>
+</section>
+
+<section id="catalogo">
+    <h2 class="section-title">Selección Maestra</h2>
+    <div class="grid-puros">
+        <div class="card-puro" onclick="openDetails('clasico')">
+            <div class="puro-img"><img src="Screenshot_20260501-034528.png"></div>
+            <div class="puro-data">
+                <h3>MAFU Clásico</h3>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Robusto</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">50</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">2 Años</td></tr>
+                </table>
+                <div class="price-row">
+                    <b>$12 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('clasico')">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-puro" onclick="openDetails('reserva')">
+            <div class="puro-img"><img src="Screenshot_20260501-034604.png"></div>
+            <div class="puro-data">
+                <h3>MAFU Reserva</h3>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Toro</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">52</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">4 Años</td></tr>
+                </table>
+                <div class="price-row">
+                    <b>$18 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('reserva')">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-puro" onclick="openDetails('premium')">
+            <div class="puro-img"><img src="Screenshot_20260501-034637.png"></div>
+            <div class="puro-data">
+                <h3>MAFU Premium</h3>
+                <table class="data-table">
+                    <tr><td class="lbl">Vitola</td><td class="val">Churchill</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">48</td></tr>
+                    <tr><td class="lbl">Añejamiento</td><td class="val">5+ Años</td></tr>
+                </table>
+                <div class="price-row">
+                    <b>$25 USD</b>
+                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('premium')">AÑADIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="guia" style="text-align:center;">
+    <h2 class="section-title">El Ritual del Fumador</h2>
+    <div class="text-content" style="max-width:800px; margin:auto;">
+        <p>Un MAFU no se fuma, se acompaña. Asegure un <strong>corte limpio</strong> con guillotina. Al encender, no permita que la llama toque directamente el tabaco; deje que el calor lo despierte. <span class="highlight">No trague el humo</span>: deje que repose en su boca para identificar las notas de cacao, pimienta y cuero noble.</p>
+    </div>
+</section>
+
+<div id="modal" class="modal">
+    <span class="close-modal" onclick="closeDetails()">✕</span>
+    <div id="modal-inner" class="modal-content">
+        </div>
+</div>
+
+<div id="cart-panel">
+    <div class="cart-header">MI SELECCIÓN PERSONAL</div>
+    <div id="cart-items" style="max-height:60vh; overflow-y:auto; padding-right:10px;">
+        </div>
+    <div style="margin-top:40px; border-top:1px solid #333; padding-top:30px;">
+        <h3 id="cart-total" style="font-size:30px; font-weight:300;">TOTAL: $0 USD</h3>
+        <a href="#" class="wa-btn" onclick="sendToWhatsApp()">ENVIAR PEDIDO POR WHATSAPP</a>
+        <p onclick="toggleCart()" style="text-align:center; color:var(--oro); margin-top:25px; cursor:pointer; font-size:12px; letter-spacing:2px;">CONTINUAR EXPLORANDO</p>
+    </div>
+</div>
+
+<script>
+    // Base de datos de productos
+    const db = {
+        clasico: { 
+            name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", 
+            desc: "La expresión balanceada del tabaco cubano. Ideal para maridar con café espresso.",
+            specs: { Largo: "124mm", Fortaleza: "Media", Capa: "Clara" }
+        },
+        reserva: { 
+            name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", 
+            desc: "Complejidad robusta con evolución en tres tercios. Notas de cuero y madera.",
+            specs: { Largo: "150mm", Fortaleza: "Media-Fuerte", Capa: "Habana" }
+        },
+        premium: { 
+            name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", 
+            desc: "Nuestra joya de colección. Solo para fumadores que buscan intensidad y matices melosos.",
+            specs: { Largo: "178mm", Fortaleza: "Fuerte", Capa: "Maduro" }
+        }
+    };
+
+    let cart = {};
+
+    // Funciones del Carrito
+    function addToCart(id) {
+        if(cart[id]) cart[id].qty++;
+        else cart[id] = { ...db[id], qty: 1 };
+        renderCart();
+        if(!document.getElementById('cart-panel').classList.contains('open')) toggleCart();
+    }
+
+    function changeQty(id, delta) {
+        if(cart[id]) {
+            cart[id].qty += delta;
+            if(cart[id].qty <= 0) delete cart[id];
+            renderCart();
+        }
+    }
+
+    function renderCart() {
+        const list = document.getElementById('cart-items');
+        list.innerHTML = "";
+        let total = 0; let totalItems = 0;
+
+        Object.keys(cart).forEach(id => {
+            const item = cart[id];
+            total += (item.price * item.qty);
+            totalItems += item.qty;
+            list.innerHTML += `
+                <div class="cart-item">
+                    <div style="flex:1;">
+                        <span style="display:block; font-family:'Cinzel'; color:var(--oro);">${item.name}</span>
+                        <small style="opacity:0.6;">$${item.price} USD / unidad</small>
+                    </div>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('${id}', -1)">-</button>
+                        <span style="min-width:20px; text-align:center;">${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty('${id}', 1)">+</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('cart-qty').innerText = totalItems;
+        document.getElementById('cart-total').innerText = `TOTAL: $${total} USD`;
+    }
+
+    // Funciones de UI
+    function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
+
+    function openDetails(id) {
+        const p = db[id];
+        document.getElementById('modal-inner').innerHTML = `
+            <div style="text-align:center;"><img src="${p.img}" style="max-height:550px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);"></div>
+            <div>
+                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:45px; margin-bottom:20px;">${p.name}</h2>
+                <p style="margin-bottom:30px; line-height:1.7; color:#bbb;">${p.desc}</p>
+                <div style="background:#111; padding:30px; border:1px solid #222;">
+                    <h5 style="font-size:10px; letter-spacing:3px; color:var(--oro); margin-bottom:20px; text-transform:uppercase;">Especificaciones Técnicas</h5>
+                    ${Object.entries(p.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
+                </div>
+                <button class="wa-btn" style="background:var(--oro); color:#000; margin-top:40px; cursor:pointer;" onclick="addToCart('${id}'); closeDetails();">AÑADIR ESTA PIEZA</button>
+            </div>
+        `;
+        document.getElementById('modal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetails() { 
+        document.getElementById('modal').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+
+    function sendToWhatsApp() {
+        if(Object.keys(cart).length === 0) return alert("Seleccione al menos un puro para su humidor.");
+        let message = "Hola MAFU, deseo realizar el siguiente pedido:%0A%0A";
+        Object.values(cart).forEach(item => {
+            message += `• ${item.name} (x${item.qty}) - $${item.price * item.qty} USD%0A`;
+        });
+        const total = document.getElementById('cart-total').innerText;
+        message += `%0A*${total}*`;
+        window.open(`https://wa.me/56998644532?text=${message}`);
+    }
+</script>
+
+</body>
+</html>
