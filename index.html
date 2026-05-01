@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Puros Premium</title>
+<title>MAFU Cuban Soul</title>
 
 <style>
 *{
@@ -14,7 +14,7 @@
 }
 
 body{
-  background:#111;
+  background:#0f0f0f;
   color:#fff;
 }
 
@@ -22,28 +22,38 @@ body{
 .header{
   background:#000;
   padding:15px 0;
-  border-bottom:1px solid #333;
+  border-bottom:2px solid #d4af37;
 }
 
 .container{
   width:90%;
   max-width:1200px;
   margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo{
-  color:#d4af37;
+/* LOGO */
+.logo img{
+  height:60px;
 }
 
+/* NAV */
 .nav a{
   color:#fff;
-  margin-left:15px;
+  margin-left:20px;
   text-decoration:none;
+  font-weight:bold;
+}
+
+.nav a:hover{
+  color:#d4af37;
 }
 
 /* HERO */
 .hero{
-  height:60vh;
+  height:65vh;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -52,19 +62,25 @@ body{
   url('Screenshot_20260501-034528.png') center/cover;
 }
 
+.hero h2{
+  font-size:42px;
+  color:#d4af37;
+}
+
 .btn{
   display:inline-block;
-  margin-top:15px;
-  padding:10px 20px;
+  margin-top:20px;
+  padding:12px 25px;
   background:#d4af37;
   color:#000;
   text-decoration:none;
   border-radius:5px;
+  font-weight:bold;
 }
 
 /* PRODUCTOS */
 .productos{
-  padding:50px 0;
+  padding:60px 0;
 }
 
 .producto-card{
@@ -117,6 +133,7 @@ body{
   background:#d4af37;
   cursor:pointer;
   border-radius:5px;
+  font-weight:bold;
 }
 
 /* FOOTER */
@@ -124,6 +141,7 @@ body{
   text-align:center;
   padding:20px;
   background:#000;
+  border-top:1px solid #333;
 }
 </style>
 </head>
@@ -132,24 +150,30 @@ body{
 
 <header class="header">
   <div class="container">
-    <h1 class="logo">🍂 PUROS CUBANOS</h1>
+    
+    <!-- LOGO IMAGEN -->
+    <div class="logo">
+      <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Cuban Soul">
+    </div>
+
     <nav class="nav">
       <a href="#inicio">Inicio</a>
       <a href="#productos">Productos</a>
     </nav>
+
   </div>
 </header>
 
 <section id="inicio" class="hero">
   <div>
-    <h2>Puros Cubanos Premium</h2>
-    <p>Tradición, historia y excelencia en cada calada</p>
+    <h2>MAFU Cuban Soul</h2>
+    <p>Tradición, lujo y sabor auténtico</p>
     <a href="#productos" class="btn">Ver Productos</a>
   </div>
 </section>
 
 <section id="productos" class="productos">
-  <div class="container">
+  <div class="container" style="flex-direction:column;">
 
     <!-- Producto 1 -->
     <div class="producto-card">
@@ -157,14 +181,8 @@ body{
         <img src="Screenshot_20260501-034528.png">
       </div>
       <div class="producto-info">
-        <h3>Puro Clásico (Cohiba)</h3>
-        <p class="descripcion">Suave, equilibrado y elegante, ideal para iniciarse en el mundo del tabaco premium.</p>
-
-        <p class="detalles">
-        Este puro proviene de las reconocidas vegas de Cuba, donde el tabaco es cultivado bajo un proceso 100% agrícola y natural. 
-        Las hojas son seleccionadas a mano y fermentadas cuidadosamente durante meses para lograr su aroma distintivo. 
-        Cada pieza es enrollada por torcedores expertos, siguiendo una tradición artesanal transmitida por generaciones.
-        </p>
+        <h3>Puro Clásico</h3>
+        <p class="descripcion">Suave, equilibrado y elegante.</p>
 
         <span class="precio" data-usd="12">$12 USD</span>
         <span class="clp"></span><br>
@@ -172,53 +190,11 @@ body{
       </div>
     </div>
 
-    <!-- Producto 2 -->
-    <div class="producto-card">
-      <div class="producto-imagen">
-        <img src="Screenshot_20260501-034604.png">
-      </div>
-      <div class="producto-info">
-        <h3>Puro Reserva (Montecristo)</h3>
-        <p class="descripcion">Intenso, aromático y con carácter, pensado para paladares exigentes.</p>
-
-        <p class="detalles">
-        Elaborado en Cuba bajo estrictos estándares de calidad, este puro utiliza hojas añejadas que intensifican su sabor. 
-        El proceso incluye fermentación natural y secado en condiciones controladas, respetando métodos tradicionales. 
-        Cada cigarro es una obra artesanal que refleja la riqueza del suelo cubano y la experiencia de sus maestros torcedores.
-        </p>
-
-        <span class="precio" data-usd="18">$18 USD</span>
-        <span class="clp"></span><br>
-        <button onclick="comprar('Puro Reserva',18)" class="btn-comprar">Comprar</button>
-      </div>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="producto-card">
-      <div class="producto-imagen">
-        <img src="Screenshot_20260501-034637.png">
-      </div>
-      <div class="producto-info">
-        <h3>Puro Premium (Partagás)</h3>
-        <p class="descripcion">Fuerte, complejo y de lujo, una experiencia única para conocedores.</p>
-
-        <p class="detalles">
-        Proveniente de las históricas plantaciones cubanas, este puro destaca por su elaboración completamente artesanal. 
-        Desde la siembra hasta el enrollado final, cada etapa es realizada manualmente, asegurando calidad superior. 
-        Su mezcla de hojas seleccionadas ofrece notas profundas, terrosas y especiadas que lo convierten en una experiencia premium.
-        </p>
-
-        <span class="precio" data-usd="25">$25 USD</span>
-        <span class="clp"></span><br>
-        <button onclick="comprar('Puro Premium',25)" class="btn-comprar">Comprar</button>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <footer class="footer">
-  <p>© 2026 Puros Premium</p>
+  <p>© 2026 MAFU Cuban Soul</p>
 </footer>
 
 <script>
