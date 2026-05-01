@@ -3,94 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | Catálogo Maestro</title>
+    <title>MAFU | Sistema de Gestión de Humidor</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --oro: #c5a059;
-            --negro: #050505;
-            --gris-card: #0f0f0f;
-            --borde: #1d1d1d;
-            --blanco: #f4f1ea;
+            --oro-glow: rgba(197, 160, 89, 0.4);
+            --negro-absoluto: #050505;
+            --negro-tarjeta: #0a0a0a;
+            --borde-premium: #1d1d1d;
+            --blanco-humo: #f4f1ea;
+            --wa-green: #25d366;
         }
 
+        /* --- CONFIGURACIÓN BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--negro-absoluto); }
+        ::-webkit-scrollbar-thumb { background: var(--oro); }
 
-        /* NAVEGACIÓN HÍBRIDA */
+        body { 
+            background-color: var(--negro-absoluto); 
+            color: var(--blanco-humo); 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- NAVEGACIÓN TÉCNICA --- */
         .navbar {
-            position: fixed; top: 0; width: 100%; padding: 15px 50px;
+            position: fixed; top: 0; width: 100%; padding: 25px 60px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); z-index: 1000;
+            background: rgba(5,5,5,0.98); border-bottom: 1px solid var(--borde-premium); 
+            z-index: 5000;
+        }
+        .brand { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .brand img { height: 75px; width: auto; filter: drop-shadow(0 0 10px var(--oro-glow)); }
+        .brand span { font-family: 'Cinzel', serif; color: var(--oro); font-size: 28px; letter-spacing: 6px; }
+
+        .cart-trigger { 
+            cursor: pointer; position: relative; display: flex; align-items: center; gap: 15px; 
+            padding: 10px 20px; border: 1px solid var(--oro); transition: 0.3s;
+        }
+        .cart-trigger:hover { background: var(--oro); color: #000; }
+        .cart-label { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
+        .cart-badge { background: #fff; color: #000; font-size: 11px; padding: 3px 8px; font-weight: 900; }
+
+        /* --- LAYOUT DEL CATÁLOGO --- */
+        .main-wrapper { max-width: 1500px; margin: 160px auto 100px; padding: 0 40px; }
+        
+        .header-section { margin-bottom: 80px; border-left: 4px solid var(--oro); padding-left: 30px; }
+        .header-section h1 { font-family: 'Cinzel', serif; font-size: 45px; color: var(--oro); text-transform: uppercase; }
+        .header-section p { font-size: 14px; text-transform: uppercase; letter-spacing: 10px; opacity: 0.6; }
+
+        .catalog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); 
+            gap: 40px; 
         }
 
-        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .brand img { height: 60px; width: auto; transition: 0.3s; }
-        .brand:hover img { transform: scale(1.05); }
-        .brand span { font-family: 'Cinzel', serif; color: var(--oro); font-size: 26px; letter-spacing: 4px; }
-
-        .cart-trigger { color: var(--oro); cursor: pointer; font-weight: 700; font-size: 13px; letter-spacing: 1px; }
-        .cart-badge { background: var(--oro); color: #000; font-size: 10px; padding: 2px 7px; border-radius: 50%; margin-left: 5px; font-weight: 900; }
-
-        /* CONTENEDOR PRINCIPAL */
-        .container { max-width: 1400px; margin: 120px auto; padding: 40px 25px; }
-        
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 32px; letter-spacing: 5px; }
-        .section-header p { font-size: 12px; text-transform: uppercase; letter-spacing: 8px; opacity: 0.5; margin-top: 10px; }
-
-        /* GRID TÉCNICO (Lo mejor de la V1) */
-        .grid-puros { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
-
-        .card-puro {
-            background: var(--gris-card); border: 1px solid var(--borde);
-            padding: 30px; display: grid; grid-template-columns: 140px 1fr; gap: 25px;
-            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* --- TARJETA DE PRODUCTO ROBUSTA --- */
+        .puro-card {
+            background: var(--negro-tarjeta); border: 1px solid var(--borde-premium);
+            padding: 35px; display: grid; grid-template-columns: 180px 1fr; gap: 30px;
+            position: relative; transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
         }
-        .card-puro:hover { border-color: var(--oro); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
-        .puro-img { background: #000; display: flex; align-items: center; justify-content: center; border: 1px solid #1a1a1a; }
-        .puro-img img { width: 100%; height: 220px; object-fit: contain; }
-
-        .puro-data h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 19px; margin-bottom: 15px; }
-        
-        .data-table { width: 100%; font-size: 10px; text-transform: uppercase; margin-bottom: 20px; color: #888; }
-        .data-table tr { border-bottom: 1px solid #1a1a1a; }
-        .data-table td { padding: 8px 0; }
-        .data-table .lbl { color: var(--oro); font-weight: 700; opacity: 0.8; }
-        .data-table .val { text-align: right; }
-
-        .price-zone { display: flex; justify-content: space-between; align-items: center; }
-        .price-zone .usd { font-size: 22px; font-weight: 300; }
-        .price-zone .clp { display: block; font-size: 11px; color: #555; }
-        
-        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; cursor: pointer; font-size: 11px; transition: 0.3s; }
-        .btn-add:hover { background: #fff; }
-
-        /* MODAL DE INFORMACIÓN (Lo mejor de la V2) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; }
-        .modal-content { max-width: 1000px; margin: 80px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px; position: relative; }
-        .close-modal { position: absolute; top: 20px; right: 20px; color: var(--oro); font-size: 30px; cursor: pointer; }
-
-        /* PANEL DEL HUMIDOR (Lo mejor de la V3) */
-        #cart-panel {
-            position: fixed; top: 0; right: -500px; width: 450px; height: 100vh;
-            background: #080808; border-left: 1px solid var(--oro); z-index: 3000; padding: 40px; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        .puro-card:hover { border-color: var(--oro); transform: scale(1.02); }
+        .puro-card::before {
+            content: 'PREMIUM SELECTION'; position: absolute; top: 15px; right: -40px;
+            background: var(--oro); color: #000; font-size: 9px; font-weight: 900;
+            padding: 5px 40px; transform: rotate(45deg);
         }
-        #cart-panel.open { right: 0; }
-        .cart-header { font-family: 'Cinzel', serif; color: var(--oro); font-size: 24px; margin-bottom: 30px; text-align: center; }
 
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px; }
-        .qty-controls { display: flex; align-items: center; gap: 15px; }
-        .qty-btn { background: none; border: 1px solid var(--oro); color: var(--oro); width: 28px; height: 28px; cursor: pointer; }
-        .qty-btn:hover { background: var(--oro); color: #000; }
+        .img-container { 
+            background: #000; border: 1px solid #151515; height: 300px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .img-container img { width: 90%; height: auto; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9)); }
 
-        .total-box { margin-top: 30px; border-top: 2px solid var(--oro); padding-top: 20px; }
-        .wa-btn { display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 18px; text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 13px; }
+        .puro-details h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 24px; margin-bottom: 20px; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .specs-table td { padding: 12px 0; border-bottom: 1px solid #1a1a1a; font-size: 11px; text-transform: uppercase; }
+        .specs-table .lbl { color: var(--oro); font-weight: 700; letter-spacing: 1px; }
+        .specs-table .val { text-align: right; color: #888; }
 
-        @media (max-width: 900px) { .grid-puros, .modal-content { grid-template-columns: 1fr; } #cart-panel { width: 100%; } .navbar { padding: 15px 20px; } }
+        .pricing-area { display: flex; justify-content: space-between; align-items: flex-end; }
+        .price-tag { font-family: 'Montserrat'; }
+        .price-tag .usd { display: block; font-size: 32px; font-weight: 200; }
+        .price-tag .clp { font-size: 13px; color: #555; }
+
+        .btn-action { 
+            background: var(--oro); color: #000; border: none; padding: 15px 30px;
+            font-weight: 700; font-size: 12px; letter-spacing: 2px; cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-action:hover { background: #fff; transform: translateY(-3px); }
+
+        /* --- MODAL DE DETALLES TÉCNICOS --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); z-index: 6000; backdrop-filter: blur(15px);
+        }
+        .modal-box {
+            max-width: 1200px; margin: 60px auto; padding: 60px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; position: relative;
+        }
+        .close-btn { position: absolute; top: 30px; right: 30px; color: var(--oro); font-size: 40px; cursor: pointer; }
+        
+        .modal-info h2 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 50px; margin-bottom: 30px; }
+        .modal-info p { font-size: 18px; line-height: 1.8; color: #ccc; margin-bottom: 40px; font-weight: 300; }
+
+        /* --- PANEL DE GESTIÓN DEL CARRITO --- */
+        #cart-sidebar {
+            position: fixed; top: 0; right: -550px; width: 500px; height: 100vh;
+            background: #080808; border-left: 2px solid var(--oro); z-index: 7000;
+            padding: 60px 50px; transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        #cart-sidebar.open { right: 0; }
+        
+        .cart-header { border-bottom: 1px solid var(--oro); padding-bottom: 20px; margin-bottom: 40px; }
+        .cart-header h2 { font-family: 'Cinzel'; font-size: 30px; color: var(--oro); }
+
+        .cart-list { max-height: 55vh; overflow-y: auto; }
+        .cart-item { 
+            display: grid; grid-template-columns: 1fr 120px; align-items: center;
+            padding: 25px 0; border-bottom: 1px solid #1a1a1a;
+        }
+        .item-meta b { display: block; color: var(--oro); font-family: 'Cinzel'; font-size: 18px; }
+        
+        .qty-manager { display: flex; align-items: center; border: 1px solid #333; justify-content: space-between; }
+        .qty-manager button { background: none; border: none; color: #fff; width: 35px; height: 35px; cursor: pointer; font-size: 18px; }
+        .qty-manager button:hover { background: var(--oro); color: #000; }
+        .qty-manager span { font-weight: 700; width: 40px; text-align: center; }
+
+        .cart-summary { margin-top: 40px; }
+        .sum-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 18px; }
+        .sum-total { font-size: 30px; color: var(--oro); font-weight: 700; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px; }
+
+        .wa-checkout {
+            display: block; width: 100%; background: var(--wa-green); color: #fff;
+            text-align: center; padding: 25px; text-decoration: none; font-weight: 700;
+            margin-top: 40px; letter-spacing: 2px; font-size: 14px; transition: 0.3s;
+        }
+        .wa-checkout:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .catalog-grid, .modal-box { grid-template-columns: 1fr; }
+            .navbar { padding: 20px; }
+            .brand span { font-size: 20px; }
+            #cart-sidebar { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -101,180 +169,203 @@
         <span>MAFU</span>
     </a>
     <div class="cart-trigger" onclick="toggleCart()">
-        MI HUMIDOR <span class="cart-badge" id="cart-count">0</span>
+        <span class="cart-label">Gestión de Humidor</span>
+        <span class="cart-badge" id="global-count">0</span>
     </div>
 </header>
 
-<div class="container">
-    <div class="section-header">
-        <h2>Colección Privada</h2>
-        <p>Selección de Tabaco de Culto</p>
+<div class="main-wrapper">
+    <div class="header-section">
+        <p>Expertise en Tabaco Cubano</p>
+        <h1>Catálogo Maestro</h1>
     </div>
 
-    <div class="grid-puros">
-        <div class="card-puro" onclick="openDetails('clasico')">
-            <div class="puro-img"><img src="Screenshot_20260501-034528.png"></div>
-            <div class="puro-data">
-                <h3>MAFU Clásico</h3>
-                <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Robusto Especial</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">50 x 124mm</td></tr>
-                    <tr><td class="lbl">Añejamiento</td><td class="val">2 Años</td></tr>
-                </table>
-                <div class="price-zone">
-                    <div>
-                        <span class="usd">$12 USD</span>
-                        <span class="clp">≈ $11.400 CLP</span>
-                    </div>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('clasico')">AÑADIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-puro" onclick="openDetails('reserva')">
-            <div class="puro-img"><img src="Screenshot_20260501-034604.png"></div>
-            <div class="puro-data">
-                <h3>MAFU Reserva</h3>
-                <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Toro Noble</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">52 x 150mm</td></tr>
-                    <tr><td class="lbl">Añejamiento</td><td class="val">4 Años</td></tr>
-                </table>
-                <div class="price-zone">
-                    <div>
-                        <span class="usd">$18 USD</span>
-                        <span class="clp">≈ $17.100 CLP</span>
-                    </div>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('reserva')">AÑADIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-puro" onclick="openDetails('premium')">
-            <div class="puro-img"><img src="Screenshot_20260501-034637.png"></div>
-            <div class="puro-data">
-                <h3>MAFU Premium</h3>
-                <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Churchill Master</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">48 x 178mm</td></tr>
-                    <tr><td class="lbl">Añejamiento</td><td class="val">5+ Años</td></tr>
-                </table>
-                <div class="price-zone">
-                    <div>
-                        <span class="usd">$25 USD</span>
-                        <span class="clp">≈ $23.750 CLP</span>
-                    </div>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('premium')">AÑADIR</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="modal" class="modal">
-    <div id="modal-inner" class="modal-content glass">
+    <div class="catalog-grid" id="main-catalog">
         </div>
 </div>
 
-<div id="cart-panel">
-    <h2 class="cart-header">MI SELECCIÓN</h2>
-    <div id="cart-items" style="max-height:60vh; overflow-y:auto; padding-right:10px;"></div>
-    
-    <div class="total-box">
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-            <span>Subtotal:</span><b id="total-usd">$0 USD</b>
+<div id="modal-overlay" class="modal-overlay">
+    <span class="close-btn" onclick="closeModal()">✕</span>
+    <div id="modal-container" class="modal-box"></div>
+</div>
+
+<div id="cart-sidebar">
+    <div class="cart-header">
+        <h2>Mi Selección</h2>
+    </div>
+    <div id="cart-items-list" class="cart-list">
         </div>
-        <div style="display:flex; justify-content:space-between; color:var(--oro); font-size:20px;">
-            <span>Total CLP:</span><b id="total-clp">$0</b>
-        </div>
-        <a href="#" class="wa-btn" onclick="checkout()">PEDIR POR WHATSAPP</a>
-        <p onclick="toggleCart()" style="text-align:center; color:var(--oro); margin-top:25px; cursor:pointer; font-size:11px; letter-spacing:2px;">VOLVER AL CATÁLOGO</p>
+    <div class="cart-summary">
+        <div class="sum-row"><span>Subtotal USD:</span><span id="sum-usd">$0.00</span></div>
+        <div class="sum-row" style="opacity:0.6;"><span>Estimación CLP:</span><span id="sum-clp">$0</span></div>
+        <div class="sum-row sum-total"><span>TOTAL:</span><span id="grand-total">$0.00</span></div>
+        <a href="#" class="wa-checkout" onclick="processOrder()">CONFIRMAR PEDIDO WHATSAPP</a>
+        <p onclick="toggleCart()" style="text-align:center; margin-top:25px; cursor:pointer; font-size:11px; letter-spacing:3px; opacity:0.5;">CONTINUAR COMPRANDO</p>
     </div>
 </div>
 
 <script>
-    const CLP_VAL = 950;
-    const db = {
-        clasico: { name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", desc: "El equilibrio perfecto de Vuelta Abajo. Notas de cedro y frutos secos.", specs: { Fortaleza: "Media", Capa: "Ecuador", Maridaje: "Café / Ron" }},
-        reserva: { name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", desc: "Añejamiento prolongado. Evolución compleja de sabor a cuero y tierra.", specs: { Fortaleza: "Media-Fuerte", Capa: "Habana", Maridaje: "Whisky" }},
-        premium: { name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", desc: "La expresión máxima del tiempo. Humo denso y meloso.", specs: { Fortaleza: "Intensa", Capa: "Maduro", Maridaje: "Cognac" }}
+    // --- CONFIGURACIÓN TÉCNICA DE PRODUCTOS ---
+    const EXCHANGE_RATE = 950;
+    const PRODUCT_DB = {
+        p1: {
+            id: 'p1',
+            name: "MAFU Clásico Robusto",
+            price: 12.00,
+            image: "Screenshot_20260501-034528.png",
+            longDesc: "Una pieza maestra de 124mm con cepo 50. Elaborado con hojas seleccionadas de Vuelta Abajo, ofreciendo una fumada equilibrada con notas terrosas y un final cremoso.",
+            specs: { "Vitola": "Robusto", "Cepo": "50", "Fortaleza": "Media", "Añejamiento": "24 Meses", "Capa": "Habana Ecuador" }
+        },
+        p2: {
+            id: 'p2',
+            name: "MAFU Reserva Toro",
+            price: 18.00,
+            image: "Screenshot_20260501-034604.png",
+            longDesc: "Para el conocedor exigente. Este Toro de 150mm destaca por su complejidad aromática. Presenta notas de cuero noble, pimienta negra y una evolución marcada en sus tres tercios.",
+            specs: { "Vitola": "Toro", "Cepo": "52", "Fortaleza": "Media-Fuerte", "Añejamiento": "48 Meses", "Capa": "Criollo 98" }
+        },
+        p3: {
+            id: 'p3',
+            name: "MAFU Premium Churchill",
+            price: 25.00,
+            image: "Screenshot_20260501-034637.png",
+            longDesc: "La joya de la corona. Un Churchill imponente de 178mm. Solo los maestros torcedores más experimentados participan en su creación. Notas de cacao amargo y melaza.",
+            specs: { "Vitola": "Churchill", "Cepo": "48", "Fortaleza": "Fuerte", "Añejamiento": "60+ Meses", "Capa": "Maduro Cubano" }
+        }
     };
 
-    let cart = JSON.parse(localStorage.getItem('mafu_cart')) || {};
+    // --- LÓGICA DE GESTIÓN DE DATOS ---
+    let cart = JSON.parse(localStorage.getItem('MAFU_STORAGE')) || {};
 
-    function addToCart(id) {
-        if(cart[id]) cart[id].qty++;
-        else cart[id] = { ...db[id], qty: 1 };
-        save();
-        if(!document.getElementById('cart-panel').classList.contains('open')) toggleCart();
+    function initCatalog() {
+        const grid = document.getElementById('main-catalog');
+        Object.values(PRODUCT_DB).forEach(p => {
+            grid.innerHTML += `
+                <div class="puro-card" onclick="openProduct('${p.id}')">
+                    <div class="img-container">
+                        <img src="${p.image}" alt="${p.name}">
+                    </div>
+                    <div class="puro-details">
+                        <h3>${p.name}</h3>
+                        <table class="specs-table">
+                            <tr><td class="lbl">Vitola</td><td class="val">${p.specs.Vitola}</td></tr>
+                            <tr><td class="lbl">Fortaleza</td><td class="val">${p.specs.Fortaleza}</td></tr>
+                        </table>
+                        <div class="pricing-area">
+                            <div class="price-tag">
+                                <span class="usd">$${p.price.toFixed(2)}</span>
+                                <span class="clp">≈ $${(p.price * EXCHANGE_RATE).toLocaleString()} CLP</span>
+                            </div>
+                            <button class="btn-action" onclick="event.stopPropagation(); addItem('${p.id}')">AÑADIR</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        refreshUI();
     }
 
-    function updateQty(id, delta) {
+    // --- ACCIONES DEL CARRITO ---
+    function addItem(id) {
+        if(cart[id]) cart[id].qty++;
+        else cart[id] = { ...PRODUCT_DB[id], qty: 1 };
+        updateAndSave();
+        if(!document.getElementById('cart-sidebar').classList.contains('open')) toggleCart();
+    }
+
+    function modifyQty(id, delta) {
         if(cart[id]) {
             cart[id].qty += delta;
             if(cart[id].qty <= 0) delete cart[id];
-            save();
+            updateAndSave();
         }
     }
 
-    function save() {
-        localStorage.setItem('mafu_cart', JSON.stringify(cart));
-        render();
+    function updateAndSave() {
+        localStorage.setItem('MAFU_STORAGE', JSON.stringify(cart));
+        refreshUI();
     }
 
-    function render() {
-        const container = document.getElementById('cart-items');
-        container.innerHTML = "";
-        let tUSD = 0; let tQty = 0;
+    function refreshUI() {
+        const list = document.getElementById('cart-items-list');
+        list.innerHTML = "";
+        let totalUSD = 0;
+        let count = 0;
 
         Object.keys(cart).forEach(id => {
             const item = cart[id];
-            tUSD += (item.price * item.qty);
-            tQty += item.qty;
-            container.innerHTML += `
+            totalUSD += (item.price * item.qty);
+            count += item.qty;
+            list.innerHTML += `
                 <div class="cart-item">
-                    <div><b>${item.name}</b><br><small>$${item.price} USD</small></div>
-                    <div class="qty-controls">
-                        <button class="qty-btn" onclick="updateQty('${id}', -1)">-</button>
-                        <span>${item.qty}</span>
-                        <button class="qty-btn" onclick="updateQty('${id}', 1)">+</button>
+                    <div class="item-meta">
+                        <b>${item.name}</b>
+                        <small>$${item.price.toFixed(2)} USD p/u</small>
                     </div>
-                </div>`;
+                    <div class="qty-manager">
+                        <button onclick="modifyQty('${id}', -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="modifyQty('${id}', 1)">+</button>
+                    </div>
+                </div>
+            `;
         });
 
-        document.getElementById('cart-count').innerText = tQty;
-        document.getElementById('total-usd').innerText = `$${tUSD} USD`;
-        document.getElementById('total-clp').innerText = `$${(tUSD * CLP_VAL).toLocaleString('es-CL')} CLP`;
+        document.getElementById('global-count').innerText = count;
+        document.getElementById('sum-usd').innerText = `$${totalUSD.toFixed(2)}`;
+        document.getElementById('sum-clp').innerText = `$${(totalUSD * EXCHANGE_RATE).toLocaleString()}`;
+        document.getElementById('grand-total').innerText = `$${totalUSD.toFixed(2)}`;
     }
 
-    function openDetails(id) {
-        const p = db[id];
-        document.getElementById('modal-inner').innerHTML = `
-            <span class="close-modal" onclick="closeDetails()">✕</span>
-            <div style="text-align:center;"><img src="${p.img}" style="max-height:550px; border:1px solid #111;"></div>
-            <div>
-                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:38px;">${p.name}</h2>
-                <p style="margin:25px 0; color:#aaa; line-height:1.7;">${p.desc}</p>
-                <div style="background:#111; padding:25px; border:1px solid #222;">
-                    ${Object.entries(p.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
+    // --- UI INTERACTIVA ---
+    function toggleCart() {
+        document.getElementById('cart-sidebar').classList.toggle('open');
+    }
+
+    function openProduct(id) {
+        const p = PRODUCT_DB[id];
+        const container = document.getElementById('modal-container');
+        container.innerHTML = `
+            <div style="text-align:center;">
+                <img src="${p.image}" style="max-height:600px; filter: drop-shadow(0 30px 50px #000);">
+            </div>
+            <div class="modal-info">
+                <h2>${p.name}</h2>
+                <p>${p.longDesc}</p>
+                <div style="background:#0f0f0f; padding:40px; border:1px solid #222;">
+                    <h4 style="color:var(--oro); letter-spacing:5px; margin-bottom:25px; font-size:12px;">FICHA TÉCNICA</h4>
+                    ${Object.entries(p.specs).map(([k,v]) => `
+                        <div style="display:flex; justify-content:space-between; margin-bottom:15px; border-bottom:1px solid #1a1a1a; padding-bottom:10px;">
+                            <span style="font-size:13px; opacity:0.6;">${k}</span>
+                            <span style="color:var(--oro); font-weight:700;">${v}</span>
+                        </div>
+                    `).join('')}
                 </div>
-                <button class="wa-btn" style="background:var(--oro); color:#000; cursor:pointer;" onclick="addToCart('${id}'); closeDetails();">AÑADIR AL HUMIDOR</button>
-            </div>`;
-        document.getElementById('modal').style.display = 'block';
+                <button class="wa-checkout" style="background:var(--oro); color:#000; margin-top:40px;" onclick="addItem('${p.id}'); closeModal();">AÑADIR A LA SELECCIÓN</button>
+            </div>
+        `;
+        document.getElementById('modal-overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
 
-    function closeDetails() { document.getElementById('modal').style.display = 'none'; }
-    function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
+    function closeModal() {
+        document.getElementById('modal-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 
-    function checkout() {
-        if(Object.keys(cart).length === 0) return alert("Humidor vacío");
-        let msg = "Hola MAFU, deseo encargar estos puros:%0A";
-        Object.values(cart).forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
-        msg += `%0A*Total Estimado: ${document.getElementById('total-clp').innerText}*`;
+    function processOrder() {
+        if(Object.keys(cart).length === 0) return alert("Seleccione al menos un ejemplar.");
+        let msg = "Hola MAFU Cigars, deseo confirmar el siguiente pedido:%0A%0A";
+        Object.values(cart).forEach(i => {
+            msg += `• ${i.name} (x${i.qty}) - $${(i.price * i.qty).toFixed(2)} USD%0A`;
+        });
+        msg += `%0A*TOTAL ESTIMADO EN CLP: ${document.getElementById('sum-clp').innerText}*`;
         window.open(`https://wa.me/56998644532?text=${msg}`);
     }
 
-    render();
+    // Inicio
+    initCatalog();
 </script>
+
 </body>
 </html>
