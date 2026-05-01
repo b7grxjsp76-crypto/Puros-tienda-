@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAFU Cuban Soul - Tienda Oficial</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<title>MAFU Cuban Soul - Lujo y Tradición</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 /* ================= RESET ================= */
@@ -12,8 +12,10 @@
 
 :root{
 --gold:#d4af37;
+--gold-light:#f1d592;
 --black:#0b0b0b;
 --dark:#111;
+--dark-2:#1a1a1a;
 --gray:#aaa;
 }
 
@@ -23,94 +25,159 @@ font-family:'Playfair Display', serif;
 background:var(--black);
 color:white;
 scroll-behavior: smooth;
+overflow-x: hidden;
+}
+
+/* Decoración de fondo */
+body::before {
+content: "";
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+opacity: 0.3;
+z-index: -1;
+pointer-events: none;
 }
 
 /* ================= HEADER ================= */
 .header{
-background:#000;
-padding:15px;
-border-bottom:1px solid var(--gold);
+background:rgba(0,0,0,0.95);
+padding:20px;
+border-bottom:2px solid var(--gold);
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
 .logo{text-align:center;}
-.logo img{height:60px;}
+.logo img{
+height:70px;
+filter: drop-shadow(0 0 10px rgba(212,175,55,0.4));
+}
 
 .nav{
 display:flex;
 justify-content:center;
-gap:20px;
-margin-top:10px;
+gap:30px;
+margin-top:15px;
 flex-wrap:wrap;
 }
 
 .nav a{
 color:var(--gold);
 text-decoration:none;
-font-size: 14px;
+font-size: 13px;
 text-transform: uppercase;
-letter-spacing: 1px;
+letter-spacing: 2px;
+font-family: 'Lato', sans-serif;
+transition: 0.4s;
+}
+
+.nav a:hover{
+color:white;
+text-shadow: 0 0 8px var(--gold);
 }
 
 /* ================= HERO ================= */
 .hero{
 display:flex;
 justify-content:center;
-padding:40px;
+padding:60px 20px;
 }
 
 .hero-box{
 width:100%;
-max-width:1100px;
-height:420px;
-border-radius:10px;
+max-width:1200px;
+height:500px;
+border-radius:15px;
 background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.8)),
 url('file_00000000e124720eacda71c2b88a43d3.png') center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-border: 1px solid #222;
+border: 1px solid #333;
+box-shadow: inset 0 0 100px #000;
 }
 
-.hero h1{color:var(--gold);font-size:40px; margin-bottom: 10px;}
-.hero p{color:#ccc; font-style: italic;}
+.hero-content h1{
+color:var(--gold);
+font-size:clamp(40px, 8vw, 65px);
+margin-bottom: 15px;
+letter-spacing: 4px;
+text-transform: uppercase;
+}
+
+.hero-content p{
+color:#eee;
+font-size: 18px;
+font-style: italic;
+letter-spacing: 1px;
+}
+
+.gold-divider {
+width: 100px;
+height: 2px;
+background: var(--gold);
+margin: 20px auto;
+}
 
 /* ================= SECCIONES ================= */
 .section{
-padding:60px 20px;
+padding:80px 20px;
 max-width:1100px;
 margin:auto;
 }
 
-h2.section-title {
+.section-title {
 color: var(--gold);
 text-align: center;
-margin-bottom: 40px;
-font-size: 32px;
+margin-bottom: 50px;
+font-size: 38px;
+position: relative;
+}
+
+.section-title::after {
+content: "♦";
+display: block;
+font-size: 18px;
+margin-top: 10px;
+color: #444;
 }
 
 /* ================= PRODUCTOS ================= */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
 }
 
 .card{
-background:#1a1a1a;
-border-radius:10px;
+background:var(--dark-2);
+border-radius:12px;
 overflow:hidden;
 border:1px solid #222;
-transition: 0.3s;
+transition: all 0.5s ease;
+position: relative;
 }
+
+.card::before {
+content: "";
+position: absolute;
+top: 0; left: 0; width: 100%; height: 5px;
+background: var(--gold);
+transform: scaleX(0);
+transition: 0.5s;
+}
+
+.card:hover::before { transform: scaleX(1); }
 
 .card:hover {
 border-color: var(--gold);
-transform: translateY(-5px);
+transform: translateY(-15px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 .card a {
@@ -121,44 +188,126 @@ display: block;
 
 .card img{
 width:100%;
-height:250px;
+height:280px;
 object-fit:cover;
+transition: 0.8s;
 }
+
+.card:hover img { transform: scale(1.05); }
 
 .card-content {
-padding: 20px;
+padding: 25px;
+background: linear-gradient(to bottom, #1a1a1a, #111);
 }
 
-.card h3{color:var(--gold); margin-bottom: 10px;}
-.desc{color:#aaa; font-size: 14px; margin-bottom: 15px; line-height: 1.4;}
-.precio{color:var(--gold); font-size: 20px; font-weight: bold;}
+.card h3{
+color:var(--gold);
+font-size: 24px;
+margin-bottom: 12px;
+}
+
+.desc{
+color:#aaa;
+font-size: 15px;
+margin-bottom: 20px;
+line-height: 1.6;
+font-family: 'Lato', sans-serif;
+}
+
+.price-tag {
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-top: 1px solid #333;
+padding-top: 15px;
+}
+
+.precio{color:var(--gold); font-size: 22px; font-weight: bold;}
+.view-more {
+font-size: 12px;
+color: white;
+text-transform: uppercase;
+letter-spacing: 1px;
+border-bottom: 1px solid var(--gold);
+}
+
+/* ================= MARIDAJE & INFO ================= */
+.extra-info {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+margin-top: 40px;
+}
+
+.info-item {
+background: rgba(212, 175, 55, 0.05);
+padding: 30px;
+border: 1px solid rgba(212, 175, 55, 0.2);
+text-align: center;
+border-radius: 8px;
+}
+
+.info-item h4 { color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+.info-item p { font-size: 14px; color: #ccc; font-family: 'Lato', sans-serif; }
 
 /* ================= HISTORIA ================= */
-.historia{
+.historia-wrap {
 background: #080808;
-border-radius: 10px;
-margin-bottom: 40px;
+padding: 80px 0;
+border-top: 1px solid #222;
+border-bottom: 1px solid #222;
+position: relative;
 }
-.historia h2{color:var(--gold); margin-bottom: 20px;}
-.historia p{color:var(--gray); margin:15px 0; line-height: 1.8; font-size: 17px;}
+
+.historia-content {
+max-width: 850px;
+margin: auto;
+text-align: center;
+padding: 0 20px;
+}
+
+.historia-content h2 { color: var(--gold); font-size: 35px; margin-bottom: 30px; }
+.historia-content p { 
+color: #999; 
+margin: 20px 0; 
+line-height: 2; 
+font-size: 18px; 
+font-weight: 300;
+}
 
 /* ================= WHATSAPP ================= */
 .whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:30px;
+right:30px;
 background:#25D366;
-width:60px;height:60px;
+width:65px;height:65px;
 display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
 color:white;
 text-decoration:none;
-font-size:24px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+font-size:30px;
+box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 z-index: 1000;
+transition: 0.3s;
 }
+
+.whatsapp:hover {
+transform: scale(1.1);
+background: #20ba5a;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+padding: 50px 20px;
+text-align: center;
+border-top: 1px solid #222;
+background: #050505;
+}
+
+.footer p { color: #555; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
 
 </style>
 </head>
@@ -167,27 +316,29 @@ z-index: 1000;
 
 <header class="header">
     <div class="logo">
-        <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Logo">
+        <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Cuban Soul">
     </div>
 
     <nav class="nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Catálogo</a>
-        <a href="#historia">Tradición</a>
+        <a href="#inicio">El Inicio</a>
+        <a href="#productos">Colección</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#historia">La Tradición</a>
     </nav>
 </header>
 
 <section class="hero" id="inicio">
     <div class="hero-box">
-        <div>
+        <div class="hero-content">
             <h1>MAFU Cuban Soul</h1>
-            <p>El placer de lo auténtico, la elegancia de lo artesanal.</p>
+            <div class="gold-divider"></div>
+            <p>Donde el humo se convierte en historia</p>
         </div>
     </div>
 </section>
 
 <section class="section" id="productos">
-    <h2 class="section-title">Nuestra Selección Premium</h2>
+    <h2 class="section-title">Nuestra Selección Exclusiva</h2>
     <div class="grid">
 
         <div class="card">
@@ -195,8 +346,11 @@ z-index: 1000;
                 <img src="Screenshot_20260501-034528.png" alt="Puro Clásico">
                 <div class="card-content">
                     <h3>Puro Clásico</h3>
-                    <p class="desc">Clic para ver origen, notas de cata y elegir cantidad...</p>
-                    <div class="precio">$12 USD</div>
+                    <p class="desc">Una entrada sublime al mundo del tabaco. Notas cremosas y madera suave.</p>
+                    <div class="price-tag">
+                        <div class="precio">$12 USD</div>
+                        <span class="view-more">Ver Detalles</span>
+                    </div>
                 </div>
             </a>
         </div>
@@ -206,8 +360,11 @@ z-index: 1000;
                 <img src="Screenshot_20260501-034604.png" alt="Puro Reserva">
                 <div class="card-content">
                     <h3>Puro Reserva</h3>
-                    <p class="desc">Clic para ver el proceso de añejamiento y elegir cantidad...</p>
-                    <div class="precio">$18 USD</div>
+                    <p class="desc">Para el paladar que busca equilibrio. Añejamiento prolongado y humo denso.</p>
+                    <div class="price-tag">
+                        <div class="precio">$18 USD</div>
+                        <span class="view-more">Ver Detalles</span>
+                    </div>
                 </div>
             </a>
         </div>
@@ -217,8 +374,11 @@ z-index: 1000;
                 <img src="Screenshot_20260501-034637.png" alt="Puro Premium">
                 <div class="card-content">
                     <h3>Puro Premium</h3>
-                    <p class="desc">Clic para ver detalles de su fortaleza y elegir cantidad...</p>
-                    <div class="precio">$25 USD</div>
+                    <p class="desc">La máxima expresión de fortaleza. Complejidad terrosa y especiada.</p>
+                    <div class="price-tag">
+                        <div class="precio">$25 USD</div>
+                        <span class="view-more">Ver Detalles</span>
+                    </div>
                 </div>
             </a>
         </div>
@@ -226,14 +386,37 @@ z-index: 1000;
     </div>
 </section>
 
-<section class="section historia" id="historia">
-    <div style="max-width: 800px; margin: auto; text-align: center;">
-        <h2>La esencia del tabaco cubano</h2>
-        <p>Cuba es considerada la cuna de los mejores puros del mundo debido a su clima único, suelos fértiles y tradición agrícola centenaria.</p>
-        <p>Nuestra selección MAFU proviene de las mejores vegas, donde cada hoja es cuidada manualmente por expertos que entienden que el tabaco es un arte vivo.</p>
-        <p>Fumar un MAFU no es solo consumo: es un ritual de calma, elegancia y conexión con la herencia cubana.</p>
+<section class="section" id="experiencia" style="padding-top: 0;">
+    <h2 class="section-title">El Arte de Fumar</h2>
+    <div class="extra-info">
+        <div class="info-item">
+            <h4>El Maridaje</h4>
+            <p>Sugerimos acompañar nuestras piezas con Ron añejo, Café expreso fuerte o un Single Malt ahumado para resaltar las notas naturales del tabaco.</p>
+        </div>
+        <div class="info-item">
+            <h4>Conservación</h4>
+            <p>Mantenga sus puros entre 18°C y 21°C con una humedad relativa del 65-70% para preservar los aceites esenciales de la capa.</p>
+        </div>
+        <div class="info-item">
+            <h4>El Ritual</h4>
+            <p>El corte debe ser preciso y el encendido lento, sin que la llama toque directamente el pie del puro para no amargar el sabor inicial.</p>
+        </div>
     </div>
 </section>
+
+<div class="historia-wrap" id="historia">
+    <section class="historia-content">
+        <h2>Un legado forjado en tierra y fuego</h2>
+        <div class="gold-divider"></div>
+        <p>En el corazón de Cuba, el clima y la tierra conspiran para crear el tabaco más prestigioso del mundo. En MAFU, seleccionamos solo las hojas que han capturado la esencia del sol y la lluvia en su punto exacto de madurez.</p>
+        <p>Nuestros torcedores no solo fabrican puros; ellos transmiten un conocimiento ancestral en cada vuelta de la hoja. Cada pieza es una obra de arte individual, lista para ser descubierta por aquellos que valoran el tiempo y la paciencia.</p>
+        <p>No vendemos solo tabaco. Ofrecemos un santuario de calma en un mundo acelerado.</p>
+    </section>
+</div>
+
+<footer class="footer">
+    <p>© 2026 MAFU CUBAN SOUL - DISTRIBUIDORA EXCLUSIVA</p>
+</footer>
 
 <a href="https://wa.me/56998644532" class="whatsapp" target="_blank">💬</a>
 
