@@ -4,121 +4,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puros Premium</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: url('tabaco.jpg') no-repeat center/cover;
-  color: white;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65);
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-header {
-  text-align: center;
-  padding: 20px;
-}
-
-.contenedor {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  background: rgba(0,0,0,0.85);
-  padding: 15px;
-  border-radius: 15px;
-  width: 260px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: gold;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background: orange;
-}
-
-.clp {
-  color: #00ffcc;
-}
-</style>
-
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<header>
-<h1>🍂 Puros Premium</h1>
-<p>Selección exclusiva</p>
+<header class="header">
+  <div class="container">
+    <h1 class="logo">🍂 PUROS CUBANOS</h1>
+    <nav class="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
 </header>
 
-<div class="contenedor">
+<section id="inicio" class="hero">
+  <div class="hero-content">
+    <h2>Puros Cubanos Premium</h2>
+    <p>Auténticos sabores de Cuba</p>
+    <a href="#productos" class="btn">Ver Productos</a>
+  </div>
+</section>
 
-<div class="card">
-<img src="puro1.png">
-<h3>Puro Clásico</h3>
-<p>$12 USD</p>
-<p class="clp" id="clp1"></p>
-<button onclick="comprar('Puro Clásico',12)">Comprar</button>
-</div>
+<section id="productos" class="productos">
+  <div class="container">
 
-<div class="card">
-<img src="puro2.png">
-<h3>Puro Reserva</h3>
-<p>$18 USD</p>
-<p class="clp" id="clp2"></p>
-<button onclick="comprar('Puro Reserva',18)">Comprar</button>
-</div>
+    <!-- Producto 1 -->
+    <div class="producto-card">
+      <div class="producto-imagen">
+        <img src="puro1.png">
+      </div>
+      <div class="producto-info">
+        <h3>Puro Clásico</h3>
+        <p class="descripcion">Sabor equilibrado y suave.</p>
+        <div class="precio-compra">
+          <span class="precio" data-usd="12">$12 USD</span>
+          <span class="clp"></span>
+          <button onclick="comprar('Puro Clásico',12)" class="btn-comprar">Comprar</button>
+        </div>
+      </div>
+    </div>
 
-<div class="card">
-<img src="puro3.png">
-<h3>Puro Premium</h3>
-<p>$25 USD</p>
-<p class="clp" id="clp3"></p>
-<button onclick="comprar('Puro Premium',25)">Comprar</button>
-</div>
+    <!-- Producto 2 -->
+    <div class="producto-card">
+      <div class="producto-imagen">
+        <img src="puro2.png">
+      </div>
+      <div class="producto-info">
+        <h3>Puro Reserva</h3>
+        <p class="descripcion">Aromas intensos y refinados.</p>
+        <div class="precio-compra">
+          <span class="precio" data-usd="18">$18 USD</span>
+          <span class="clp"></span>
+          <button onclick="comprar('Puro Reserva',18)" class="btn-comprar">Comprar</button>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <!-- Producto 3 -->
+    <div class="producto-card">
+      <div class="producto-imagen">
+        <img src="puro3.png">
+      </div>
+      <div class="producto-info">
+        <h3>Puro Premium</h3>
+        <p class="descripcion">Experiencia de lujo y calidad.</p>
+        <div class="precio-compra">
+          <span class="precio" data-usd="25">$25 USD</span>
+          <span class="clp"></span>
+          <button onclick="comprar('Puro Premium',25)" class="btn-comprar">Comprar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="info-cuba">
+  <div class="container">
+    <h2>Origen Cubano</h2>
+    <p>Tabaco cultivado en las mejores tierras de Cuba, reconocido mundialmente.</p>
+  </div>
+</section>
+
+<section id="contacto" class="contacto">
+  <div class="container">
+    <h2>Contacto</h2>
+    <form class="formulario">
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Mensaje"></textarea>
+      <button class="btn">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 Puros Premium</p>
+</footer>
 
 <script>
 const tasa = 950;
 
-document.getElementById("clp1").innerText = "$" + (12*tasa).toLocaleString("es-CL") + " CLP";
-document.getElementById("clp2").innerText = "$" + (18*tasa).toLocaleString("es-CL") + " CLP";
-document.getElementById("clp3").innerText = "$" + (25*tasa).toLocaleString("es-CL") + " CLP";
+document.querySelectorAll(".precio").forEach(el => {
+  const usd = el.dataset.usd;
+  const clp = usd * tasa;
+  el.parentElement.querySelector(".clp").innerText =
+    "$" + clp.toLocaleString("es-CL") + " CLP";
+});
 
 function comprar(nombre, precio){
-  alert("Seleccionaste: " + nombre + " ($" + precio + " USD)");
+  alert("Elegiste: " + nombre + " ($" + precio + " USD)");
 }
 </script>
 
