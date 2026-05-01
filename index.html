@@ -10,170 +10,178 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
+:root{--dorado:#d4af37;}
+
 body{
-    font-family:'Playfair Display', serif;
-    background:url('fondo.jpg') no-repeat center/cover;
-    color:white;
+  font-family:'Playfair Display', serif;
+  background:url('file_00000000e124720eacda71c2b88a43d3.png') no-repeat center/cover;
+  color:white;
 }
 
-/* OSCURECER FONDO */
 body::before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.75);
-    top:0;
-    left:0;
-    z-index:-1;
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.75);
+  z-index:-1;
 }
 
 /* HEADER */
 .header{
-    background:rgba(0,0,0,0.95);
-    padding:20px;
-    text-align:center;
-    border-bottom:1px solid #d4af37;
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,0.95);
+  border-bottom:1px solid var(--dorado);
 }
 
-.logo img{
-    height:65px;
-}
+.logo img{height:70px;}
 
 .nav a{
-    color:#d4af37;
-    margin:0 15px;
-    text-decoration:none;
+  color:var(--dorado);
+  margin:0 15px;
+  text-decoration:none;
+  letter-spacing:1px;
 }
 
 /* HERO */
 .hero{
-    height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+  height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .hero h1{
-    font-size:50px;
-    color:#d4af37;
+  font-size:50px;
+  color:var(--dorado);
 }
 
 .btn{
-    margin-top:20px;
-    padding:12px 30px;
-    border:1px solid #d4af37;
-    color:#d4af37;
-    text-decoration:none;
+  margin-top:20px;
+  padding:12px 30px;
+  border:1px solid var(--dorado);
+  color:var(--dorado);
+  text-decoration:none;
 }
 
 /* HISTORIA */
 .historia{
-    padding:80px 20px;
-    text-align:center;
-    background:#111;
+  padding:80px 20px;
+  background:#111;
+  text-align:center;
 }
 
-.historia h2{
-    color:#d4af37;
-}
+.historia h2{color:var(--dorado);}
 
 .historia p{
-    max-width:800px;
-    margin:10px auto;
-    color:#bbb;
+  max-width:800px;
+  margin:15px auto;
+  color:#ccc;
 }
 
 /* PRODUCTOS */
 .productos{
-    padding:80px 20px;
-    background:#0f0f0f;
+  padding:80px 20px;
+  background:#0f0f0f;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
 .card{
-    background:#1a1a1a;
-    border:1px solid #222;
-    transition:.3s;
+  background:#1a1a1a;
+  border:1px solid #222;
+  transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    border-color:#d4af37;
+  transform:translateY(-10px);
+  border-color:var(--dorado);
 }
 
 .card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
+  width:100%;
+  height:250px;
+  object-fit:cover;
 }
 
-.info{
-    padding:20px;
-}
+.info{padding:20px;}
 
-.info h3{
-    color:#d4af37;
-}
+.info h3{color:var(--dorado);}
 
-.detalles{
-    color:#bbb;
-    font-size:14px;
-    margin:10px 0;
-}
+.precio{color:var(--dorado);font-weight:bold;}
 
-.precio{
-    color:#d4af37;
-    font-size:18px;
-}
-
-.clp{
-    color:#aaa;
-    font-size:14px;
-}
+.clp{color:#aaa;font-size:14px;}
 
 .btn-comprar{
-    margin-top:10px;
-    padding:10px;
-    width:100%;
-    background:#d4af37;
-    border:none;
-    cursor:pointer;
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  background:var(--dorado);
+  border:none;
+  cursor:pointer;
+}
+
+/* DETALLE */
+.detalle{
+  padding:80px 20px;
+  background:#111;
+}
+
+.detalle h2{
+  text-align:center;
+  color:var(--dorado);
+}
+
+.detalle-box{
+  max-width:900px;
+  margin:30px auto;
+  padding:20px;
+  border:1px solid #333;
+}
+
+.detalle-box h3{color:var(--dorado);}
+
+.detalle-box p{
+  color:#ccc;
+  margin-top:10px;
+  line-height:1.6;
 }
 
 /* EXPERIENCIA */
 .experiencia{
-    padding:80px 20px;
-    text-align:center;
+  padding:80px;
+  text-align:center;
+  background:#0f0f0f;
 }
 
+/* FOOTER */
 .footer{
-    text-align:center;
-    padding:20px;
-    background:black;
+  text-align:center;
+  padding:20px;
+  background:black;
+  color:#777;
 }
 
 /* WHATSAPP */
 .whatsapp-btn{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#25D366;
-    width:60px;
-    height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    font-size:28px;
-    color:white;
-    text-decoration:none;
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:28px;
+  color:white;
 }
 </style>
 </head>
@@ -181,97 +189,130 @@ body::before{
 <body>
 
 <header class="header">
-    <div class="logo">
-        <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
-    </div>
-    <nav class="nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#historia">Historia</a>
-        <a href="#productos">Productos</a>
-    </nav>
+  <div class="logo">
+    <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
+  </div>
+
+  <nav class="nav">
+    <a href="#inicio">INICIO</a>
+    <a href="#historia">HISTORIA</a>
+    <a href="#productos">PRODUCTOS</a>
+    <a href="#detalle">INFORMACIÓN</a>
+  </nav>
 </header>
 
 <section class="hero" id="inicio">
-    <div>
-        <h1>MAFU Cuban Soul</h1>
-        <p>Lujo, tradición y esencia cubana</p>
-        <a href="#productos" class="btn">Descubrir</a>
-    </div>
+  <div>
+    <h1>MAFU Cuban Soul</h1>
+    <p>Lujo, tradición y esencia cubana</p>
+    <a href="#productos" class="btn">DESCUBRIR</a>
+  </div>
 </section>
 
 <section class="historia" id="historia">
-    <h2>Historia del Tabaco Cubano</h2>
-    <p>
-    Cuba es reconocida mundialmente por producir los mejores puros gracias a su clima y suelo únicos.
-    Desde hace siglos, los torcedores elaboran cada puro a mano, creando una experiencia de lujo incomparable.
-    </p>
+  <h2>Historia del Tabaco Cubano</h2>
+  <p>
+  Cuba es reconocida mundialmente por producir los mejores puros.
+  Su clima tropical, suelo fértil y tradición artesanal hacen de cada puro una obra única.
+  </p>
+  <p>
+  Desde la cosecha hasta el torcido, todo el proceso es manual,
+  garantizando calidad, sabor y exclusividad.
+  </p>
 </section>
 
 <section class="productos" id="productos">
-<div class="grid">
+  <div class="grid">
 
-<div class="card">
-<img src="Screenshot_20260501-034528.png">
-<div class="info">
-<h3>Puro Clásico</h3>
-<p class="detalles">Suave y elegante, ideal para comenzar.</p>
-<div class="precio" data-usd="12">$12 USD</div>
-<div class="clp"></div>
-<button onclick="comprar('Clásico',12)" class="btn-comprar">Comprar</button>
-</div>
-</div>
+    <div class="card">
+      <img src="Screenshot_20260501-034528.png">
+      <div class="info">
+        <h3>Puro Clásico</h3>
+        <div class="precio" data-usd="12">$12 USD</div>
+        <div class="clp"></div>
+        <button onclick="comprar('Clásico',12)" class="btn-comprar">Comprar</button>
+      </div>
+    </div>
 
-<div class="card">
-<img src="Screenshot_20260501-034604.png">
-<div class="info">
-<h3>Puro Reserva</h3>
-<p class="detalles">Aromático e intenso.</p>
-<div class="precio" data-usd="18">$18 USD</div>
-<div class="clp"></div>
-<button onclick="comprar('Reserva',18)" class="btn-comprar">Comprar</button>
-</div>
-</div>
+    <div class="card">
+      <img src="Screenshot_20260501-034604.png">
+      <div class="info">
+        <h3>Puro Reserva</h3>
+        <div class="precio" data-usd="18">$18 USD</div>
+        <div class="clp"></div>
+        <button onclick="comprar('Reserva',18)" class="btn-comprar">Comprar</button>
+      </div>
+    </div>
 
-<div class="card">
-<img src="Screenshot_20260501-034637.png">
-<div class="info">
-<h3>Puro Premium</h3>
-<p class="detalles">Fuerte y sofisticado.</p>
-<div class="precio" data-usd="25">$25 USD</div>
-<div class="clp"></div>
-<button onclick="comprar('Premium',25)" class="btn-comprar">Comprar</button>
-</div>
-</div>
+    <div class="card">
+      <img src="Screenshot_20260501-034637.png">
+      <div class="info">
+        <h3>Puro Premium</h3>
+        <div class="precio" data-usd="25">$25 USD</div>
+        <div class="clp"></div>
+        <button onclick="comprar('Premium',25)" class="btn-comprar">Comprar</button>
+      </div>
+    </div>
 
-</div>
+  </div>
+</section>
+
+<section class="detalle" id="detalle">
+
+  <h2>Información Detallada</h2>
+
+  <div class="detalle-box">
+    <h3>Puro Clásico</h3>
+    <p><strong>Origen:</strong> Cuba</p>
+    <p><strong>Sabor:</strong> Suave y equilibrado</p>
+    <p><strong>Intensidad:</strong> Baja</p>
+    <p>Ideal para principiantes en el mundo del tabaco premium.</p>
+  </div>
+
+  <div class="detalle-box">
+    <h3>Puro Reserva</h3>
+    <p><strong>Origen:</strong> Cuba</p>
+    <p><strong>Sabor:</strong> Aromático y complejo</p>
+    <p><strong>Intensidad:</strong> Media</p>
+    <p>Perfecto para fumadores con experiencia.</p>
+  </div>
+
+  <div class="detalle-box">
+    <h3>Puro Premium</h3>
+    <p><strong>Origen:</strong> Cuba</p>
+    <p><strong>Sabor:</strong> Fuerte y especiado</p>
+    <p><strong>Intensidad:</strong> Alta</p>
+    <p>Una experiencia exclusiva para conocedores.</p>
+  </div>
+
 </section>
 
 <section class="experiencia">
-<h2>Experiencia MAFU</h2>
-<p>Más que un puro, una experiencia exclusiva.</p>
+  <h2>Experiencia MAFU</h2>
+  <p>Disfruta cada calada como un ritual de lujo, tradición y calma.</p>
 </section>
 
 <footer class="footer">
-© 2026 MAFU Cuban Soul
+  © 2026 MAFU Cuban Soul
 </footer>
 
-<a href="https://wa.me/56998644532?text=Hola%20quiero%20información"
-class="whatsapp-btn" target="_blank">💬</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/56998644532?text=Hola%20quiero%20comprar"
+   class="whatsapp-btn">💬</a>
 
 <script>
 const tasa = 950;
 
-// convertir USD a CLP
 document.querySelectorAll(".precio").forEach(el=>{
-    let usd = el.dataset.usd;
-    let clp = usd * tasa;
-    el.nextElementSibling.innerText = "$" + clp.toLocaleString("es-CL") + " CLP";
+  let usd = el.dataset.usd;
+  let clp = usd * tasa;
+  el.nextElementSibling.innerText = "$" + clp.toLocaleString("es-CL") + " CLP";
 });
 
-// compra por whatsapp
 function comprar(nombre, precio){
-    let msg = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
-    window.open("https://wa.me/56998644532?text=" + encodeURIComponent(msg));
+  let mensaje = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
+  let url = "https://wa.me/56998644532?text=" + encodeURIComponent(mensaje);
+  window.open(url);
 }
 </script>
 
