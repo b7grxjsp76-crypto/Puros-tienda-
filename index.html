@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | Humidor Virtual</title>
+    <title>MAFU | Catálogo Maestro</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -17,77 +17,80 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--negro); color: var(--blanco); font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER */
+        /* NAVEGACIÓN HÍBRIDA */
         .navbar {
-            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            position: fixed; top: 0; width: 100%; padding: 15px 50px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5,5,5,0.98); border-bottom: 1px solid var(--borde); z-index: 1000;
+            background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); z-index: 1000;
         }
 
         .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .brand img { height: 60px; width: auto; }
+        .brand img { height: 60px; width: auto; transition: 0.3s; }
+        .brand:hover img { transform: scale(1.05); }
         .brand span { font-family: 'Cinzel', serif; color: var(--oro); font-size: 26px; letter-spacing: 4px; }
 
-        .cart-trigger { color: var(--oro); cursor: pointer; font-weight: 700; position: relative; }
-        .cart-badge { background: var(--oro); color: #000; font-size: 10px; padding: 2px 6px; border-radius: 50%; margin-left: 5px; }
+        .cart-trigger { color: var(--oro); cursor: pointer; font-weight: 700; font-size: 13px; letter-spacing: 1px; }
+        .cart-badge { background: var(--oro); color: #000; font-size: 10px; padding: 2px 7px; border-radius: 50%; margin-left: 5px; font-weight: 900; }
 
-        /* GRID TÉCNICO */
-        .container { max-width: 1300px; margin: 140px auto; padding: 0 25px; }
-        .grid-puros { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 30px; }
+        /* CONTENEDOR PRINCIPAL */
+        .container { max-width: 1400px; margin: 120px auto; padding: 40px 25px; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 32px; letter-spacing: 5px; }
+        .section-header p { font-size: 12px; text-transform: uppercase; letter-spacing: 8px; opacity: 0.5; margin-top: 10px; }
+
+        /* GRID TÉCNICO (Lo mejor de la V1) */
+        .grid-puros { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
 
         .card-puro {
             background: var(--gris-card); border: 1px solid var(--borde);
-            padding: 25px; display: grid; grid-template-columns: 150px 1fr; gap: 20px;
-            cursor: pointer; transition: 0.3s;
+            padding: 30px; display: grid; grid-template-columns: 140px 1fr; gap: 25px;
+            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .card-puro:hover { border-color: var(--oro); transform: translateY(-5px); }
+        .card-puro:hover { border-color: var(--oro); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-        .puro-img { background: #000; display: flex; align-items: center; justify-content: center; }
-        .puro-img img { width: 100%; height: 240px; object-fit: contain; }
+        .puro-img { background: #000; display: flex; align-items: center; justify-content: center; border: 1px solid #1a1a1a; }
+        .puro-img img { width: 100%; height: 220px; object-fit: contain; }
 
-        .puro-data h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 20px; margin-bottom: 15px; }
+        .puro-data h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 19px; margin-bottom: 15px; }
         
-        .data-table { width: 100%; font-size: 11px; text-transform: uppercase; margin-bottom: 20px; }
+        .data-table { width: 100%; font-size: 10px; text-transform: uppercase; margin-bottom: 20px; color: #888; }
         .data-table tr { border-bottom: 1px solid #1a1a1a; }
         .data-table td { padding: 8px 0; }
-        .data-table .lbl { color: var(--oro); font-weight: 700; }
-        .data-table .val { text-align: right; color: #888; }
+        .data-table .lbl { color: var(--oro); font-weight: 700; opacity: 0.8; }
+        .data-table .val { text-align: right; }
 
-        .action-row { display: flex; justify-content: space-between; align-items: center; }
-        .action-row b { font-size: 24px; font-weight: 300; }
-        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; cursor: pointer; }
+        .price-zone { display: flex; justify-content: space-between; align-items: center; }
+        .price-zone .usd { font-size: 22px; font-weight: 300; }
+        .price-zone .clp { display: block; font-size: 11px; color: #555; }
+        
+        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; cursor: pointer; font-size: 11px; transition: 0.3s; }
+        .btn-add:hover { background: #fff; }
 
-        /* MODAL */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); z-index: 2000;
-        }
-        .modal-content { max-width: 1100px; margin: 60px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px; }
-        .close { position: absolute; top: 30px; right: 50px; color: var(--oro); font-size: 35px; cursor: pointer; }
+        /* MODAL DE INFORMACIÓN (Lo mejor de la V2) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; }
+        .modal-content { max-width: 1000px; margin: 80px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px; position: relative; }
+        .close-modal { position: absolute; top: 20px; right: 20px; color: var(--oro); font-size: 30px; cursor: pointer; }
 
-        /* CARRITO PANEL */
+        /* PANEL DEL HUMIDOR (Lo mejor de la V3) */
         #cart-panel {
             position: fixed; top: 0; right: -500px; width: 450px; height: 100vh;
-            background: #080808; border-left: 1px solid var(--oro); z-index: 3000; padding: 40px; transition: 0.5s;
+            background: #080808; border-left: 1px solid var(--oro); z-index: 3000; padding: 40px; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
         #cart-panel.open { right: 0; }
+        .cart-header { font-family: 'Cinzel', serif; color: var(--oro); font-size: 24px; margin-bottom: 30px; text-align: center; }
 
-        .cart-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px;
-        }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px; }
         .qty-controls { display: flex; align-items: center; gap: 15px; }
-        .qty-btn { background: none; border: 1px solid var(--oro); color: var(--oro); padding: 2px 8px; cursor: pointer; }
+        .qty-btn { background: none; border: 1px solid var(--oro); color: var(--oro); width: 28px; height: 28px; cursor: pointer; }
         .qty-btn:hover { background: var(--oro); color: #000; }
 
-        .wa-btn {
-            display: block; width: 100%; background: #25d366; color: #fff; text-align: center;
-            padding: 20px; text-decoration: none; font-weight: 700; margin-top: 30px;
-        }
+        .total-box { margin-top: 30px; border-top: 2px solid var(--oro); padding-top: 20px; }
+        .wa-btn { display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 18px; text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 13px; }
 
-        @media (max-width: 900px) { .card-puro, .modal-content { grid-template-columns: 1fr; } #cart-panel { width: 100%; } }
+        @media (max-width: 900px) { .grid-puros, .modal-content { grid-template-columns: 1fr; } #cart-panel { width: 100%; } .navbar { padding: 15px 20px; } }
     </style>
 </head>
 <body>
@@ -98,24 +101,31 @@
         <span>MAFU</span>
     </a>
     <div class="cart-trigger" onclick="toggleCart()">
-        HUMIDOR <span class="cart-badge" id="cart-qty">0</span>
+        MI HUMIDOR <span class="cart-badge" id="cart-count">0</span>
     </div>
 </header>
 
 <div class="container">
+    <div class="section-header">
+        <h2>Colección Privada</h2>
+        <p>Selección de Tabaco de Culto</p>
+    </div>
+
     <div class="grid-puros">
         <div class="card-puro" onclick="openDetails('clasico')">
             <div class="puro-img"><img src="Screenshot_20260501-034528.png"></div>
             <div class="puro-data">
                 <h3>MAFU Clásico</h3>
                 <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Robusto</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">50</td></tr>
-                    <tr><td class="lbl">Maridaje</td><td class="val">Café Suave</td></tr>
+                    <tr><td class="lbl">Vitola</td><td class="val">Robusto Especial</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">50 x 124mm</td></tr>
                     <tr><td class="lbl">Añejamiento</td><td class="val">2 Años</td></tr>
                 </table>
-                <div class="action-row">
-                    <b>$12 USD</b>
+                <div class="price-zone">
+                    <div>
+                        <span class="usd">$12 USD</span>
+                        <span class="clp">≈ $11.400 CLP</span>
+                    </div>
                     <button class="btn-add" onclick="event.stopPropagation(); addToCart('clasico')">AÑADIR</button>
                 </div>
             </div>
@@ -126,13 +136,15 @@
             <div class="puro-data">
                 <h3>MAFU Reserva</h3>
                 <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Toro</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">52</td></tr>
-                    <tr><td class="lbl">Maridaje</td><td class="val">Whisky</td></tr>
+                    <tr><td class="lbl">Vitola</td><td class="val">Toro Noble</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">52 x 150mm</td></tr>
                     <tr><td class="lbl">Añejamiento</td><td class="val">4 Años</td></tr>
                 </table>
-                <div class="action-row">
-                    <b>$18 USD</b>
+                <div class="price-zone">
+                    <div>
+                        <span class="usd">$18 USD</span>
+                        <span class="clp">≈ $17.100 CLP</span>
+                    </div>
                     <button class="btn-add" onclick="event.stopPropagation(); addToCart('reserva')">AÑADIR</button>
                 </div>
             </div>
@@ -143,13 +155,15 @@
             <div class="puro-data">
                 <h3>MAFU Premium</h3>
                 <table class="data-table">
-                    <tr><td class="lbl">Vitola</td><td class="val">Churchill</td></tr>
-                    <tr><td class="lbl">Cepo</td><td class="val">48</td></tr>
-                    <tr><td class="lbl">Maridaje</td><td class="val">Cognac</td></tr>
+                    <tr><td class="lbl">Vitola</td><td class="val">Churchill Master</td></tr>
+                    <tr><td class="lbl">Cepo</td><td class="val">48 x 178mm</td></tr>
                     <tr><td class="lbl">Añejamiento</td><td class="val">5+ Años</td></tr>
                 </table>
-                <div class="action-row">
-                    <b>$25 USD</b>
+                <div class="price-zone">
+                    <div>
+                        <span class="usd">$25 USD</span>
+                        <span class="clp">≈ $23.750 CLP</span>
+                    </div>
                     <button class="btn-add" onclick="event.stopPropagation(); addToCart('premium')">AÑADIR</button>
                 </div>
             </div>
@@ -158,33 +172,40 @@
 </div>
 
 <div id="modal" class="modal">
-    <span class="close" onclick="closeDetails()">✕</span>
-    <div id="modal-inner" class="modal-content"></div>
+    <div id="modal-inner" class="modal-content glass">
+        </div>
 </div>
 
 <div id="cart-panel">
-    <h2 style="font-family:'Cinzel'; color:var(--oro); margin-bottom:40px;">MI SELECCIÓN</h2>
-    <div id="cart-items" style="max-height:60vh; overflow-y:auto;"></div>
-    <div style="margin-top:40px; border-top:1px solid #333; padding-top:20px;">
-        <h3 id="cart-total" style="font-size:28px;">TOTAL: $0 USD</h3>
-        <a href="#" class="wa-btn" onclick="sendOrder()">PEDIR POR WHATSAPP</a>
-        <p onclick="toggleCart()" style="text-align:center; color:var(--oro); margin-top:20px; cursor:pointer;">CERRAR</p>
+    <h2 class="cart-header">MI SELECCIÓN</h2>
+    <div id="cart-items" style="max-height:60vh; overflow-y:auto; padding-right:10px;"></div>
+    
+    <div class="total-box">
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span>Subtotal:</span><b id="total-usd">$0 USD</b>
+        </div>
+        <div style="display:flex; justify-content:space-between; color:var(--oro); font-size:20px;">
+            <span>Total CLP:</span><b id="total-clp">$0</b>
+        </div>
+        <a href="#" class="wa-btn" onclick="checkout()">PEDIR POR WHATSAPP</a>
+        <p onclick="toggleCart()" style="text-align:center; color:var(--oro); margin-top:25px; cursor:pointer; font-size:11px; letter-spacing:2px;">VOLVER AL CATÁLOGO</p>
     </div>
 </div>
 
 <script>
+    const CLP_VAL = 950;
     const db = {
-        clasico: { name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", desc: "Equilibrio perfecto de Vuelta Abajo.", specs: { Largo: "124mm", Fortaleza: "Media", Capa: "Ecuador" }},
-        reserva: { name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", desc: "Añejamiento prolongado para expertos.", specs: { Largo: "150mm", Fortaleza: "Fuerte", Capa: "Habana" }},
-        premium: { name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", desc: "La joya de la corona, evolución magistral.", specs: { Largo: "178mm", Fortaleza: "Intensa", Capa: "Maduro" }}
+        clasico: { name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", desc: "El equilibrio perfecto de Vuelta Abajo. Notas de cedro y frutos secos.", specs: { Fortaleza: "Media", Capa: "Ecuador", Maridaje: "Café / Ron" }},
+        reserva: { name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", desc: "Añejamiento prolongado. Evolución compleja de sabor a cuero y tierra.", specs: { Fortaleza: "Media-Fuerte", Capa: "Habana", Maridaje: "Whisky" }},
+        premium: { name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", desc: "La expresión máxima del tiempo. Humo denso y meloso.", specs: { Fortaleza: "Intensa", Capa: "Maduro", Maridaje: "Cognac" }}
     };
 
-    let cart = {};
+    let cart = JSON.parse(localStorage.getItem('mafu_cart')) || {};
 
     function addToCart(id) {
         if(cart[id]) cart[id].qty++;
         else cart[id] = { ...db[id], qty: 1 };
-        renderCart();
+        save();
         if(!document.getElementById('cart-panel').classList.contains('open')) toggleCart();
     }
 
@@ -192,22 +213,27 @@
         if(cart[id]) {
             cart[id].qty += delta;
             if(cart[id].qty <= 0) delete cart[id];
-            renderCart();
+            save();
         }
     }
 
-    function renderCart() {
+    function save() {
+        localStorage.setItem('mafu_cart', JSON.stringify(cart));
+        render();
+    }
+
+    function render() {
         const container = document.getElementById('cart-items');
         container.innerHTML = "";
-        let total = 0; let totalQty = 0;
+        let tUSD = 0; let tQty = 0;
 
         Object.keys(cart).forEach(id => {
             const item = cart[id];
-            total += (item.price * item.qty);
-            totalQty += item.qty;
+            tUSD += (item.price * item.qty);
+            tQty += item.qty;
             container.innerHTML += `
                 <div class="cart-item">
-                    <div><b>${item.name}</b><br><small>$${item.price} c/u</small></div>
+                    <div><b>${item.name}</b><br><small>$${item.price} USD</small></div>
                     <div class="qty-controls">
                         <button class="qty-btn" onclick="updateQty('${id}', -1)">-</button>
                         <span>${item.qty}</span>
@@ -216,21 +242,23 @@
                 </div>`;
         });
 
-        document.getElementById('cart-qty').innerText = totalQty;
-        document.getElementById('cart-total').innerText = `TOTAL: $${total} USD`;
+        document.getElementById('cart-count').innerText = tQty;
+        document.getElementById('total-usd').innerText = `$${tUSD} USD`;
+        document.getElementById('total-clp').innerText = `$${(tUSD * CLP_VAL).toLocaleString('es-CL')} CLP`;
     }
 
     function openDetails(id) {
         const p = db[id];
         document.getElementById('modal-inner').innerHTML = `
-            <div style="text-align:center;"><img src="${p.img}" style="max-height:500px;"></div>
+            <span class="close-modal" onclick="closeDetails()">✕</span>
+            <div style="text-align:center;"><img src="${p.img}" style="max-height:550px; border:1px solid #111;"></div>
             <div>
-                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:40px;">${p.name}</h2>
-                <p style="margin:20px 0; color:#aaa;">${p.desc}</p>
-                <div style="background:#111; padding:20px;">
-                    ${Object.entries(p.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
+                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:38px;">${p.name}</h2>
+                <p style="margin:25px 0; color:#aaa; line-height:1.7;">${p.desc}</p>
+                <div style="background:#111; padding:25px; border:1px solid #222;">
+                    ${Object.entries(p.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
                 </div>
-                <button class="wa-btn" style="background:var(--oro); color:#000; margin-top:30px;" onclick="addToCart('${id}'); closeDetails();">AÑADIR AL PEDIDO</button>
+                <button class="wa-btn" style="background:var(--oro); color:#000; cursor:pointer;" onclick="addToCart('${id}'); closeDetails();">AÑADIR AL HUMIDOR</button>
             </div>`;
         document.getElementById('modal').style.display = 'block';
     }
@@ -238,11 +266,15 @@
     function closeDetails() { document.getElementById('modal').style.display = 'none'; }
     function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
 
-    function sendOrder() {
-        let msg = "Hola MAFU, deseo encargar:%0A";
+    function checkout() {
+        if(Object.keys(cart).length === 0) return alert("Humidor vacío");
+        let msg = "Hola MAFU, deseo encargar estos puros:%0A";
         Object.values(cart).forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
+        msg += `%0A*Total Estimado: ${document.getElementById('total-clp').innerText}*`;
         window.open(`https://wa.me/56998644532?text=${msg}`);
     }
+
+    render();
 </script>
 </body>
 </html>
