@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MAFU Cuban Soul</title>
-
+<title>MAFU Cuban Soul - Tienda Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -25,6 +22,7 @@ body{
 font-family:'Playfair Display', serif;
 background:var(--black);
 color:white;
+scroll-behavior: smooth;
 }
 
 /* ================= HEADER ================= */
@@ -51,6 +49,9 @@ flex-wrap:wrap;
 .nav a{
 color:var(--gold);
 text-decoration:none;
+font-size: 14px;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
 /* ================= HERO ================= */
@@ -72,10 +73,11 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+border: 1px solid #222;
 }
 
-.hero h1{color:var(--gold);font-size:40px;}
-.hero p{color:#ccc;}
+.hero h1{color:var(--gold);font-size:40px; margin-bottom: 10px;}
+.hero p{color:#ccc; font-style: italic;}
 
 /* ================= SECCIONES ================= */
 .section{
@@ -84,13 +86,14 @@ max-width:1100px;
 margin:auto;
 }
 
-/* ================= HISTORIA ================= */
-.historia h2{color:var(--gold);}
-.historia p{color:var(--gray);margin:10px 0;line-height:1.6;}
+h2.section-title {
+color: var(--gold);
+text-align: center;
+margin-bottom: 40px;
+font-size: 32px;
+}
 
 /* ================= PRODUCTOS ================= */
-.productos{background:var(--dark);}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -102,62 +105,42 @@ background:#1a1a1a;
 border-radius:10px;
 overflow:hidden;
 border:1px solid #222;
+transition: 0.3s;
+}
+
+.card:hover {
+border-color: var(--gold);
+transform: translateY(-5px);
+}
+
+.card a {
+text-decoration: none;
+color: inherit;
+display: block;
 }
 
 .card img{
 width:100%;
-height:220px;
+height:250px;
 object-fit:cover;
 }
 
-.card h3{color:var(--gold);margin:10px;}
-.desc{margin:0 10px;color:#aaa;}
-.precio{margin:10px;color:var(--gold);}
-.clp{margin:0 10px;color:#777;font-size:13px;}
-
-.controls{
-display:flex;
-align-items:center;
-gap:10px;
-margin:10px;
+.card-content {
+padding: 20px;
 }
 
-.controls button{
-width:30px;height:30px;
-background:#333;color:white;border:none;
-}
+.card h3{color:var(--gold); margin-bottom: 10px;}
+.desc{color:#aaa; font-size: 14px; margin-bottom: 15px; line-height: 1.4;}
+.precio{color:var(--gold); font-size: 20px; font-weight: bold;}
 
-.btn{
-margin:10px;
-width:calc(100% - 20px);
-padding:10px;
-background:var(--gold);
-border:none;
-cursor:pointer;
+/* ================= HISTORIA ================= */
+.historia{
+background: #080808;
+border-radius: 10px;
+margin-bottom: 40px;
 }
-
-/* ================= DETALLE ================= */
-.detalle-box{
-border:1px solid #222;
-padding:20px;
-margin-top:20px;
-}
-
-/* ================= CARRITO ================= */
-.carrito{
-position:fixed;
-right:20px;
-bottom:90px;
-width:260px;
-background:#111;
-border:1px solid var(--gold);
-padding:15px;
-border-radius:10px;
-}
-
-.carrito h3{color:var(--gold);}
-#total{margin-top:10px;font-weight:bold;}
-#promo{color:gold;}
+.historia h2{color:var(--gold); margin-bottom: 20px;}
+.historia p{color:var(--gray); margin:15px 0; line-height: 1.8; font-size: 17px;}
 
 /* ================= WHATSAPP ================= */
 .whatsapp{
@@ -173,6 +156,8 @@ border-radius:50%;
 color:white;
 text-decoration:none;
 font-size:24px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+z-index: 1000;
 }
 
 </style>
@@ -181,192 +166,76 @@ font-size:24px;
 <body>
 
 <header class="header">
-<div class="logo">
-<img src="file_000000009bac71f5a5db74bc3bed2a62.png">
-</div>
+    <div class="logo">
+        <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Logo">
+    </div>
 
-<nav class="nav">
-<a href="#inicio">Inicio</a>
-<a href="#historia">Historia</a>
-<a href="#productos">Productos</a>
-<a href="#detalle">Información</a>
-</nav>
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Catálogo</a>
+        <a href="#historia">Tradición</a>
+    </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
-<div class="hero-box">
-<div>
-<h1>MAFU Cuban Soul</h1>
-<p>Lujo, tradición y esencia cubana</p>
-</div>
-</div>
+    <div class="hero-box">
+        <div>
+            <h1>MAFU Cuban Soul</h1>
+            <p>El placer de lo auténtico, la elegancia de lo artesanal.</p>
+        </div>
+    </div>
 </section>
 
-<!-- HISTORIA -->
+<section class="section" id="productos">
+    <h2 class="section-title">Nuestra Selección Premium</h2>
+    <div class="grid">
+
+        <div class="card">
+            <a href="puro-clasico.html">
+                <img src="Screenshot_20260501-034528.png" alt="Puro Clásico">
+                <div class="card-content">
+                    <h3>Puro Clásico</h3>
+                    <p class="desc">Clic para ver origen, notas de cata y elegir cantidad...</p>
+                    <div class="precio">$12 USD</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="puro-reserva.html">
+                <img src="Screenshot_20260501-034604.png" alt="Puro Reserva">
+                <div class="card-content">
+                    <h3>Puro Reserva</h3>
+                    <p class="desc">Clic para ver el proceso de añejamiento y elegir cantidad...</p>
+                    <div class="precio">$18 USD</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="puro-premium.html">
+                <img src="Screenshot_20260501-034637.png" alt="Puro Premium">
+                <div class="card-content">
+                    <h3>Puro Premium</h3>
+                    <p class="desc">Clic para ver detalles de su fortaleza y elegir cantidad...</p>
+                    <div class="precio">$25 USD</div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</section>
+
 <section class="section historia" id="historia">
-<h2>La esencia del tabaco cubano</h2>
-
-<p>Cuba es considerada la cuna de los mejores puros del mundo debido a su clima único, suelos fértiles y tradición agrícola.</p>
-
-<p>Las hojas de tabaco se cultivan principalmente en la región de Vuelta Abajo, donde cada planta es cuidada manualmente.</p>
-
-<p>El proceso incluye secado, fermentación y añejamiento, lo que permite desarrollar aromas complejos.</p>
-
-<p>El torcido del puro es completamente artesanal, realizado por expertos llamados torcedores.</p>
-
-<p>Fumar un puro no es solo consumo: es un ritual de calma, elegancia y conexión cultural.</p>
+    <div style="max-width: 800px; margin: auto; text-align: center;">
+        <h2>La esencia del tabaco cubano</h2>
+        <p>Cuba es considerada la cuna de los mejores puros del mundo debido a su clima único, suelos fértiles y tradición agrícola centenaria.</p>
+        <p>Nuestra selección MAFU proviene de las mejores vegas, donde cada hoja es cuidada manualmente por expertos que entienden que el tabaco es un arte vivo.</p>
+        <p>Fumar un MAFU no es solo consumo: es un ritual de calma, elegancia y conexión con la herencia cubana.</p>
+    </div>
 </section>
 
-<!-- PRODUCTOS -->
-<section class="section productos" id="productos">
-<div class="grid">
-
-<!-- CLÁSICO -->
-<div class="card">
-<img src="Screenshot_20260501-034528.png">
-<h3>Puro Clásico</h3>
-<p class="desc">Suave y equilibrado</p>
-<div class="precio">$12 USD</div>
-<div class="clp">$11.400 CLP</div>
-
-<div class="controls">
-<button onclick="cambiar('c1',-1)">-</button>
-<span id="c1">1</span>
-<button onclick="cambiar('c1',1)">+</button>
-</div>
-
-<button class="btn" onclick="agregar('Clásico',12,'c1')">Agregar</button>
-</div>
-
-<!-- RESERVA -->
-<div class="card">
-<img src="Screenshot_20260501-034604.png">
-<h3>Puro Reserva</h3>
-<p class="desc">Aromático y elegante</p>
-<div class="precio">$18 USD</div>
-<div class="clp">$17.100 CLP</div>
-
-<div class="controls">
-<button onclick="cambiar('c2',-1)">-</button>
-<span id="c2">1</span>
-<button onclick="cambiar('c2',1)">+</button>
-</div>
-
-<button class="btn" onclick="agregar('Reserva',18,'c2')">Agregar</button>
-</div>
-
-<!-- PREMIUM -->
-<div class="card">
-<img src="Screenshot_20260501-034637.png">
-<h3>Puro Premium</h3>
-<p class="desc">Fuerte y complejo</p>
-<div class="precio">$25 USD</div>
-<div class="clp">$23.750 CLP</div>
-
-<div class="controls">
-<button onclick="cambiar('c3',-1)">-</button>
-<span id="c3">1</span>
-<button onclick="cambiar('c3',1)">+</button>
-</div>
-
-<button class="btn" onclick="agregar('Premium',25,'c3')">Agregar</button>
-</div>
-
-</div>
-</section>
-
-<!-- DETALLE -->
-<section class="section" id="detalle">
-<h2 style="color:#d4af37;">Información detallada</h2>
-
-<div class="detalle-box">
-<h3>Puro Clásico</h3>
-<p>Notas suaves, madera, crema y ligera dulzura.</p>
-</div>
-
-<div class="detalle-box">
-<h3>Puro Reserva</h3>
-<p>Aromas intensos, cacao, especias y tostado.</p>
-</div>
-
-<div class="detalle-box">
-<h3>Puro Premium</h3>
-<p>Complejo, terroso, fuerte y persistente.</p>
-</div>
-
-</section>
-
-<!-- CARRITO -->
-<div class="carrito">
-<h3>Carrito</h3>
-<ul id="lista"></ul>
-<p id="promo"></p>
-<p id="total"></p>
-<button onclick="enviar()">Enviar pedido</button>
-</div>
-
-<a class="whatsapp">💬</a>
-
-<script>
-
-let carrito=[];
-const tasa=950;
-
-function cambiar(id,val){
-let el=document.getElementById(id);
-let num=parseInt(el.innerText)+val;
-if(num<1) num=1;
-el.innerText=num;
-}
-
-function agregar(nombre,precio,id){
-let cantidad=parseInt(document.getElementById(id).innerText);
-
-let existe=carrito.find(p=>p.nombre===nombre);
-
-if(existe){
-existe.cantidad+=cantidad;
-}else{
-carrito.push({nombre,precio,cantidad});
-}
-
-mostrar();
-}
-
-function mostrar(){
-let lista=document.getElementById("lista");
-lista.innerHTML="";
-
-let totalUSD=0;
-let totalCantidad=0;
-
-carrito.forEach(i=>{
-lista.innerHTML+=`<li>${i.nombre} x${i.cantidad}</li>`;
-totalUSD+=i.precio*i.cantidad;
-totalCantidad+=i.cantidad;
-});
-
-let totalCLP=totalUSD*tasa;
-
-document.getElementById("total").innerText=
-"Total: $"+totalUSD+" USD / $"+totalCLP.toLocaleString("es-CL")+" CLP";
-
-document.getElementById("promo").innerText=
-totalCantidad>=5?"🎁 Incluye caja premium":"";
-}
-
-function enviar(){
-let msg="Pedido:%0A";
-
-carrito.forEach(i=>{
-msg+=i.nombre+" x"+i.cantidad+"%0A";
-});
-
-window.open("https://wa.me/56998644532?text="+msg);
-}
-
-</script>
+<a href="https://wa.me/56998644532" class="whatsapp" target="_blank">💬</a>
 
 </body>
 </html>
