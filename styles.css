@@ -1,119 +1,44 @@
-/* ==================== ESTILOS GENERALES ==================== */
+/* ==================== RESET ==================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ==================== BODY ==================== */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url('tabaco.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('tabaco.jpg') no-repeat center/cover;
+    color: white;
 }
 
-/* capa oscura elegante */
+/* capa oscura */
 body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  top: 0;
-  left: 0;
-  z-index: -1;
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
-header {
-  text-align: center;
-  padding: 30px 10px;
-}
-
-.contenedor {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.card {
-  background: rgba(20,20,20,0.9);
-  border-radius: 15px;
-  padding: 20px;
-  width: 260px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* animación hover */
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.precio {
-  font-size: 20px;
-  margin: 10px 0 5px;
-}
-
-.clp {
-  font-size: 14px;
-  color: #00ffcc;
-  margin-bottom: 10px;
-}
-
-/* botón premium */
-button {
-  background: linear-gradient(135deg, #c9a34e, #8b6f2f);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, #e6c26a, #a8893f);
-}
-
-/* 📱 responsive */
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
-}
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
+/* ==================== CONTENEDOR BASE ==================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ==================== HEADER/NAVEGACIÓN ==================== */
+/* ==================== HEADER ==================== */
 .header {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: rgba(0,0,0,0.9);
     color: #d4af37;
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .header .container {
@@ -123,389 +48,144 @@ body {
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-size: 24px;
 }
 
 .nav {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .nav a {
     color: #d4af37;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
 }
 
 .nav a:hover {
-    color: #fff;
-    transform: translateY(-2px);
+    color: white;
 }
 
-.nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #d4af37;
-    transition: width 0.3s ease;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
-/* ==================== HERO SECTION ==================== */
+/* ==================== HERO ==================== */
 .hero {
-    height: 600px;
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('https://images.unsplash.com/photo-1470541631566-1f074f894f2b?w=1200&h=600&fit=crop') center/cover;
-    background-attachment: fixed;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
-    position: relative;
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.6) 0%, rgba(45, 45, 45, 0.6) 100%);
+.hero h2 {
+    font-size: 40px;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 10;
-    animation: fadeInUp 1s ease-out;
-}
-
-.hero-content h2 {
-    font-size: 48px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 3px;
-}
-
-.hero-content p {
-    font-size: 22px;
-    margin-bottom: 30px;
+.hero p {
     color: #d4af37;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* ==================== BOTONES ==================== */
+/* ==================== BOTÓN ==================== */
 .btn {
     display: inline-block;
-    padding: 12px 40px;
-    background: linear-gradient(135deg, #d4af37 0%, #ffed4e 100%);
-    color: #1a1a1a;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: gold;
+    color: black;
     text-decoration: none;
-    border: none;
     border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-    background: linear-gradient(135deg, #ffed4e 0%, #d4af37 100%);
-}
-
-.btn-comprar {
-    padding: 10px 25px;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-/* ==================== SECCIÓN PRODUCTOS ==================== */
+/* ==================== PRODUCTOS ==================== */
 .productos {
-    padding: 80px 0;
-    background: #f9f9f9;
+    padding: 60px 0;
+    background: #111;
 }
 
-.seccion-titulo {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 60px;
-    color: #1a1a1a;
-    position: relative;
-    letter-spacing: 2px;
-}
-
-.seccion-titulo::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #d4af37 0%, #ffed4e 100%);
-    margin: 15px auto 0;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    grid-column: 1 / -1;
-}
-
+/* GRID SOLO PARA PRODUCTOS */
 .productos .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    gap: 20px;
 }
 
+/* CARD */
 .producto-card {
-    background: white;
+    background: #222;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: slideUp 0.6s ease-out;
+    transition: 0.3s;
 }
 
 .producto-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-}
-
-.producto-imagen {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: translateY(-10px);
 }
 
 .producto-imagen img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.producto-card:hover .producto-imagen img {
-    transform: scale(1.1);
 }
 
 .producto-info {
-    padding: 30px;
+    padding: 20px;
 }
 
 .producto-info h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #1a1a1a;
+    color: #d4af37;
 }
 
 .descripcion {
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.8;
-}
-
-.caracteristicas {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f0f0f0;
-    border-left: 4px solid #d4af37;
-    border-radius: 5px;
-}
-
-.caracteristicas span {
-    font-size: 13px;
-    color: #555;
+    color: #ccc;
 }
 
 .precio-compra {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 15px;
-    border-top: 2px solid #eee;
 }
 
 .precio {
-    font-size: 24px;
-    font-weight: bold;
-    color: #d4af37;
+    color: gold;
 }
 
-/* ==================== INFO CUBA ==================== */
-.info-cuba {
-    padding: 80px 0;
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1200&h=600&fit=crop') center/cover;
-    background-attachment: fixed;
-    color: white;
-    text-align: center;
-}
-
-.info-cuba h2 {
-    font-size: 42px;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-}
-
-.info-cuba p {
-    font-size: 18px;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-    color: #d4af37;
+/* BOTÓN COMPRA */
+.btn-comprar {
+    background: gold;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
 }
 
 /* ==================== CONTACTO ==================== */
 .contacto {
-    padding: 80px 0;
-    background: #f9f9f9;
-}
-
-.contacto h2 {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
+    padding: 60px 0;
+    background: #111;
 }
 
 .formulario {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .formulario input,
 .formulario textarea {
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.formulario input:focus,
-.formulario textarea:focus {
-    outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    padding: 10px;
 }
 
 /* ==================== FOOTER ==================== */
 .footer {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: #d4af37;
     text-align: center;
-    padding: 40px 0;
-    border-top: 3px solid #d4af37;
-}
-
-.footer p {
-    margin-bottom: 10px;
-}
-
-/* ==================== ANIMACIONES ==================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    padding: 20px;
+    background: black;
+    color: #d4af37;
 }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
-    .hero-content h2 {
-        font-size: 36px;
-    }
-
-    .hero-content p {
-        font-size: 18px;
-    }
-
-    .nav {
-        gap: 15px;
-        font-size: 14px;
-    }
-
-    .seccion-titulo {
-        font-size: 32px;
-    }
-
-    .info-cuba h2 {
-        font-size: 32px;
-    }
-
-    .hero {
-        height: 400px;
-    }
-
-    .productos .container,
-    .contacto .container {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 18px;
+    .hero h2 {
+        font-size: 28px;
     }
 
     .nav {
         flex-direction: column;
-        gap: 10px;
-    }
-
-    .hero-content h2 {
-        font-size: 24px;
-    }
-
-    .hero-content p {
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
     }
 }
