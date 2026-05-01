@@ -29,6 +29,7 @@ body{
   border-bottom:1px solid var(--dorado);
   position:sticky;
   top:0;
+  z-index:1000;
 }
 
 .logo{text-align:center;}
@@ -68,12 +69,22 @@ body{
   text-align:center;
 }
 
-.hero h1{color:var(--dorado);font-size:40px;}
-.hero p{color:#ccc;}
+.hero h1{color:var(--dorado);font-size:42px;}
+.hero p{color:#ccc;margin-top:10px;}
+
+/* SECCIONES */
+.section{
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HISTORIA */
+.historia h2{color:var(--dorado);}
+.historia p{color:#bbb;line-height:1.7;margin:10px 0;}
 
 /* PRODUCTOS */
 .productos{
-  padding:60px 20px;
   background:var(--gris);
 }
 
@@ -81,15 +92,13 @@ body{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:25px;
-  max-width:1100px;
-  margin:auto;
 }
 
 .card{
   background:#1a1a1a;
-  border:1px solid #222;
   border-radius:10px;
   overflow:hidden;
+  border:1px solid #222;
 }
 
 .card img{
@@ -101,6 +110,12 @@ body{
 .card h3{
   color:var(--dorado);
   margin:10px;
+}
+
+.desc{
+  color:#aaa;
+  margin:0 10px 10px;
+  font-size:14px;
 }
 
 .precio{
@@ -122,15 +137,15 @@ button{
   cursor:pointer;
 }
 
-/* HISTORIA */
-#historia{
-  padding:60px 20px;
-  max-width:900px;
-  margin:auto;
+/* DETALLE */
+.detalle-box{
+  margin-top:20px;
+  border:1px solid #222;
+  padding:20px;
 }
 
-#historia h2{color:var(--dorado);}
-#historia p{color:#bbb;line-height:1.7;margin:10px 0;}
+.detalle-box h3{color:var(--dorado);}
+.detalle-box p{color:#bbb;margin-top:10px;}
 
 /* CARRITO */
 .carrito{
@@ -147,7 +162,7 @@ button{
 .carrito h3{color:var(--dorado);}
 .carrito ul{list-style:none;font-size:14px;}
 
-#promo{color:gold;font-size:13px;margin-top:5px;}
+#promo{color:gold;margin-top:5px;}
 #total{margin-top:10px;font-weight:bold;}
 
 /* WHATSAPP */
@@ -177,12 +192,15 @@ button{
   </div>
 
   <nav class="nav">
-    <a href="#productos">Productos</a>
+    <a href="#inicio">Inicio</a>
     <a href="#historia">Historia</a>
+    <a href="#productos">Productos</a>
+    <a href="#detalle">Información</a>
   </nav>
 </header>
 
-<section class="hero">
+<!-- HERO -->
+<section class="hero" id="inicio">
   <div class="hero-box">
     <div>
       <h1>MAFU Cuban Soul</h1>
@@ -191,12 +209,33 @@ button{
   </div>
 </section>
 
-<section class="productos" id="productos">
+<!-- HISTORIA -->
+<section class="section historia" id="historia">
+  <h2>Tradición del tabaco cubano</h2>
+
+  <p>
+  Cuba es reconocida mundialmente por producir los mejores puros.
+  Su clima tropical y suelos únicos permiten una calidad incomparable.
+  </p>
+
+  <p>
+  Desde el cultivo hasta el torcido, todo es artesanal.
+  Los torcedores transforman hojas en piezas únicas de lujo.
+  </p>
+
+  <p>
+  Fumar un puro es un ritual de calma, elegancia y tradición.
+  </p>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="section productos" id="productos">
   <div class="grid">
 
     <div class="card">
       <img src="Screenshot_20260501-034528.png">
       <h3>Puro Clásico</h3>
+      <p class="desc">Suave y equilibrado, ideal para comenzar.</p>
       <div class="precio">$12 USD</div>
       <input type="number" value="1" min="1" id="c1" class="cantidad">
       <button onclick="agregar('Clásico',12,'c1')">Agregar</button>
@@ -205,6 +244,7 @@ button{
     <div class="card">
       <img src="Screenshot_20260501-034604.png">
       <h3>Puro Reserva</h3>
+      <p class="desc">Aromático, complejo y elegante.</p>
       <div class="precio">$18 USD</div>
       <input type="number" value="1" min="1" id="c2" class="cantidad">
       <button onclick="agregar('Reserva',18,'c2')">Agregar</button>
@@ -213,6 +253,7 @@ button{
     <div class="card">
       <img src="Screenshot_20260501-034637.png">
       <h3>Puro Premium</h3>
+      <p class="desc">Fuerte, intenso y de lujo.</p>
       <div class="precio">$25 USD</div>
       <input type="number" value="1" min="1" id="c3" class="cantidad">
       <button onclick="agregar('Premium',25,'c3')">Agregar</button>
@@ -221,24 +262,27 @@ button{
   </div>
 </section>
 
-<section id="historia">
-  <h2>La tradición del tabaco cubano</h2>
+<!-- DETALLE -->
+<section class="section" id="detalle">
+  <h2 style="color:#d4af37;">Información detallada</h2>
 
-  <p>
-  Cuba es reconocida mundialmente por producir los mejores puros del planeta.
-  Gracias a su clima, suelo y tradición, cada cigarro es único.
-  </p>
+  <div class="detalle-box">
+    <h3>Puro Clásico</h3>
+    <p>Notas suaves, madera y crema. Ideal para principiantes.</p>
+  </div>
 
-  <p>
-  El cultivo del tabaco es una herencia cultural transmitida por generaciones,
-  donde cada hoja es seleccionada y trabajada de forma artesanal.
-  </p>
+  <div class="detalle-box">
+    <h3>Puro Reserva</h3>
+    <p>Aromas intensos, especias y cacao.</p>
+  </div>
 
-  <p>
-  Fumar un puro representa calma, elegancia y un estilo de vida.
-  </p>
+  <div class="detalle-box">
+    <h3>Puro Premium</h3>
+    <p>Complejo, fuerte y exclusivo para conocedores.</p>
+  </div>
 </section>
 
+<!-- CARRITO -->
 <div class="carrito">
   <h3>Carrito</h3>
   <ul id="lista"></ul>
@@ -257,11 +301,8 @@ function agregar(nombre,precio,id){
   let cantidad=parseInt(document.getElementById(id).value);
   let existe=carrito.find(p=>p.nombre===nombre);
 
-  if(existe){
-    existe.cantidad+=cantidad;
-  }else{
-    carrito.push({nombre,precio,cantidad});
-  }
+  if(existe){existe.cantidad+=cantidad;}
+  else{carrito.push({nombre,precio,cantidad});}
 
   mostrar();
 }
@@ -284,12 +325,8 @@ function mostrar(){
   document.getElementById("total").innerText=
   "Total: $"+totalUSD+" USD / $"+totalCLP.toLocaleString("es-CL")+" CLP";
 
-  if(totalCantidad>=5){
-    document.getElementById("promo").innerText=
-    "🎁 Incluye caja por compra de 5 unidades";
-  }else{
-    document.getElementById("promo").innerText="";
-  }
+  document.getElementById("promo").innerText=
+  totalCantidad>=5 ? "🎁 Incluye caja por compra de 5 unidades" : "";
 }
 
 function enviar(){
