@@ -6,7 +6,6 @@
 <title>Puros Premium</title>
 
 <style>
-/* ==================== ESTILOS GENERALES ==================== */
 *{
   margin:0;
   padding:0;
@@ -70,9 +69,14 @@ body{
 
 .producto-card{
   background:#1a1a1a;
-  margin-bottom:20px;
+  margin-bottom:25px;
   border-radius:10px;
   overflow:hidden;
+  transition:.3s;
+}
+
+.producto-card:hover{
+  transform:scale(1.02);
 }
 
 .producto-imagen img{
@@ -82,20 +86,37 @@ body{
 }
 
 .producto-info{
-  padding:15px;
+  padding:20px;
+}
+
+.producto-info h3{
+  color:#d4af37;
+}
+
+.descripcion{
+  margin:10px 0;
+}
+
+.detalles{
+  font-size:14px;
+  color:#ccc;
+  margin-top:10px;
+  line-height:1.5;
 }
 
 .precio{
   color:#d4af37;
   font-weight:bold;
+  font-size:18px;
 }
 
 .btn-comprar{
   margin-top:10px;
-  padding:8px 15px;
+  padding:10px 15px;
   border:none;
   background:#d4af37;
   cursor:pointer;
+  border-radius:5px;
 }
 
 /* FOOTER */
@@ -115,7 +136,6 @@ body{
     <nav class="nav">
       <a href="#inicio">Inicio</a>
       <a href="#productos">Productos</a>
-      <a href="#contacto">Contacto</a>
     </nav>
   </div>
 </header>
@@ -123,7 +143,7 @@ body{
 <section id="inicio" class="hero">
   <div>
     <h2>Puros Cubanos Premium</h2>
-    <p>Auténticos sabores de Cuba</p>
+    <p>Tradición, historia y excelencia en cada calada</p>
     <a href="#productos" class="btn">Ver Productos</a>
   </div>
 </section>
@@ -137,8 +157,15 @@ body{
         <img src="Screenshot_20260501-034528.png">
       </div>
       <div class="producto-info">
-        <h3>Puro Clásico</h3>
-        <p>Sabor equilibrado y suave.</p>
+        <h3>Puro Clásico (Cohiba)</h3>
+        <p class="descripcion">Suave, equilibrado y elegante, ideal para iniciarse en el mundo del tabaco premium.</p>
+
+        <p class="detalles">
+        Este puro proviene de las reconocidas vegas de Cuba, donde el tabaco es cultivado bajo un proceso 100% agrícola y natural. 
+        Las hojas son seleccionadas a mano y fermentadas cuidadosamente durante meses para lograr su aroma distintivo. 
+        Cada pieza es enrollada por torcedores expertos, siguiendo una tradición artesanal transmitida por generaciones.
+        </p>
+
         <span class="precio" data-usd="12">$12 USD</span>
         <span class="clp"></span><br>
         <button onclick="comprar('Puro Clásico',12)" class="btn-comprar">Comprar</button>
@@ -151,8 +178,15 @@ body{
         <img src="Screenshot_20260501-034604.png">
       </div>
       <div class="producto-info">
-        <h3>Puro Reserva</h3>
-        <p>Aromas intensos y refinados.</p>
+        <h3>Puro Reserva (Montecristo)</h3>
+        <p class="descripcion">Intenso, aromático y con carácter, pensado para paladares exigentes.</p>
+
+        <p class="detalles">
+        Elaborado en Cuba bajo estrictos estándares de calidad, este puro utiliza hojas añejadas que intensifican su sabor. 
+        El proceso incluye fermentación natural y secado en condiciones controladas, respetando métodos tradicionales. 
+        Cada cigarro es una obra artesanal que refleja la riqueza del suelo cubano y la experiencia de sus maestros torcedores.
+        </p>
+
         <span class="precio" data-usd="18">$18 USD</span>
         <span class="clp"></span><br>
         <button onclick="comprar('Puro Reserva',18)" class="btn-comprar">Comprar</button>
@@ -165,8 +199,15 @@ body{
         <img src="Screenshot_20260501-034637.png">
       </div>
       <div class="producto-info">
-        <h3>Puro Premium</h3>
-        <p>Experiencia de lujo y calidad.</p>
+        <h3>Puro Premium (Partagás)</h3>
+        <p class="descripcion">Fuerte, complejo y de lujo, una experiencia única para conocedores.</p>
+
+        <p class="detalles">
+        Proveniente de las históricas plantaciones cubanas, este puro destaca por su elaboración completamente artesanal. 
+        Desde la siembra hasta el enrollado final, cada etapa es realizada manualmente, asegurando calidad superior. 
+        Su mezcla de hojas seleccionadas ofrece notas profundas, terrosas y especiadas que lo convierten en una experiencia premium.
+        </p>
+
         <span class="precio" data-usd="25">$25 USD</span>
         <span class="clp"></span><br>
         <button onclick="comprar('Puro Premium',25)" class="btn-comprar">Comprar</button>
