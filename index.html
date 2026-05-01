@@ -34,7 +34,6 @@ body{
   align-items:center;
 }
 
-/* LOGO */
 .logo img{
   height:60px;
 }
@@ -53,7 +52,7 @@ body{
 
 /* HERO */
 .hero{
-  height:65vh;
+  height:70vh;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -79,12 +78,31 @@ body{
   font-weight:bold;
 }
 
+/* HISTORIA */
+.historia{
+  padding:60px 0;
+  background:#111;
+}
+
+.historia h2{
+  text-align:center;
+  color:#d4af37;
+  margin-bottom:20px;
+}
+
+.historia p{
+  max-width:900px;
+  margin:10px auto;
+  text-align:center;
+  line-height:1.6;
+  color:#ccc;
+}
+
 /* PRODUCTOS */
 .productos{
   padding:60px 0;
 }
 
-/* GRID (esto es clave para que no se vean en columna) */
 .productos-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -120,6 +138,13 @@ body{
   margin:10px 0;
 }
 
+.detalles{
+  font-size:14px;
+  color:#ccc;
+  margin-top:10px;
+  line-height:1.5;
+}
+
 .precio{
   color:#d4af37;
   font-weight:bold;
@@ -150,17 +175,15 @@ body{
 
 <header class="header">
   <div class="container">
-    
-    <!-- LOGO -->
     <div class="logo">
-      <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Cuban Soul">
+      <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
     </div>
 
     <nav class="nav">
       <a href="#inicio">Inicio</a>
+      <a href="#historia">Historia</a>
       <a href="#productos">Productos</a>
     </nav>
-
   </div>
 </header>
 
@@ -172,9 +195,30 @@ body{
   </div>
 </section>
 
+<!-- HISTORIA -->
+<section id="historia" class="historia">
+  <div class="container" style="flex-direction:column;">
+    <h2>Historia del Tabaco Cubano</h2>
+
+    <p>
+    El tabaco cubano tiene sus raíces en las tradiciones indígenas de la isla de Cuba, donde ya se cultivaba y utilizaba mucho antes de la llegada de los europeos.
+    Con el tiempo, Cuba se convirtió en el epicentro mundial del tabaco premium gracias a su clima, suelo y técnicas de cultivo únicas.
+    </p>
+
+    <p>
+    Durante siglos, los maestros torcedores han perfeccionado el arte de crear puros hechos completamente a mano, seleccionando hojas cuidadosamente fermentadas y añejadas.
+    Este proceso artesanal es lo que da a los puros cubanos su aroma, sabor y prestigio inigualable.
+    </p>
+
+    <p>
+    Hoy en día, los puros cubanos representan lujo, tradición y excelencia, siendo reconocidos en todo el mundo como símbolo de calidad superior.
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
 <section id="productos" class="productos">
   <div class="container">
-    
     <div class="productos-grid">
 
       <!-- Producto 1 -->
@@ -184,7 +228,11 @@ body{
         </div>
         <div class="producto-info">
           <h3>Puro Clásico (Cohiba)</h3>
-          <p class="descripcion">Suave, equilibrado y elegante.</p>
+          <p class="descripcion">Elegante y equilibrado.</p>
+
+          <p class="detalles">
+          Este puro representa la esencia del tabaco cubano. Elaborado con hojas seleccionadas a mano y fermentadas cuidadosamente, ofrece una experiencia suave ideal para iniciarse en el mundo premium.
+          </p>
 
           <span class="precio" data-usd="12">$12 USD</span>
           <span class="clp"></span><br>
@@ -201,6 +249,10 @@ body{
           <h3>Puro Reserva (Montecristo)</h3>
           <p class="descripcion">Intenso y aromático.</p>
 
+          <p class="detalles">
+          Con hojas añejadas que potencian su carácter, este puro ofrece una experiencia más profunda. Su sabor complejo lo convierte en una elección ideal para fumadores exigentes.
+          </p>
+
           <span class="precio" data-usd="18">$18 USD</span>
           <span class="clp"></span><br>
           <button onclick="comprar('Puro Reserva',18)" class="btn-comprar">Comprar</button>
@@ -214,7 +266,11 @@ body{
         </div>
         <div class="producto-info">
           <h3>Puro Premium (Partagás)</h3>
-          <p class="descripcion">Fuerte, complejo y de lujo.</p>
+          <p class="descripcion">Fuerte y sofisticado.</p>
+
+          <p class="detalles">
+          Este puro destaca por su elaboración artesanal completa. Sus notas terrosas y especiadas entregan una experiencia intensa y exclusiva para conocedores.
+          </p>
 
           <span class="precio" data-usd="25">$25 USD</span>
           <span class="clp"></span><br>
@@ -223,7 +279,6 @@ body{
       </div>
 
     </div>
-
   </div>
 </section>
 
