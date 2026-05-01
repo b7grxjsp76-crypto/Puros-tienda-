@@ -3,302 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAFU
--Cuban Soul-</title>
+<title>MAFU Cuban Soul</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  background:#0f0f0f;
-  color:#fff;
+    font-family:'Playfair Display', serif;
+    background:url('tabaco.jpg') no-repeat center/cover;
+    color:white;
+}
+
+/* OSCURECER FONDO */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+    top:0;
+    left:0;
+    z-index:-1;
 }
 
 /* HEADER */
 .header{
-  background:#000;
-  padding:15px 0;
-  border-bottom:2px solid #d4af37;
-}
-
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    background:rgba(0,0,0,0.95);
+    padding:20px;
+    position:sticky;
+    top:0;
+    text-align:center;
+    border-bottom:1px solid #d4af37;
 }
 
 .logo img{
-  height:60px;
+    height:65px;
 }
 
-/* NAV */
+.nav{
+    margin-top:10px;
+}
+
 .nav a{
-  color:#fff;
-  margin-left:20px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.nav a:hover{
-  color:#d4af37;
+    color:#d4af37;
+    margin:0 15px;
+    text-decoration:none;
+    letter-spacing:2px;
 }
 
 /* HERO */
 .hero{
-  height:70vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-  url('Screenshot_20260501-034528.png') center/cover;
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.hero h2{
-  font-size:42px;
-  color:#d4af37;
+.hero h1{
+    font-size:50px;
+    color:#d4af37;
 }
 
-/* BOTÓN */
 .btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
-  background:#d4af37;
-  color:#000;
-  text-decoration:none;
-  border-radius:5px;
-  font-weight:bold;
-}
-
-/* HISTORIA */
-.historia{
-  padding:60px 0;
-  background:#111;
-}
-
-.historia h2{
-  text-align:center;
-  color:#d4af37;
-  margin-bottom:20px;
-}
-
-.historia p{
-  max-width:900px;
-  margin:10px auto;
-  text-align:center;
-  line-height:1.6;
-  color:#ccc;
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    text-decoration:none;
 }
 
 /* PRODUCTOS */
 .productos{
-  padding:60px 0;
+    padding:80px 20px;
+    background:#111;
 }
 
-.productos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
-.producto-card{
-  background:#1a1a1a;
-  border-radius:10px;
-  overflow:hidden;
-  transition:.3s;
+.card{
+    background:#1a1a1a;
+    border:1px solid #222;
+    transition:.3s;
 }
 
-.producto-card:hover{
-  transform:scale(1.03);
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#d4af37;
 }
 
-.producto-imagen img{
-  width:100%;
-  height:250px;
-  object-fit:cover;
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
 }
 
-.producto-info{
-  padding:20px;
+.info{
+    padding:20px;
 }
 
-.producto-info h3{
-  color:#d4af37;
-}
-
-.descripcion{
-  margin:10px 0;
-}
-
-.detalles{
-  font-size:14px;
-  color:#ccc;
-  margin-top:10px;
-  line-height:1.5;
+.info h3{
+    color:#d4af37;
 }
 
 .precio{
-  color:#d4af37;
-  font-weight:bold;
-  font-size:18px;
+    color:#d4af37;
+    margin-top:10px;
 }
 
 .btn-comprar{
-  margin-top:10px;
-  padding:10px 15px;
-  border:none;
-  background:#d4af37;
-  cursor:pointer;
-  border-radius:5px;
-  font-weight:bold;
+    margin-top:10px;
+    padding:10px;
+    width:100%;
+    border:none;
+    background:#d4af37;
+    cursor:pointer;
+}
+
+/* EXPERIENCIA */
+.experiencia{
+    padding:80px 20px;
+    text-align:center;
 }
 
 /* FOOTER */
 .footer{
-  text-align:center;
-  padding:20px;
-  background:#000;
-  border-top:1px solid #333;
+    text-align:center;
+    padding:20px;
+    background:black;
+    color:#777;
+}
+
+/* WHATSAPP */
+.whatsapp-btn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:28px;
+    color:white;
+    text-decoration:none;
 }
 </style>
+
 </head>
 
 <body>
 
 <header class="header">
-  <div class="container">
     <div class="logo">
-      <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
+        <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
     </div>
 
     <nav class="nav">
-      <a href="#inicio">Inicio</a>
-      <a href="#historia">Historia</a>
-      <a href="#productos">Productos</a>
+        <a href="#inicio">INICIO</a>
+        <a href="#productos">COLECCIÓN</a>
     </nav>
-  </div>
 </header>
 
-<section id="inicio" class="hero">
-  <div>
-    <h2>MAFU Cuban Soul</h2>
-    <p>Tradición, lujo y sabor auténtico</p>
-    <a href="#productos" class="btn">Ver Productos</a>
-  </div>
+<section class="hero" id="inicio">
+    <div>
+        <h1>MAFU Cuban Soul</h1>
+        <p>Lujo, tradición y esencia cubana</p>
+        <a href="#productos" class="btn">DESCUBRIR</a>
+    </div>
 </section>
 
-<!-- HISTORIA -->
-<section id="historia" class="historia">
-  <div class="container" style="flex-direction:column;">
-    <h2>Historia del Tabaco Cubano</h2>
+<section class="productos" id="productos">
+    <div class="grid">
 
-    <p>
-    El tabaco cubano tiene sus raíces en las tradiciones indígenas de la isla de Cuba, donde ya se cultivaba y utilizaba mucho antes de la llegada de los europeos.
-    Con el tiempo, Cuba se convirtió en el epicentro mundial del tabaco premium gracias a su clima, suelo y técnicas de cultivo únicas.
-    </p>
-
-    <p>
-    Durante siglos, los maestros torcedores han perfeccionado el arte de crear puros hechos completamente a mano, seleccionando hojas cuidadosamente fermentadas y añejadas.
-    Este proceso artesanal es lo que da a los puros cubanos su aroma, sabor y prestigio inigualable.
-    </p>
-
-    <p>
-    Hoy en día, los puros cubanos representan lujo, tradición y excelencia, siendo reconocidos en todo el mundo como símbolo de calidad superior.
-    </p>
-  </div>
-</section>
-
-<!-- PRODUCTOS -->
-<section id="productos" class="productos">
-  <div class="container">
-    <div class="productos-grid">
-
-      <!-- Producto 1 -->
-      <div class="producto-card">
-        <div class="producto-imagen">
-          <img src="Screenshot_20260501-034528.png">
+        <div class="card">
+            <img src="Screenshot_20260501-034528.png">
+            <div class="info">
+                <h3>Puro Clásico</h3>
+                <p>Elegante y suave.</p>
+                <div class="precio">$12 USD</div>
+                <button onclick="comprar('Clásico',12)" class="btn-comprar">Comprar</button>
+            </div>
         </div>
-        <div class="producto-info">
-          <h3>Puro Clásico (Cohiba)</h3>
-          <p class="descripcion">Elegante y equilibrado.</p>
 
-          <p class="detalles">
-          Este puro representa la esencia del tabaco cubano. Elaborado con hojas seleccionadas a mano y fermentadas cuidadosamente, ofrece una experiencia suave ideal para iniciarse en el mundo premium.
-          </p>
-
-          <span class="precio" data-usd="12">$12 USD</span>
-          <span class="clp"></span><br>
-          <button onclick="comprar('Puro Clásico',12)" class="btn-comprar">Comprar</button>
+        <div class="card">
+            <img src="Screenshot_20260501-034604.png">
+            <div class="info">
+                <h3>Puro Reserva</h3>
+                <p>Intenso y refinado.</p>
+                <div class="precio">$18 USD</div>
+                <button onclick="comprar('Reserva',18)" class="btn-comprar">Comprar</button>
+            </div>
         </div>
-      </div>
 
-      <!-- Producto 2 -->
-      <div class="producto-card">
-        <div class="producto-imagen">
-          <img src="Screenshot_20260501-034604.png">
+        <div class="card">
+            <img src="Screenshot_20260501-034637.png">
+            <div class="info">
+                <h3>Puro Premium</h3>
+                <p>Experiencia de lujo.</p>
+                <div class="precio">$25 USD</div>
+                <button onclick="comprar('Premium',25)" class="btn-comprar">Comprar</button>
+            </div>
         </div>
-        <div class="producto-info">
-          <h3>Puro Reserva (Montecristo)</h3>
-          <p class="descripcion">Intenso y aromático.</p>
-
-          <p class="detalles">
-          Con hojas añejadas que potencian su carácter, este puro ofrece una experiencia más profunda. Su sabor complejo lo convierte en una elección ideal para fumadores exigentes.
-          </p>
-
-          <span class="precio" data-usd="18">$18 USD</span>
-          <span class="clp"></span><br>
-          <button onclick="comprar('Puro Reserva',18)" class="btn-comprar">Comprar</button>
-        </div>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="producto-card">
-        <div class="producto-imagen">
-          <img src="Screenshot_20260501-034637.png">
-        </div>
-        <div class="producto-info">
-          <h3>Puro Premium (Partagás)</h3>
-          <p class="descripcion">Fuerte y sofisticado.</p>
-
-          <p class="detalles">
-          Este puro destaca por su elaboración artesanal completa. Sus notas terrosas y especiadas entregan una experiencia intensa y exclusiva para conocedores.
-          </p>
-
-          <span class="precio" data-usd="25">$25 USD</span>
-          <span class="clp"></span><br>
-          <button onclick="comprar('Puro Premium',25)" class="btn-comprar">Comprar</button>
-        </div>
-      </div>
 
     </div>
-  </div>
+</section>
+
+<section class="experiencia">
+    <h2>Experiencia MAFU</h2>
+    <p>Más que un puro, es una experiencia exclusiva.</p>
 </section>
 
 <footer class="footer">
-  <p>© 2026 MAFU Cuban Soul</p>
+    © 2026 MAFU Cuban Soul
 </footer>
 
+<!-- WHATSAPP -->
+<a href="https://wa.me/56998644532?text=Hola%20quiero%20información%20sobre%20los%20puros%20MAFU"
+   class="whatsapp-btn"
+   target="_blank">💬</a>
+
 <script>
-const tasa = 950;
-
-document.querySelectorAll(".precio").forEach(el => {
-  const usd = el.dataset.usd;
-  const clp = usd * tasa;
-  el.parentElement.querySelector(".clp").innerText =
-    " / $" + clp.toLocaleString("es-CL") + " CLP";
-});
-
 function comprar(nombre, precio){
-  alert("Elegiste: " + nombre + " ($" + precio + " USD)");
+    let mensaje = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
+    let url = "https://wa.me/56998644532?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
 }
 </script>
 
