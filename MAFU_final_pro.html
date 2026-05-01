@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAFU Cuban Soul</title>
+
+<style>
+body{background:#050505;color:#fff;font-family:Arial;margin:0;padding:20px}
+.card{background:#1a1a1a;border-radius:20px;padding:20px;margin:20px;cursor:pointer}
+.btn-buy{background:#d4af37;border:none;padding:10px 20px;border-radius:20px;cursor:pointer}
+.precio-tag{font-size:20px;margin:10px 0;display:block}
+input{width:60px;text-align:center}
+</style>
+</head>
+
+<body>
+
+<h1>MAFU Cuban Soul</h1>
+
+<div class="card" onclick="goToPage('puro-clasico.html')">
+<h2>MAFU Clásico</h2>
+
+<span class="precio-tag">
+$12 USD <br>
+<span style="font-size:14px;color:#d4af37;">≈ $11.400 CLP</span>
+</span>
+
+<div>
+<button onclick="event.stopPropagation();changeQty('q1',-1)">-</button>
+<input id="q1" type="number" value="1" min="1">
+<button onclick="event.stopPropagation();changeQty('q1',1)">+</button>
+</div>
+
+<button class="btn-buy" onclick="event.stopPropagation();addToCart('MAFU Clásico',12,'q1')">Añadir</button>
+</div>
+
+<div class="card" onclick="goToPage('puro-reserva.html')">
+<h2>MAFU Reserva</h2>
+
+<span class="precio-tag">
+$18 USD <br>
+<span style="font-size:14px;color:#d4af37;">≈ $17.100 CLP</span>
+</span>
+
+<div>
+<button onclick="event.stopPropagation();changeQty('q2',-1)">-</button>
+<input id="q2" type="number" value="1" min="1">
+<button onclick="event.stopPropagation();changeQty('q2',1)">+</button>
+</div>
+
+<button class="btn-buy" onclick="event.stopPropagation();addToCart('MAFU Reserva',18,'q2')">Añadir</button>
+</div>
+
+<div class="card" onclick="goToPage('puro-premium.html')">
+<h2>MAFU Premium</h2>
+
+<span class="precio-tag">
+$25 USD <br>
+<span style="font-size:14px;color:#d4af37;">≈ $23.750 CLP</span>
+</span>
+
+<div>
+<button onclick="event.stopPropagation();changeQty('q3',-1)">-</button>
+<input id="q3" type="number" value="1" min="1">
+<button onclick="event.stopPropagation();changeQty('q3',1)">+</button>
+</div>
+
+<button class="btn-buy" onclick="event.stopPropagation();addToCart('MAFU Premium',25,'q3')">Añadir</button>
+</div>
+
+<script>
+let cart=[];
+
+function changeQty(id,delta){
+ let el=document.getElementById(id);
+ let v=parseInt(el.value)||1;
+ v+=delta;
+ if(v<1)v=1;
+ el.value=v;
+}
+
+function goToPage(url){
+ window.location.href=url;
+}
+
+function addToCart(name,price,id){
+ let qty=parseInt(document.getElementById(id).value);
+ cart.push({name,price,qty});
+ alert("Producto agregado");
+}
+</script>
+
+</body>
+</html>
