@@ -2,69 +2,40 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle - Puro Clásico | MAFU</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { background: #0b0b0b; color: white; font-family: 'Playfair Display', serif; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: auto; }
-        .back { color: #d4af37; text-decoration: none; margin-bottom: 20px; display: block; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
-        img { width: 100%; border-radius: 10px; border: 1px solid #d4af37; }
-        h1 { color: #d4af37; }
-        .info-box { background: #1a1a1a; padding: 20px; border-radius: 10px; border-left: 4px solid #d4af37; }
-        .buy-box { margin-top: 20px; padding: 20px; border: 1px solid #333; border-radius: 10px; text-align: center; }
-        .controls { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; }
-        .controls button { width: 40px; height: 40px; background: #d4af37; border: none; cursor: pointer; font-size: 20px; font-weight: bold; }
-        .btn-whatsapp { background: #25D366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; text-decoration: none; display: inline-block; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>MAFU Clásico | Detalle</title>
 </head>
 <body>
+    <header class="header">
+        <div class="logo"><img src="file_000000009bac71f5a5db74bc3bed2a62.png"></div>
+        <nav class="nav"><a href="index.html">← Volver al Catálogo</a></nav>
+    </header>
 
-<div class="container">
-    <a href="index.html" class="back">← Volver al Catálogo</a>
-    
-    <div class="grid">
-        <img src="Screenshot_20260501-034528.png">
-        <div>
-            <h1>Puro Clásico</h1>
-            <p>Un equilibrio perfecto para fumadores que aprecian la suavidad con carácter.</p>
-            
-            <div class="info-box">
-                <h3>Origen del Tabaco</h3>
-                <p><b>Capa:</b> Connecticut (Ecuador)</p>
-                <p><b>Capote:</b> Valle de Jalapa (Nicaragua)</p>
-                <p><b>Tripa:</b> Selección Dominicana</p>
-                <p><b>Fortaleza:</b> Suave-Media</p>
+    <div class="container">
+        <div class="puro-layout">
+            <div>
+                <img src="Screenshot_20260501-034528.png" class="puro-img-large">
             </div>
+            <div>
+                <h1 style="color: var(--gold); font-size: 50px;">MAFU Clásico</h1>
+                <p style="font-size: 20px; margin: 20px 0; color: #ccc;">
+                    Este ejemplar es el resultado de una cosecha temprana en las laderas soleadas de Pinar del Río. 
+                    Diseñado para un tiro fácil y una combustión impecable, ofrece notas de cedro blanco y vainilla.
+                </p>
+                
+                <table class="tech-table">
+                    <tr><td><b>Vitola:</b></td><td>Robusto (50 x 124mm)</td></tr>
+                    <tr><td><b>Capa:</b></td><td>Connecticut Ecuador (Clara)</td></tr>
+                    <tr><td><b>Fortaleza:</b></td><td>Suave - Media</td></tr>
+                    <tr><td><b>Tiempo de fumada:</b></td><td>45 - 55 Minutos</td></tr>
+                    <tr><td><b>Añejamiento:</b></td><td>18 Meses en Cedro Real</td></tr>
+                </table>
 
-            <div class="buy-box">
-                <div style="font-size: 24px; color: #d4af37;">$12 USD</div>
-                <div class="controls">
-                    <button onclick="cambiar(-1)">-</button>
-                    <span id="cantidad" style="font-size: 24px;">1</span>
-                    <button onclick="cambiar(1)">+</button>
+                <div style="margin-top: 40px;">
+                    <a href="https://wa.me/56998644532?text=Deseo%20el%20MAFU%20Clasico" class="btn">Pedir por WhatsApp</a>
                 </div>
-                <button class="btn-whatsapp" onclick="pedir()">Pedir por WhatsApp</button>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-    function cambiar(val) {
-        let el = document.getElementById("cantidad");
-        let num = parseInt(el.innerText) + val;
-        if(num < 1) num = 1;
-        el.innerText = num;
-    }
-
-    function pedir() {
-        let cant = document.getElementById("cantidad").innerText;
-        let msg = `Hola MAFU, quiero pedir ${cant} unidad(es) de Puro Clásico.`;
-        window.open(`https://wa.me/56998644532?text=${encodeURIComponent(msg)}`);
-    }
-</script>
-
 </body>
 </html>
