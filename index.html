@@ -3,35 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAFU Cuban Soul | Master Edition 2026</title>
+<title>MAFU Cuban Soul | Excelencia y Tradición Tabacalera</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,900&family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-/* ================= FUNDAMENTOS Y VARIABLES ================= */
+/* ================= FUNDAMENTOS VISUALES ================= */
 :root {
     --gold: #d4af37;
-    --black: #000000;
-    --soft-black: #0a0a0a;
-    --gray-text: #888;
-    --white: #ffffff;
+    --black-pure: #000000;
+    --black-soft: #0a0a0a;
 }
 
 *{margin:0; padding:0; box-sizing:border-box;}
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--black);
+    background-color: var(--black-pure);
     color: #e0e0e0;
     font-family: 'Lato', sans-serif;
     line-height: 1.8;
+    overflow-x: hidden;
 }
 
+/* Capa de textura premium */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
-    opacity: 0.3; z-index: -1; pointer-events: none;
+    opacity: 0.4; z-index: -1; pointer-events: none;
 }
 
 h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
@@ -39,20 +39,24 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
 /* ================= NAVEGACIÓN ================= */
 .header {
     background: rgba(0,0,0,0.95);
-    padding: 20px;
+    padding: 30px 20px;
     border-bottom: 1px solid var(--gold);
     position: sticky;
     top: 0; z-index: 1000;
     text-align: center;
 }
 
-.logo img { height: 80px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.3)); }
+.logo img {
+    height: 100px;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.5));
+}
 
 .nav-container {
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 35px;
+    flex-wrap: wrap;
 }
 
 .nav-container a {
@@ -60,14 +64,17 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
     text-decoration: none;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 700;
+    letter-spacing: 4px;
+    font-weight: 900;
+    transition: 0.4s;
 }
+
+.nav-container a:hover { color: white; }
 
 /* ================= HERO ================= */
 .hero {
-    height: 60vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), 
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.95)), 
                 url('file_00000000e124720eacda71c2b88a43d3.png');
     background-attachment: fixed;
     background-size: cover;
@@ -75,15 +82,14 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
 
-.hero h1 { font-size: 80px; color: var(--gold); }
+.hero h1 { font-size: clamp(60px, 12vw, 100px); color: var(--gold); font-style: italic; text-transform: uppercase; }
 
-/* ================= SECCIÓN CORAZÓN DE LA VEGA (GRID) ================= */
+/* ================= CORAZÓN DE LA VEGA (INTERACTIVO) ================= */
 .vega-section { padding: 100px 20px; max-width: 1400px; margin: auto; }
-.section-title { text-align: center; font-size: 50px; color: var(--gold); margin-bottom: 60px; }
 
 .vega-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
@@ -96,7 +102,7 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
     border: 1px solid #222;
 }
 
-.vega-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.6; }
+.vega-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.5; }
 .vega-card:hover img { transform: scale(1.1); opacity: 0.9; }
 
 .vega-card h3 {
@@ -104,106 +110,99 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
     bottom: 20px; left: 20px;
     color: var(--gold);
     text-transform: uppercase;
+    font-size: 18px;
     letter-spacing: 2px;
 }
 
-/* ================= "PÁGINA" DE DETALLE DINÁMICO ================= */
+/* PÁGINA DE PROCESO (PANTALLA COMPLETA) */
 #process-page {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--black);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--black-pure);
     z-index: 2000;
     overflow-y: auto;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
-.close-page {
-    position: fixed;
-    top: 30px; right: 40px;
-    color: var(--gold);
-    font-size: 40px;
-    cursor: pointer;
-    font-weight: bold;
-}
+.close-btn { position: fixed; top: 40px; right: 50px; color: var(--gold); font-size: 50px; cursor: pointer; }
 
-.process-container { max-width: 1000px; margin: auto; }
-.process-container h2 { font-size: 60px; color: var(--gold); margin-bottom: 30px; }
-.process-img-big { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; margin-bottom: 40px; border: 1px solid var(--gold); }
-.process-info { font-size: 20px; color: #ccc; column-count: 1; }
-.tech-specs { 
-    margin-top: 40px; 
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    background: #0a0a0a; padding: 30px; border-radius: 10px; border-left: 5px solid var(--gold);
-}
-
-/* ================= CATÁLOGO EXPANDIDO ================= */
+/* ================= CATÁLOGO PREMIUM ================= */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    padding: 50px 20px;
-    max-width: 1400px;
-    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    padding: 80px 20px;
 }
 
 .product-card {
     background: #080808;
-    padding: 30px;
-    border-radius: 20px;
     border: 1px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 40px;
+    transition: 0.5s;
 }
 
-.product-card img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-
-.technical-data {
-    font-size: 13px;
-    margin: 15px 0;
+.technical-box {
     background: #111;
-    padding: 15px;
-    border-radius: 8px;
-    color: #999;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 14px;
+    border-left: 3px solid var(--gold);
 }
 
-.technical-data b { color: var(--gold); text-transform: uppercase; }
+.technical-box b { color: var(--gold); }
 
-/* ================= CARRITO ================= */
+/* ================= RITUAL Y GLOSARIO ================= */
+.ritual-guide {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://www.transparenttextures.com/patterns/dark-wood.png');
+    padding: 100px 20px; text-align: center;
+}
+
+.glossary { padding: 100px 20px; background: #080808; }
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.glossary-box { border: 1px solid #222; padding: 30px; border-radius: 10px; }
+.glossary-box b { color: var(--gold); display: block; margin-bottom: 10px; }
+
+/* ================= CARRITO Y BOTONES ================= */
 .cart-drawer {
-    position: fixed; right: 20px; bottom: 120px; width: 350px;
-    background: #0c0c0c; border: 2px solid var(--gold); padding: 25px;
+    position: fixed; right: 30px; bottom: 130px; width: 380px;
+    background: #0c0c0c; border: 2px solid var(--gold); padding: 30px;
     border-radius: 20px; display: none; z-index: 1001;
 }
 
-.wa-float {
-    position: fixed; bottom: 30px; right: 30px; background: #25D366;
-    width: 70px; height: 70px; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; color: white; font-size: 35px;
-    z-index: 1000; text-decoration: none;
-}
+.qty-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #333; background: transparent; color: white; cursor: pointer; }
+.btn-order { width: 100%; padding: 20px; background: var(--gold); color: black; font-weight: 900; border-radius: 50px; border: none; cursor: pointer; }
+
+.wa-float { position: fixed; bottom: 40px; right: 40px; background: #25D366; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 35px; z-index: 1000; text-decoration: none; }
+
 </style>
 </head>
 
 <body>
 
 <header class="header">
-    <div class="logo"><img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Logo"></div>
+    <div class="logo"><img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Cuban Soul"></div>
     <nav class="nav-container">
-        <a href="#origen">Procesos</a>
+        <a href="#inicio">La Casa</a>
+        <a href="#origen">El Corazón</a>
         <a href="#catalogo">Colección</a>
-        <a href="#wa">Contacto</a>
+        <a href="#ritual">El Ritual</a>
+        <a href="#glosario">Glosario</a>
     </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="inicio">
     <div class="hero-box">
-        <h1>MAFU</h1>
-        <p>Tradición • Calidad • Espíritu</p>
+        <p style="letter-spacing: 8px; text-transform: uppercase;">Establecido en 2026</p>
+        <h1>MAFU Cuban Soul</h1>
+        <p>El Humo Sagrado</p>
     </div>
 </section>
 
 <section class="vega-section" id="origen">
-    <h2 class="section-title">El Corazón de la Vega</h2>
+    <h2 style="text-align: center; font-size: 50px; color: var(--gold); margin-bottom: 60px;">El Corazón de la Vega</h2>
     <div class="vega-grid">
         <div class="vega-card" onclick="openProcess('siembra')">
             <img src="file_00000000e124720eacda71c2b88a43d3.png">
@@ -211,11 +210,11 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
         </div>
         <div class="vega-card" onclick="openProcess('curacion')">
             <img src="https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80">
-            <h3>2. Curación al Aire</h3>
+            <h3>2. Curación</h3>
         </div>
         <div class="vega-card" onclick="openProcess('fermentacion')">
             <img src="https://images.unsplash.com/photo-1610443425567-873836365440?q=80">
-            <h3>3. La Fermentación</h3>
+            <h3>3. Fermentación</h3>
         </div>
         <div class="vega-card" onclick="openProcess('escogido')">
             <img src="https://images.unsplash.com/photo-1541690161184-75cbc0386cd6?q=80">
@@ -229,140 +228,139 @@ h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
 </section>
 
 <div id="process-page">
-    <span class="close-page" onclick="closeProcess()">&times;</span>
-    <div class="process-container" id="process-content">
-        </div>
+    <span class="close-btn" onclick="closeProcess()">&times;</span>
+    <div style="max-width: 900px; margin: auto;" id="process-content"></div>
 </div>
 
 <section class="section" id="catalogo">
-    <h2 class="section-title">Colección de Autor</h2>
+    <h2 style="text-align: center; font-size: 50px; color: var(--gold); margin-bottom: 60px;">Colección Premium</h2>
     <div class="product-grid">
 
         <div class="product-card">
-            <img src="Screenshot_20260501-034528.png">
-            <h3>MAFU Clásico</h3>
-            <div class="technical-data">
+            <img src="Screenshot_20260501-034528.png" style="width: 100%; border-radius: 15px;">
+            <h3>Puro Clásico</h3>
+            <div class="technical-box">
                 <b>Vitola:</b> Robusto (50 x 124mm)<br>
-                <b>Capa:</b> Connecticut Shade (Ecuador)<br>
-                <b>Capote:</b> Habana 2000<br>
-                <b>Tripa:</b> Jalapa & Estelí (Añejado 2 años)<br>
-                <b>Fortaleza:</b> 2/5 (Suave-Media)
+                <b>Capa:</b> Connecticut Shade - Sedosa y elástica.<br>
+                <b>Tripa:</b> Selección de hojas Volado y Seco.<br>
+                <b>Añejamiento:</b> 18 meses en cedro español.
             </div>
-            <p>Un puro diseñado para el inicio del día. Sus notas a crema, frutos secos y madera clara ofrecen una combustión perfecta y ceniza sólida de color gris platino.</p>
-            <div class="qty-wrapper" style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
-                <button onclick="changeQty('p1',-1)" style="padding:10px;">-</button>
-                <span id="p1" style="font-size:20px; font-weight:bold;">1</span>
-                <button onclick="changeQty('p1',1)" style="padding:10px;">+</button>
+            <p>Perfecto para la mañana. Notas de heno, almendras y miel silvestre. Un humo blanco y cremoso.</p>
+            <div style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
+                <button class="qty-btn" onclick="changeQty('p1', -1)">-</button>
+                <span id="p1" style="font-size:24px; font-weight:bold;">1</span>
+                <button class="qty-btn" onclick="changeQty('p1', 1)">+</button>
             </div>
-            <button class="btn-order" onclick="addToCart('MAFU Clásico', 12, 'p1')" style="width:100%; padding:15px; background:var(--gold); color:black; font-weight:bold; border:none; border-radius:50px; cursor:pointer;">Añadir al Pedido ($12 USD)</button>
+            <button class="btn-order" onclick="addToCart('MAFU Clásico', 12, 'p1')">Añadir al Humidor ($12 USD)</button>
         </div>
 
         <div class="product-card">
-            <img src="Screenshot_20260501-034604.png">
-            <h3>MAFU Reserva Especial</h3>
-            <div class="technical-data">
-                <b>Vitola:</b> Toro (52 x 152mm)<br>
-                <b>Capa:</b> Habano Criollo 98<br>
-                <b>Capote:</b> Sumatra (Añejamiento extra)<br>
-                <b>Tripa:</b> Valle de Jalapa (3 años fermentación)<br>
-                <b>Fortaleza:</b> 3.5/5 (Media-Alta)
+            <img src="Screenshot_20260501-034637.png" style="width: 100%; border-radius: 15px;">
+            <h3>Puro Premium</h3>
+            <div class="technical-box">
+                <b>Vitola:</b> Churchill (47 x 178mm)<br>
+                <b>Capa:</b> Habano Maduro - Oscura y aceitosa.<br>
+                <b>Tripa:</b> 100% Ligero (Fortaleza máxima).<br>
+                <b>Añejamiento:</b> 5 años de fermentación lenta.
             </div>
-            <p>El balance perfecto. Notas marcadas de cuero, café expreso y un retrogusto dulce que recuerda al chocolate negro amargo. Una experiencia de 60 minutos de placer.</p>
-            <div class="qty-wrapper" style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
-                <button onclick="changeQty('p2',-1)" style="padding:10px;">-</button>
-                <span id="p2" style="font-size:20px; font-weight:bold;">1</span>
-                <button onclick="changeQty('p2',1)" style="padding:10px;">+</button>
+            <p>Solo para conocedores. Notas de chocolate amargo, pimienta negra y tierra húmeda de Vuelta Abajo.</p>
+            <div style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
+                <button class="qty-btn" onclick="changeQty('p3', -1)">-</button>
+                <span id="p3" style="font-size:24px; font-weight:bold;">1</span>
+                <button class="qty-btn" onclick="changeQty('p3', 1)">+</button>
             </div>
-            <button class="btn-order" onclick="addToCart('MAFU Reserva', 18, 'p2')" style="width:100%; padding:15px; background:var(--gold); color:black; font-weight:bold; border:none; border-radius:50px; cursor:pointer;">Añadir al Pedido ($18 USD)</button>
+            <button class="btn-order" onclick="addToCart('MAFU Premium', 25, 'p3')">Añadir al Humidor ($25 USD)</button>
         </div>
 
     </div>
 </section>
 
+<section class="ritual-guide" id="ritual">
+    <h2 style="color: var(--gold); font-size: 45px; margin-bottom: 50px;">El Ritual de Respeto</h2>
+    <div style="max-width: 800px; margin: auto;">
+        <h4 style="color: var(--gold);">El Corte</h4>
+        <p style="margin-bottom: 30px;">Debe ser decidido, justo por encima de la perilla. Un corte limpio garantiza el tiro perfecto.</p>
+        <h4 style="color: var(--gold);">El Encendido</h4>
+        <p style="margin-bottom: 30px;">Nunca toque el pie con la llama. Gire el puro para crear un anillo de fuego uniforme y sople suavemente.</p>
+        <h4 style="color: var(--gold);">La Despedida</h4>
+        <p>Un buen puro no se apaga; se deja morir con dignidad en el cenicero cuando llega a sus últimos centímetros.</p>
+    </div>
+</section>
+
+<section class="glossary" id="glosario">
+    <h2 style="text-align: center; color: var(--gold); margin-bottom: 50px;">Glosario para Conocedores</h2>
+    <div class="glossary-grid">
+        <div class="glossary-box"><b>Vitola de Galera</b> El formato y dimensiones físicas del puro.</div>
+        <div class="glossary-box"><b>Cepo</b> El grosor del puro medido en 64avas de pulgada.</div>
+        <div class="glossary-box"><b>Despalillo</b> El arte de retirar la vena central de la hoja de tabaco.</div>
+    </div>
+</section>
+
 <div class="cart-drawer" id="cart-drawer">
-    <h3 style="color:var(--gold); margin-bottom:15px;">Tu Selección</h3>
-    <ul id="cart-items" style="list-style:none;"></ul>
-    <div id="cart-total" style="padding-top:15px; font-weight:bold;"></div>
-    <button onclick="finishOrder()" style="width:100%; margin-top:15px; padding:15px; background:#25D366; color:white; border:none; border-radius:50px; font-weight:bold; cursor:pointer;">Confirmar WhatsApp</button>
+    <h3 style="color: var(--gold); text-align: center;">Tu Humidor</h3>
+    <ul id="cart-items" style="list-style: none; margin: 20px 0;"></ul>
+    <div id="cart-total" style="font-weight: bold; border-top: 1px solid #333; padding-top: 15px;"></div>
+    <button class="btn-order" style="background: #25D366; color: white; margin-top: 20px;" onclick="finishOrder()">Pedir por WhatsApp</button>
 </div>
 
 <a href="https://wa.me/56998644532" class="wa-float" target="_blank">💬</a>
 
 <script>
-// BASE DE DATOS DE PROCESOS (PARA LA REDIRECCIÓN SIMULADA)
+// DATA PARA LOS PROCESOS
 const processData = {
     siembra: {
         title: "La Siembra y el Terroir",
-        img: "file_00000000e124720eacda71c2b88a43d3.png",
-        desc: "Todo comienza en el suelo. El ciclo de la planta de tabaco dura unos 17 semanas. En MAFU, utilizamos el método de 'Tapado' para nuestras hojas de capa, protegiéndolas bajo finas telas de gasa que filtran el sol y mantienen la humedad, logrando una hoja elástica y sedosa. El suelo es arado por bueyes para evitar la compactación mecánica y preservar los minerales nitratados.",
-        specs: ["Humedad ideal: 70%", "Suelo: Arcilloso-Rojizo", "Tiempo: 120 días"]
+        text: "En MAFU, el proceso comienza en las tierras rojas de Pinar del Río. Usamos el método de 'Tapado' para las hojas de capa, protegiéndolas con telas para que crezcan finas y elásticas. Cada planta es monitoreada individualmente para asegurar el nivel exacto de nitratos.",
+        stats: ["Suelo: Arcilloso", "Fase: 120 días", "Técnica: Tapado"]
     },
     curacion: {
-        title: "La Curación al Aire",
-        img: "https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80",
-        desc: "Tras la cosecha, las hojas se llevan a las Casas de Tabaco, construcciones de madera alineadas de este a oeste para que el sol caliente uniformemente. Las hojas se ensartan por pares y se cuelgan en cujes. Durante este proceso, la hoja pierde el 80% de su agua y cambia de verde a un color canela, desarrollando los primeros aromas químicos naturales.",
-        specs: ["Proceso: Natural", "Fase: Oxidación", "Duración: 50-60 días"]
+        title: "Curación al Aire",
+        text: "Las hojas se cuelgan en pares en los 'Cujes' dentro de las Casas de Tabaco. Aquí pierden su humedad de forma natural, transformando la clorofila en aceites esenciales. Es un proceso de oxidación lenta que define el color canela de MAFU.",
+        stats: ["Humedad: 75%", "Días: 50", "Aire: Natural"]
     },
     fermentacion: {
-        title: "La Fermentación Sagrada",
-        img: "https://images.unsplash.com/photo-1610443425567-873836365440?q=80",
-        desc: "Es el paso que diferencia a un puro MAFU de un tabaco común. Las hojas se apilan en 'pajonales' y, bajo su propio peso, generan calor. Este calor elimina las impurezas, el amoniaco y las resinas amargas. Realizamos hasta tres fermentaciones para nuestras hojas de fortaleza alta, asegurando que el humo sea suave en garganta pero potente en sabor.",
-        specs: ["Calor max: 42°C", "Control: Manual diario", "Elimina: Alquitrán y Amoniaco"]
+        title: "La Fermentación",
+        text: "La etapa más crítica. Las hojas se apilan en 'Pajonales'. El calor natural elimina el amoniaco y suaviza las resinas. Realizamos hasta tres fermentaciones para eliminar cualquier rastro de amargura y resaltar el dulzor noble del tabaco.",
+        stats: ["Calor: 42°C", "Fases: 3 etapas", "Resultado: Suavidad"]
     },
     escogido: {
-        title: "El Escogido y Despalillo",
-        img: "https://images.unsplash.com/photo-1541690161184-75cbc0386cd6?q=80",
-        desc: "Las hojas se clasifican por tamaño, color y textura. Las mejores se destinan a la 'Capa' (la cara visible del puro). En el despalillo, manos expertas retiran la vena central de la hoja con una precisión milimétrica para que el puro no tenga 'nudos' que impidan el tiro del aire.",
-        specs: ["Categorías: 32 tipos", "Manual: 100%", "Destino: Capa, Capote o Tripa"]
+        title: "El Escogido",
+        text: "Manos expertas clasifican cada hoja por color, tamaño y textura. Solo el 10% de la cosecha califica para ser Capa MAFU. Aquí se realiza el despalillo, retirando la vena central para asegurar un tiro perfecto sin nudos.",
+        stats: ["Clases: 32 tipos", "Precisión: Milimétrica", "Filtro: Calidad 100%"]
     },
     torcido: {
-        title: "El Torcido Final",
-        img: "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?q=80",
-        desc: "En la galería de torcido, el maestro usa su chaveta para cortar la hoja de capa. La tripa larga se envuelve en el capote y se coloca en moldes de madera. Finalmente, se aplica la 'perilla' o cabeza del puro con goma vegetal natural. Cada puro es una escultura única hecha para morir en el fuego.",
-        specs: ["Tipo: Tripa Larga", "Herramienta: Chaveta", "Acabado: Perilla triple"]
+        title: "El Torcido",
+        text: "Nuestros torcedores usan la técnica de 'Tripa Larga'. Enrollan las hojas de Volado, Seco y Ligero como un acordeón para permitir el flujo de aire. El puro se sella con una perilla triple usando goma vegetal orgánica.",
+        stats: ["Método: Manual", "Acabado: Perilla Triple", "Control: Tiro por succión"]
     }
 };
 
 function openProcess(id) {
     const data = processData[id];
-    const container = document.getElementById('process-content');
-    container.innerHTML = `
-        <h2>${data.title}</h2>
-        <img src="${data.img}" class="process-img-big">
-        <div class="process-info">
-            <p>${data.desc}</p>
+    document.getElementById('process-content').innerHTML = `
+        <h2 style="font-size: 50px; color: var(--gold); margin-bottom: 30px;">${data.title}</h2>
+        <p style="font-size: 22px; color: #ccc; margin-bottom: 40px;">${data.text}</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--gold); padding-top: 30px;">
+            ${data.stats.map(s => `<div style="text-align:center;"><b>${s}</b></div>`).join('')}
         </div>
-        <div class="tech-specs">
-            <div><b>Técnica:</b> ${data.specs[0]}</div>
-            <div><b>Estado:</b> ${data.specs[1]}</div>
-            <div><b>Tiempo:</b> ${data.specs[2]}</div>
-        </div>
-        <button onclick="closeProcess()" style="margin-top:40px; padding:15px 30px; background:var(--gold); border:none; cursor:pointer; font-weight:bold;">Volver a la Galería</button>
     `;
     document.getElementById('process-page').style.display = 'block';
-    document.body.style.overflow = 'hidden';
 }
 
-function closeProcess() {
-    document.getElementById('process-page').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
+function closeProcess() { document.getElementById('process-page').style.display = 'none'; }
 
-// LÓGICA DE CARRITO
+// CARRITO
 let cart = [];
-const rate = 950;
-
 function changeQty(id, val) {
     let el = document.getElementById(id);
-    let n = parseInt(el.innerText) + val;
-    if(n < 1) n = 1;
+    let n = Math.max(1, parseInt(el.innerText) + val);
     el.innerText = n;
 }
 
 function addToCart(name, price, id) {
     let q = parseInt(document.getElementById(id).innerText);
     let item = cart.find(x => x.name === name);
-    if(item) { item.qty += q; } else { cart.push({name, price, qty: q}); }
+    if(item) item.qty += q; else cart.push({name, price, qty: q});
     document.getElementById('cart-drawer').style.display = 'block';
     updateUI();
 }
@@ -372,16 +370,15 @@ function updateUI() {
     list.innerHTML = "";
     let total = 0;
     cart.forEach(i => {
-        list.innerHTML += `<li>${i.name} x${i.qty} - $${i.price * i.qty}</li>`;
+        list.innerHTML += `<li style="margin-bottom:10px;">${i.name} (x${i.qty}) - $${i.price * i.qty} USD</li>`;
         total += i.price * i.qty;
     });
-    document.getElementById('cart-total').innerHTML = `Total: $${total} USD / $${(total*rate).toLocaleString()} CLP`;
+    document.getElementById('cart-total').innerHTML = `Total: $${total} USD / $${(total*950).toLocaleString()} CLP`;
 }
 
 function finishOrder() {
-    let msg = "Hola MAFU, mi pedido es:%0A";
-    cart.forEach(i => msg += `- ${i.name} x${i.qty}%0A`);
-    msg += `%0ATotal: ${document.getElementById('cart-total').innerText}`;
+    let msg = "Hola MAFU, deseo pedir:%0A";
+    cart.forEach(i => msg += `- ${i.name} (x${i.qty})%0A`);
     window.open(`https://wa.me/56998644532?text=${msg}`);
 }
 </script>
