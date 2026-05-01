@@ -463,7 +463,70 @@ function closeInternal() {
   document.getElementById('internal-overlay').style.display = 'none';  
   document.body.style.overflow = 'auto';  
 }  
-  
+<!-- SOLO TE MUESTRO LAS PARTES MODIFICADAS PARA QUE LO PEGUES EN TU CÓDIGO -->
+
+<!-- ===================== PRODUCTO 1 ===================== -->
+<div class="card" onclick="goToPage('puro-clasico.html')" style="cursor:pointer;">
+  <img src="Screenshot_20260501-034528.png" onclick="event.stopPropagation(); goToPage('puro-clasico.html')" style="cursor:pointer;">
+  <h3>MAFU Clásico</h3>
+
+  <div style="display:flex; align-items:center; gap:5px;">
+    <button onclick="event.stopPropagation(); changeQty('q_clasico', -1)">-</button>
+    <input type="number" value="1" min="1" id="q_clasico">
+    <button onclick="event.stopPropagation(); changeQty('q_clasico', 1)">+</button>
+  </div>
+
+  <button onclick="event.stopPropagation(); addToCart('MAFU Clásico', 12, 'q_clasico')">
+    Añadir
+  </button>
+</div>
+
+<!-- ===================== PRODUCTO 2 ===================== -->
+<div class="card" onclick="goToPage('puro-reserva.html')" style="cursor:pointer;">
+  <img src="Screenshot_20260501-034604.png" onclick="event.stopPropagation(); goToPage('puro-reserva.html')" style="cursor:pointer;">
+  <h3>MAFU Reserva</h3>
+
+  <div style="display:flex; align-items:center; gap:5px;">
+    <button onclick="event.stopPropagation(); changeQty('q_reserva', -1)">-</button>
+    <input type="number" value="1" min="1" id="q_reserva">
+    <button onclick="event.stopPropagation(); changeQty('q_reserva', 1)">+</button>
+  </div>
+
+  <button onclick="event.stopPropagation(); addToCart('MAFU Reserva', 18, 'q_reserva')">
+    Añadir
+  </button>
+</div>
+
+<!-- ===================== PRODUCTO 3 ===================== -->
+<div class="card" onclick="goToPage('puro-premium.html')" style="cursor:pointer;">
+  <img src="Screenshot_20260501-034637.png" onclick="event.stopPropagation(); goToPage('puro-premium.html')" style="cursor:pointer;">
+  <h3>MAFU Premium</h3>
+
+  <div style="display:flex; align-items:center; gap:5px;">
+    <button onclick="event.stopPropagation(); changeQty('q_premium', -1)">-</button>
+    <input type="number" value="1" min="1" id="q_premium">
+    <button onclick="event.stopPropagation(); changeQty('q_premium', 1)">+</button>
+  </div>
+
+  <button onclick="event.stopPropagation(); addToCart('MAFU Premium', 25, 'q_premium')">
+    Añadir
+  </button>
+</div>
+
+<!-- ===================== SCRIPT (AGREGAR AL FINAL) ===================== -->
+<script>
+function changeQty(id, delta) {
+  const input = document.getElementById(id);
+  let value = parseInt(input.value) || 1;
+  value += delta;
+  if (value < 1) value = 1;
+  input.value = value;
+}
+
+function goToPage(url) {
+  window.location.href = url;
+}
+</script>
 // LÓGICA DE CARRITO  
 let cart = [];  
 const tasaCLP = 950;  
