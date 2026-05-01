@@ -122,7 +122,7 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     text-transform: uppercase;
 }
 
-/* ================= GALERÍA DE HERENCIA Y CULTIVOS ================= */
+/* ================= SECCIÓN INTERACTIVA: CORAZÓN DE LA VEGA ================= */
 .heritage-gallery {
     padding: 120px 20px;
     max-width: 1400px;
@@ -143,6 +143,7 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     overflow: hidden;
     border: 1px solid #222;
     position: relative;
+    cursor: pointer;
 }
 
 .gallery-item img {
@@ -167,6 +168,35 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     text-align: center;
+    pointer-events: none;
+}
+
+/* Panel de Información Detallada (Hidden by default) */
+.detail-panel {
+    display: none;
+    margin-top: 40px;
+    padding: 50px;
+    background: #0a0a0a;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    animation: fadeIn 0.8s ease;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.detail-content h3 { color: var(--gold); font-size: 35px; margin-bottom: 20px; }
+.detail-content p { font-size: 18px; color: #ccc; line-height: 1.8; }
+.detail-content ul { color: var(--gold); list-style: none; margin-top: 20px; }
+.detail-content li { margin-bottom: 10px; font-weight: 700; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ================= CATÁLOGO DE PRODUCTOS ================= */
@@ -224,8 +254,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     transition: 1s;
 }
 
-.product-card:hover .product-image-container img { transform: scale(1.15); }
-
 .product-info h3 { font-size: 35px; color: var(--gold); margin-bottom: 10px; }
 .product-info p { color: #999; font-size: 16px; margin-bottom: 25px; min-height: 100px; }
 
@@ -242,7 +270,7 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
 .price-usd { font-size: 32px; color: var(--gold); font-weight: 900; }
 .price-clp { font-size: 18px; color: #555; }
 
-/* CONTROLES DE CANTIDAD */
+/* CONTROLES */
 .qty-wrapper {
     display: flex;
     align-items: center;
@@ -263,7 +291,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
 }
 
 .qty-btn:hover { background: var(--gold); color: black; border-color: var(--gold); }
-
 .qty-num { font-size: 25px; font-weight: bold; width: 40px; text-align: center; }
 
 .btn-order {
@@ -282,7 +309,7 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
 
 .btn-order:hover { background: white; transform: scale(1.02); }
 
-/* ================= HISTORIA Y TRADICIÓN ================= */
+/* ================= HISTORIA Y RITUAL ================= */
 .history-section { background: #050505; padding: 120px 20px; }
 
 .history-grid {
@@ -296,7 +323,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
 .history-text h4 { color: var(--gold); font-size: 28px; margin-bottom: 20px; }
 .history-text p { font-size: 17px; color: #888; margin-bottom: 20px; text-align: justify; }
 
-/* ================= EL RITUAL DEL FUMADOR ================= */
 .ritual-guide {
     background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), 
                 url('https://www.transparenttextures.com/patterns/dark-wood.png');
@@ -360,7 +386,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     transition: 0.3s;
 }
 
-/* ================= BOTONES FLOTANTES ================= */
 .wa-float {
     position: fixed;
     bottom: 40px; right: 40px;
@@ -374,8 +399,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     text-decoration: none;
     transition: 0.4s;
 }
-
-.wa-float:hover { transform: scale(1.1) rotate(15deg); }
 
 </style>
 </head>
@@ -409,19 +432,26 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
         <span>Nuestras Raíces</span>
         El Corazón de la Vega
     </h2>
+    <p style="text-align: center; color: #666; margin-bottom: 40px;">Haga clic en una etapa para descubrir sus secretos</p>
+    
     <div class="gallery-grid">
-        <div class="gallery-item">
+        <div class="gallery-item" onclick="showDetail('cultivo')">
             <img src="file_00000000e124720eacda71c2b88a43d3.png" alt="Cultivos de Tabaco">
-            <div class="gallery-caption">Vegas de Tabaco Negro</div>
+            <div class="gallery-caption">La Siembra y el Terroir</div>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item" onclick="showDetail('curacion')">
             <img src="https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80&w=1974&auto=format&fit=crop" alt="Casa de Tabaco">
-            <div class="gallery-caption">Curación en Casa de Tabaco</div>
+            <div class="gallery-caption">Curación y Aire</div>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item" onclick="showDetail('arte')">
             <img src="https://images.unsplash.com/photo-1610443425567-873836365440?q=80&w=2070&auto=format&fit=crop" alt="Maestro Torcedor">
             <div class="gallery-caption">El Arte del Torcido</div>
         </div>
+    </div>
+
+    <div class="detail-panel" id="detail-panel">
+        <div class="detail-content" id="detail-content">
+            </div>
     </div>
 </section>
 
@@ -434,15 +464,13 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     <div class="product-grid">
 
         <div class="product-card">
-            <a href="puro-clasico.html" style="text-decoration:none; color:inherit;">
-                <div class="product-image-container">
-                    <img src="Screenshot_20260501-034528.png" alt="Puro Clásico">
-                </div>
-                <div class="product-info">
-                    <h3>Puro Clásico</h3>
-                    <p><b>Perfil Sensorial:</b> Una armonía de fortaleza suave-media. Notas de heno recién cortado, almendras tostadas y un dulzor sutil que recuerda a la miel de acacia.</p>
-                </div>
-            </a>
+            <div class="product-image-container">
+                <img src="Screenshot_20260501-034528.png" alt="Puro Clásico">
+            </div>
+            <div class="product-info">
+                <h3>Puro Clásico</h3>
+                <p><b>Perfil Sensorial:</b> Una armonía de fortaleza suave-media. Notas de heno recién cortado, almendras tostadas y un dulzor sutil que recuerda a la miel de acacia.</p>
+            </div>
             <div class="price-row">
                 <span class="price-usd">$12 USD</span>
                 <span class="price-clp">($11.400 CLP)</span>
@@ -456,15 +484,13 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
         </div>
 
         <div class="product-card">
-            <a href="puro-reserva.html" style="text-decoration:none; color:inherit;">
-                <div class="product-image-container">
-                    <img src="Screenshot_20260501-034604.png" alt="Puro Reserva">
-                </div>
-                <div class="product-info">
-                    <h3>Puro Reserva</h3>
-                    <p><b>Perfil Sensorial:</b> Fortaleza media-alta. Añejamiento de 3 años. Paleta compleja de cuero noble, café expreso y toques de cedro antiguo.</p>
-                </div>
-            </a>
+            <div class="product-image-container">
+                <img src="Screenshot_20260501-034604.png" alt="Puro Reserva">
+            </div>
+            <div class="product-info">
+                <h3>Puro Reserva</h3>
+                <p><b>Perfil Sensorial:</b> Fortaleza media-alta. Añejamiento de 3 años. Paleta compleja de cuero noble, café expreso y toques de cedro antiguo.</p>
+            </div>
             <div class="price-row">
                 <span class="price-usd">$18 USD</span>
                 <span class="price-clp">($17.100 CLP)</span>
@@ -478,15 +504,13 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
         </div>
 
         <div class="product-card">
-            <a href="puro-premium.html" style="text-decoration:none; color:inherit;">
-                <div class="product-image-container">
-                    <img src="Screenshot_20260501-034637.png" alt="Puro Premium">
-                </div>
-                <div class="product-info">
-                    <h3>Puro Premium</h3>
-                    <p><b>Perfil Sensorial:</b> El pináculo de la fortaleza. Carácter terroso, con destellos de chocolate amargo, pimienta negra y tierra húmeda.</p>
-                </div>
-            </a>
+            <div class="product-image-container">
+                <img src="Screenshot_20260501-034637.png" alt="Puro Premium">
+            </div>
+            <div class="product-info">
+                <h3>Puro Premium</h3>
+                <p><b>Perfil Sensorial:</b> El pináculo de la fortaleza. Carácter terroso, con destellos de chocolate amargo, pimienta negra y tierra húmeda.</p>
+            </div>
             <div class="price-row">
                 <span class="price-usd">$25 USD</span>
                 <span class="price-clp">($23.750 CLP)</span>
@@ -510,11 +534,11 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     <div class="history-grid">
         <div class="history-text">
             <h4>Origen de Excelencia</h4>
-            <p>Cuba no es solo la cuna del tabaco; es el único lugar donde suelo, clima, conocimiento y pasión convergen. En MAFU, trabajamos exclusivamente con hojas de vegas de primera categoría, cuidadas como tesoros individuales.</p>
+            <p>Cuba no es solo la cuna del tabaco; es el único lugar donde suelo, clima, conocimiento y pasión convergen. En MAFU, trabajamos exclusivamente con hojas de vegas de primera categoría.</p>
         </div>
         <div class="history-text">
             <h4>El Arte de la Fermentación</h4>
-            <p>Nuestras hojas descansan en "tercios" durante meses. Este proceso natural elimina amoníacos y resinas amargas, dejando solo los aceites esenciales que definen nuestra firma aromática.</p>
+            <p>Nuestras hojas descansan en "tercios" durante meses. Este proceso natural elimina amoníacos y resinas amargas, dejando solo los aceites esenciales finales.</p>
         </div>
     </div>
 </section>
@@ -531,10 +555,6 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     <div class="ritual-item">
         <h5>2. El Encendido de Respeto</h5>
         <p>Gire el puro sobre la llama sin tocarla directamente. Sople el pie para verificar el encendido uniforme.</p>
-    </div>
-    <div class="ritual-item">
-        <h5>3. El Maridaje de Oro</h5>
-        <p>Desde rones añejos hasta whiskies ahumados o un espresso ristretto intenso.</p>
     </div>
 </section>
 
@@ -554,54 +574,4 @@ h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
     <button class="wa-finish-btn" onclick="finishOrder()">Finalizar Pedido vía WhatsApp</button>
 </div>
 
-<footer style="padding: 100px 20px; text-align: center; border-top: 1px solid #111; background: #000;">
-    <img src="file_000000009bac71f5a5db74bc3bed2a62.png" style="height: 60px; opacity: 0.5; margin-bottom: 30px;">
-    <p style="color: var(--gold); letter-spacing: 5px; font-weight: 700;">MAFU CUBAN SOUL</p>
-    <p style="color: #444; font-size: 13px; margin-top: 20px;">Venta exclusiva para mayores de 18 años. &copy; 2026</p>
-</footer>
-
-<a href="https://wa.me/56998644532" class="wa-float" target="_blank">💬</a>
-
-<script>
-    let cart = [];
-    const clpRate = 950;
-
-    function changeQty(id, val) {
-        let el = document.getElementById(id);
-        let current = parseInt(el.innerText) + val;
-        if (current < 1) current = 1;
-        el.innerText = current;
-    }
-
-    function addToCart(name, price, id) {
-        let qty = parseInt(document.getElementById(id).innerText);
-        let existing = cart.find(x => x.name === name);
-        if (existing) { existing.qty += qty; } else { cart.push({ name, price, qty }); }
-        document.getElementById("cart-drawer").style.display = "block";
-        updateUI();
-    }
-
-    function updateUI() {
-        let list = document.getElementById("cart-items");
-        list.innerHTML = "";
-        let totalUSD = 0;
-        cart.forEach((item) => {
-            list.innerHTML += `<li style="margin-bottom: 10px; display: flex; justify-content: space-between;">
-                <div><b>${item.name}</b> (x${item.qty})</div>
-                <div style="color: var(--gold);">$${item.price * item.qty} USD</div>
-            </li>`;
-            totalUSD += item.price * item.qty;
-        });
-        document.getElementById("cart-total").innerHTML = `<span style="color: var(--gold);">TOTAL: $${totalUSD} USD</span><br><small>$${(totalUSD * clpRate).toLocaleString('es-CL')} CLP</small>`;
-    }
-
-    function finishOrder() {
-        let msg = "Hola MAFU Cuban Soul, deseo pedir:%0A";
-        cart.forEach(item => { msg += `• ${item.name} (x${item.qty})%0A`; });
-        msg += `%0A${document.getElementById("cart-total").innerText.replace(/<[^>]*>?/gm, '')}`;
-        window.open(`https://wa.me/56998644532?text=${msg}`);
-    }
-</script>
-
-</body>
-</html>
+<footer style="padding: 100px 20px; text-align: center; border-top: 1px solid #111; background:
