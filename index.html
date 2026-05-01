@@ -3,266 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | Catálogo Maestro de Tabacos</title>
+    <title>MAFU | Catálogo Maestro</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --oro: #c5a059;
             --negro: #050505;
-            --gris: #121212;
-            --papel: #f4f1ea;
-            --fuente-titulo: 'Cinzel', serif;
-            --fuente-texto: 'Montserrat', sans-serif;
+            --gris-box: #0f0f0f;
+            --borde: #1a1a1a;
+            --blanco-humo: #f4f1ea;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--negro); color: var(--papel); font-family: var(--fuente-texto); overflow-x: hidden; }
+        body { 
+            background-color: var(--negro); 
+            color: var(--blanco-humo); 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
 
-        /* HEADER & LOGO CORRECTO */
-        .header {
+        /* --- HEADER & LOGO --- */
+        .navbar {
             position: fixed;
             top: 0; width: 100%;
-            padding: 15px 50px;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(5, 5, 5, 0.98);
+            border-bottom: 1px solid var(--borde);
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.95);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-            backdrop-filter: blur(10px);
         }
 
-        .logo-box { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-img { height: 65px; width: auto; object-fit: contain; }
-        .logo-name { font-family: var(--fuente-titulo); color: var(--oro); font-size: 28px; letter-spacing: 4px; font-weight: 900; }
+        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand img { height: 60px; width: auto; }
+        .brand span { 
+            font-family: 'Cinzel', serif; 
+            color: var(--oro); 
+            font-size: 26px; 
+            letter-spacing: 4px; 
+        }
 
-        /* CONTENEDOR PRINCIPAL */
-        .container { max-width: 1300px; margin: 150px auto 100px; padding: 0 20px; }
-        .section-intro { text-align: center; margin-bottom: 80px; }
-        .section-intro h2 { font-family: var(--fuente-titulo); color: var(--oro); font-size: 45px; margin-bottom: 10px; }
-        .section-intro p { opacity: 0.5; letter-spacing: 5px; text-transform: uppercase; font-size: 12px; }
+        .cart-status { 
+            color: var(--oro); 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 13px;
+        }
 
-        /* RECUADROS DETALLADOS (LA ESENCIA) */
-        .cava-grid {
+        /* --- LAYOUT --- */
+        .main-container {
+            max-width: 1400px;
+            margin: 140px auto 100px;
+            padding: 0 30px;
+        }
+
+        .intro { text-align: center; margin-bottom: 60px; }
+        .intro h1 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 40px; margin-bottom: 10px; }
+        .intro p { opacity: 0.4; letter-spacing: 8px; text-transform: uppercase; font-size: 11px; }
+
+        /* --- RECUADROS DETALLADOS (ESENCIA) --- */
+        .grid-puros {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 25px;
         }
 
-        .puro-card {
-            background: var(--gris);
-            border: 1px solid #222;
-            padding: 30px;
+        .card-puro {
+            background: var(--gris-box);
+            border: 1px solid var(--borde);
+            padding: 25px;
             display: grid;
             grid-template-columns: 140px 1fr;
-            gap: 25px;
-            transition: 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            gap: 20px;
             cursor: pointer;
-            position: relative;
+            transition: 0.3s ease;
         }
 
-        .puro-card:hover { border-color: var(--oro); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card-puro:hover { border-color: var(--oro); transform: translateY(-3px); }
 
-        .puro-img-box { background: #000; display: flex; align-items: center; justify-content: center; padding: 10px; border: 1px solid #1a1a1a; }
-        .puro-img-box img { width: 100%; height: 220px; object-fit: contain; }
+        .img-wrap { 
+            background: #000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border: 1px solid #151515;
+        }
+        .img-wrap img { width: 90%; height: 230px; object-fit: contain; }
 
-        .puro-info h3 { font-family: var(--fuente-titulo); color: var(--oro); font-size: 22px; margin-bottom: 15px; }
+        .info-wrap h3 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--oro); 
+            font-size: 19px; 
+            margin-bottom: 15px; 
+        }
 
-        /* TABLA DE INFORMACIÓN TÉCNICA */
-        .tech-data { width: 100%; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-collapse: collapse; }
-        .tech-data tr { border-bottom: 1px solid #1a1a1a; }
-        .tech-data td { padding: 8px 0; }
-        .tech-data td.label { color: var(--oro); font-weight: 700; width: 40%; }
-        .tech-data td.value { color: #ccc; text-align: right; }
+        .data-table { width: 100%; font-size: 11px; text-transform: uppercase; border-collapse: collapse; }
+        .data-table tr { border-bottom: 1px dotted #222; }
+        .data-table td { padding: 7px 0; }
+        .data-table .label { color: var(--oro); font-weight: 700; opacity: 0.8; }
+        .data-table .val { text-align: right; color: #999; }
 
-        .price-tag { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .price-tag b { font-size: 24px; color: var(--papel); font-weight: 300; }
-        .btn-add { background: var(--oro); color: #000; border: none; padding: 10px 20px; font-weight: 700; font-size: 10px; cursor: pointer; }
+        .price-row { 
+            margin-top: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .price-row b { font-size: 22px; font-weight: 300; }
 
-        /* MODAL (LEVANTAR INFORMACIÓN) */
+        .btn-buy { 
+            background: var(--oro); 
+            color: #000; 
+            border: none; 
+            padding: 8px 15px; 
+            font-weight: 700; 
+            font-size: 10px; 
+            cursor: pointer; 
+        }
+
+        /* --- MODAL (SISTEMA DE LEVANTAR INFORMACIÓN) --- */
         .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); z-index: 5000; padding: 50px;
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); 
+            z-index: 2000;
         }
-        .modal-content {
-            max-width: 1000px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; height: 100%;
+        .modal-inner {
+            max-width: 1100px; 
+            margin: 80px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px; 
+            padding: 40px;
+            align-items: center;
         }
-        .modal-close { position: absolute; top: 40px; right: 40px; color: var(--oro); font-size: 30px; cursor: pointer; }
+        .close-btn { position: absolute; top: 30px; right: 50px; color: var(--oro); font-size: 35px; cursor: pointer; }
 
-        /* CARRITO */
+        /* --- CARRITO --- */
         #cart-panel {
-            position: fixed; top: 0; right: -400px; width: 400px; height: 100vh;
-            background: #080808; z-index: 6000; padding: 40px; transition: 0.5s;
-            border-left: 1px solid var(--oro);
+            position: fixed; top: 0; right: -450px; width: 450px; height: 100vh;
+            background: #080808; border-left: 1px solid var(--oro);
+            z-index: 3000; padding: 40px; transition: 0.4s;
         }
         #cart-panel.open { right: 0; }
 
-        .wa-btn {
-            display: block; width: 100%; background: #25d366; color: #fff; text-align: center;
-            padding: 20px; text-decoration: none; font-weight: 700; margin-top: 30px;
+        .wa-link {
+            display: block; width: 100%; background: #25d366; color: #fff;
+            text-align: center; padding: 18px; text-decoration: none;
+            font-weight: 700; margin-top: 25px; border-radius: 2px;
         }
 
-        @media (max-width: 800px) {
-            .puro-card { grid-template-columns: 1fr; text-align: center; }
-            .modal-content { grid-template-columns: 1fr; padding-top: 100px; overflow-y: auto; }
+        @media (max-width: 900px) {
+            .card-puro, .modal-inner { grid-template-columns: 1fr; }
+            .navbar { padding: 15px 20px; }
+            #cart-panel { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <a href="#" class="logo-box">
-        <img src="file_000000009bac.png" alt="MAFU" class="logo-img">
-        <span class="logo-name">MAFU</span>
+<header class="navbar">
+    <a href="#" class="brand">
+        <img src="file_000000009bac.png" alt="MAFU">
+        <span>MAFU</span>
     </a>
-    <div onclick="toggleCart()" style="cursor:pointer; color:var(--oro);">
-        CARRITO (<span id="cart-count">0</span>)
+    <div class="cart-status" onclick="toggleCart()">
+        MI HUMIDOR (<span id="count">0</span>)
     </div>
 </header>
 
-<div class="container">
-    <div class="section-intro">
-        <p>Tradición y Legado</p>
-        <h2>Nuestra Cava</h2>
+<div class="main-container">
+    <div class="intro">
+        <p>Selección Especial 2026</p>
+        <h1>La Cava Maestra</h1>
     </div>
 
-    <div class="cava-grid">
-        <div class="puro-card" onclick="openDetails('clasico')">
-            <div class="puro-img-box">
-                <img src="Screenshot_20260501-034528.png">
-            </div>
-            <div class="puro-info">
+    <div class="grid-puros">
+        <div class="card-puro" onclick="showInfo('clasico')">
+            <div class="img-wrap"><img src="Screenshot_20260501-034528.png"></div>
+            <div class="info-wrap">
                 <h3>MAFU Clásico</h3>
-                <table class="tech-data">
-                    <tr><td class="label">Tamaño</td><td class="value">Robusto</td></tr>
-                    <tr><td class="label">Diámetro</td><td class="value">50 (Cepo)</td></tr>
-                    <tr><td class="label">Añejamiento</td><td class="value">2 Años</td></tr>
-                    <tr><td class="label">Maridaje</td><td class="value">Café / Ron</td></tr>
+                <table class="data-table">
+                    <tr><td class="label">Tamaño</td><td class="val">Robusto</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="val">50 Cepo</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="val">2 Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="val">Ron / Café</td></tr>
                 </table>
-                <div class="price-tag">
+                <div class="price-row">
                     <b>$12 USD</b>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Clásico', 12)">AÑADIR</button>
+                    <button class="btn-buy" onclick="event.stopPropagation(); buy('MAFU Clásico', 12)">AÑADIR</button>
                 </div>
             </div>
         </div>
 
-        <div class="puro-card" onclick="openDetails('reserva')">
-            <div class="puro-img-box">
-                <img src="Screenshot_20260501-034604.png">
-            </div>
-            <div class="puro-info">
+        <div class="card-puro" onclick="showInfo('reserva')">
+            <div class="img-wrap"><img src="Screenshot_20260501-034604.png"></div>
+            <div class="info-wrap">
                 <h3>MAFU Reserva</h3>
-                <table class="tech-data">
-                    <tr><td class="label">Tamaño</td><td class="value">Toro</td></tr>
-                    <tr><td class="label">Diámetro</td><td class="value">52 (Cepo)</td></tr>
-                    <tr><td class="label">Añejamiento</td><td class="value">4 Años</td></tr>
-                    <tr><td class="label">Maridaje</td><td class="value">Whisky</td></tr>
+                <table class="data-table">
+                    <tr><td class="label">Tamaño</td><td class="val">Toro</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="val">52 Cepo</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="val">4 Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="val">Whisky Ahumado</td></tr>
                 </table>
-                <div class="price-tag">
+                <div class="price-row">
                     <b>$18 USD</b>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Reserva', 18)">AÑADIR</button>
+                    <button class="btn-buy" onclick="event.stopPropagation(); buy('MAFU Reserva', 18)">AÑADIR</button>
                 </div>
             </div>
         </div>
 
-        <div class="puro-card" onclick="openDetails('premium')">
-            <div class="puro-img-box">
-                <img src="Screenshot_20260501-034637.png">
-            </div>
-            <div class="puro-info">
+        <div class="card-puro" onclick="showInfo('premium')">
+            <div class="img-wrap"><img src="Screenshot_20260501-034637.png"></div>
+            <div class="info-wrap">
                 <h3>MAFU Premium</h3>
-                <table class="tech-data">
-                    <tr><td class="label">Tamaño</td><td class="value">Churchill</td></tr>
-                    <tr><td class="label">Diámetro</td><td class="value">48 (Cepo)</td></tr>
-                    <tr><td class="label">Añejamiento</td><td class="value">5+ Años</td></tr>
-                    <tr><td class="label">Maridaje</td><td class="value">Cognac</td></tr>
+                <table class="data-table">
+                    <tr><td class="label">Tamaño</td><td class="val">Churchill</td></tr>
+                    <tr><td class="label">Diámetro</td><td class="val">48 Cepo</td></tr>
+                    <tr><td class="label">Añejamiento</td><td class="val">5+ Años</td></tr>
+                    <tr><td class="label">Maridaje</td><td class="val">Cognac XO</td></tr>
                 </table>
-                <div class="price-tag">
+                <div class="price-row">
                     <b>$25 USD</b>
-                    <button class="btn-add" onclick="event.stopPropagation(); addToCart('MAFU Premium', 25)">AÑADIR</button>
+                    <button class="btn-buy" onclick="event.stopPropagation(); buy('MAFU Premium', 25)">AÑADIR</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="puro-modal" class="modal">
-    <span class="modal-close" onclick="closeDetails()">✕</span>
-    <div id="modal-body" class="modal-content">
+<div id="modal" class="modal">
+    <span class="close-btn" onclick="hideInfo()">✕</span>
+    <div id="modal-content" class="modal-inner">
         </div>
 </div>
 
 <div id="cart-panel">
-    <h3 style="color:var(--oro); font-family:var(--fuente-titulo); margin-bottom:30px;">PEDIDO</h3>
-    <div id="cart-items" style="max-height:60vh; overflow-y:auto;"></div>
-    <div style="border-top:1px solid #333; margin-top:20px; padding-top:20px;">
-        <h4 id="cart-total" style="font-size:24px;">TOTAL: $0 USD</h4>
-        <a href="#" class="wa-btn" onclick="sendWhatsApp()">PEDIR POR WHATSAPP</a>
-        <button onclick="toggleCart()" style="background:none; border:none; color:var(--oro); margin-top:20px; cursor:pointer;">CERRAR</button>
+    <h2 style="font-family:'Cinzel'; color:var(--oro); margin-bottom:30px;">MI SELECCIÓN</h2>
+    <div id="cart-list" style="max-height:60vh; overflow-y:auto; margin-bottom:20px;"></div>
+    <div style="border-top:1px solid #333; padding-top:20px;">
+        <h3 id="total-text" style="font-size:24px;">TOTAL: $0 USD</h3>
+        <a href="#" class="wa-link" onclick="checkout()">FINALIZAR POR WHATSAPP</a>
+        <p onclick="toggleCart()" style="text-align:center; cursor:pointer; margin-top:20px; font-size:12px; color:var(--oro);">VOLVER A LA CAVA</p>
     </div>
 </div>
 
 <script>
-    let cart = [];
-    const products = {
+    let humidor = [];
+    const db = {
         clasico: { 
             name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png", 
-            desc: "Un puro equilibrado con notas de cedro y vainilla. Ideal para una tarde tranquila.",
-            tech: { Largo: "124mm", Cepo: "50", Fortaleza: "Media", Origen: "Vuelta Abajo" }
+            text: "Un puro diseñado para el equilibrio cotidiano. Su ligada ofrece notas cremosas y un final de cedro suave.",
+            specs: { "Largo": "124mm", "Fortaleza": "Media", "Capa": "Habana 2000" }
         },
         reserva: { 
             name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png", 
-            desc: "Complejidad superior. Notas de cuero noble y pimienta negra añejada.",
-            tech: { Largo: "150mm", Cepo: "52", Fortaleza: "Media-Fuerte", Origen: "Pinar del Río" }
+            text: "Cuatro años de reposo absoluto. Complejidad de cuero noble, pimienta blanca y tierra húmeda.",
+            specs: { "Largo": "150mm", "Fortaleza": "Media-Fuerte", "Capa": "Criollo 98" }
         },
         premium: { 
             name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png", 
-            desc: "La joya de la corona. Humo denso, aceitoso y sumamente complejo.",
-            tech: { Largo: "178mm", Cepo: "48", Fortaleza: "Fuerte", Origen: "Selección Especial" }
+            text: "La culminación del arte tabacalero. Humo denso, meloso y con una evolución magistral por tercios.",
+            specs: { "Largo": "178mm", "Fortaleza": "Fuerte", "Capa": "Maduro Especial" }
         }
     };
 
-    function openDetails(id) {
-        const p = products[id];
-        const body = document.getElementById('modal-body');
-        body.innerHTML = `
-            <div style="text-align:center"><img src="${p.img}" style="max-height:500px; width:auto;"></div>
+    function showInfo(id) {
+        const item = db[id];
+        const modal = document.getElementById('modal-content');
+        modal.innerHTML = `
+            <div style="text-align:center;"><img src="${item.img}" style="max-height:550px; width:auto;"></div>
             <div>
-                <h2 style="font-family:var(--fuente-titulo); color:var(--oro); font-size:40px; margin-bottom:20px;">${p.name}</h2>
-                <p style="font-size:18px; line-height:1.6; margin-bottom:30px; color:#aaa;">${p.desc}</p>
-                <div style="background:#111; padding:20px; border:1px solid #222;">
-                    <h5 style="color:var(--oro); margin-bottom:15px; text-transform:uppercase;">Ficha Técnica de Autor</h5>
-                    ${Object.entries(p.tech).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:13px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
+                <h2 style="font-family:'Cinzel'; color:var(--oro); font-size:38px; margin-bottom:20px;">${item.name}</h2>
+                <p style="color:#888; font-size:18px; margin-bottom:30px;">${item.text}</p>
+                <div style="background:#111; padding:25px; border:1px solid #222;">
+                    <h4 style="color:var(--oro); margin-bottom:15px; font-size:12px; letter-spacing:3px;">DATOS TÉCNICOS</h4>
+                    ${Object.entries(item.specs).map(([k,v]) => `<p style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:14px;"><span>${k}</span><b style="color:var(--oro)">${v}</b></p>`).join('')}
                 </div>
-                <button class="wa-btn" style="background:var(--oro); color:#000; margin-top:40px;" onclick="addToCart('${p.name}', ${p.price}); closeDetails();">AÑADIR AL CARRITO - $${p.price} USD</button>
+                <button class="wa-link" style="background:var(--oro); color:#000; cursor:pointer;" onclick="buy('${item.name}', ${item.price}); hideInfo();">AÑADIR AL PEDIDO - $${item.price} USD</button>
             </div>
         `;
-        document.getElementById('puro-modal').style.display = 'block';
+        document.getElementById('modal').style.display = 'block';
     }
 
-    function closeDetails() { document.getElementById('puro-modal').style.display = 'none'; }
+    function hideInfo() { document.getElementById('modal').style.display = 'none'; }
 
-    function addToCart(name, price) {
-        cart.push({name, price});
-        updateCart();
+    function buy(name, price) {
+        humidor.push({name, price});
+        renderCart();
     }
 
-    function updateCart() {
-        document.getElementById('cart-count').innerText = cart.length;
-        const list = document.getElementById('cart-items');
-        list.innerHTML = cart.map((item, i) => `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span>${item.name}</span><b>$${item.price}</b></div>`).join('');
-        const total = cart.reduce((acc, curr) => acc + curr.price, 0);
-        document.getElementById('cart-total').innerText = `TOTAL: $${total} USD`;
+    function renderCart() {
+        document.getElementById('count').innerText = humidor.length;
+        const list = document.getElementById('cart-list');
+        list.innerHTML = humidor.map((i, idx) => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:14px;">
+                <span>${i.name}</span>
+                <b>$${i.price}</b>
+            </div>
+        `).join('');
+        const total = humidor.reduce((a, b) => a + b.price, 0);
+        document.getElementById('total-text').innerText = `TOTAL: $${total} USD`;
     }
 
     function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
 
-    function sendWhatsApp() {
-        if(cart.length === 0) return alert("El carrito está vacío");
-        let text = "Hola MAFU, quiero pedir:%0A";
-        cart.forEach(i => text += `- ${i.name} ($${i.price})%0A`);
+    function checkout() {
+        if(humidor.length === 0) return alert("Selecciona tus puros primero.");
+        let text = "Hola MAFU, deseo encargar estos puros:%0A";
+        humidor.forEach(i => text += `• ${i.name} ($${i.price})%0A`);
         window.open(`https://wa.me/56998644532?text=${text}`);
     }
 </script>
