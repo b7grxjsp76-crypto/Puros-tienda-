@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU | El Legado del Tabaco Cubano</title>
+    <title>MAFU | Legacy & Cuban Soul</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================================================
-           1. ARQUITECTURA DE DISEÑO (LUJO & RÚSTICO)
+           1. ARQUITECTURA DE DISEÑO (ESTILO RÚSTICO DE LUJO)
            ========================================================================== */
         :root {
             --oro: #c5a059;
-            --oro-luz: #e9d5a3;
+            --oro-obscuro: #8e6d31;
             --papel: #f4f1ea;
-            --negro-puro: #050505;
+            --negro: #050505;
             --gris-carbon: #121212;
-            --borde-lujo: rgba(197, 160, 89, 0.25);
-            --font-serif: 'Playfair Display', serif;
-            --font-accent: 'Cinzel', serif;
-            --transition-smooth: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            --borde-lujo: rgba(197, 160, 89, 0.3);
+            --fuente-serif: 'Playfair Display', serif;
+            --fuente-accent: 'Cinzel', serif;
+            --transicion: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; background-color: var(--negro-puro); }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--negro-puro);
+            background-color: var(--negro);
             color: var(--papel);
             font-family: 'Montserrat', sans-serif;
             line-height: 1.8;
@@ -35,22 +35,24 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Textura de Madera de Cedro */
+        /* Capa de textura de madera de cedro para el fondo */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
-            opacity: 0.15; z-index: -1; pointer-events: none;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            opacity: 0.2; z-index: -1; pointer-events: none;
         }
 
+        h1, h2, h3, h4, h5 { font-family: var(--fuente-serif); font-weight: 400; }
+
         /* ==========================================================================
-           2. HEADER & LOGOTIPO VECTORIAL (SIEMPRE VISIBLE)
+           2. HEADER CON EL LOGO file_000000009bac
            ========================================================================== */
-        .header {
+        .navbar {
             position: fixed;
             top: 0; width: 100%;
-            padding: 25px 60px;
+            padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -60,61 +62,61 @@
             backdrop-filter: blur(15px);
         }
 
-        .logo-container {
+        .brand-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             text-decoration: none;
         }
 
-        /* SVG del Logo para que nunca falle */
-        .logo-svg {
-            width: 50px;
-            height: 50px;
-            fill: var(--oro);
+        /* LOGO SOLICITADO file_000000009bac */
+        .main-logo {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5));
+            transition: var(--transicion);
         }
+        .main-logo:hover { transform: scale(1.05); }
 
-        .logo-text {
-            font-family: var(--font-accent);
-            font-size: 38px;
-            font-weight: 900;
+        .brand-name {
+            font-family: var(--fuente-accent);
+            font-size: 32px;
+            letter-spacing: 6px;
             color: var(--oro);
-            letter-spacing: 4px;
-            line-height: 1;
-            text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+            font-weight: 900;
         }
 
-        .nav-links { display: flex; gap: 40px; }
+        .nav-links { display: flex; gap: 45px; }
         .nav-links a {
-            color: var(--papel);
-            text-decoration: none;
             font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
+            color: var(--papel);
+            text-decoration: none;
             opacity: 0.6;
-            transition: var(--transition-smooth);
+            transition: 0.3s;
         }
         .nav-links a:hover { opacity: 1; color: var(--oro); }
 
-        .cart-toggle {
-            cursor: pointer;
+        .cart-trigger {
             position: relative;
-            font-size: 18px;
+            cursor: pointer;
+            font-size: 20px;
             color: var(--oro);
         }
-        .cart-count {
+        .cart-badge {
             position: absolute;
-            top: -10px; right: -12px;
+            top: -10px; right: -15px;
             background: var(--oro);
             color: black;
             font-size: 9px;
-            font-weight: 700;
-            padding: 2px 6px;
+            font-weight: 900;
+            padding: 3px 6px;
             border-radius: 50%;
         }
 
         /* ==========================================================================
-           3. HERO EXPERIENCE
+           3. HERO (PORTADA)
            ========================================================================== */
         .hero {
             height: 100vh;
@@ -123,354 +125,336 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(5,5,5,0.3), rgba(5,5,5,1)), 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(5,5,5,1)), 
                         url('file_00000000e124720eacda71c2b88a43d3.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        .hero h2 { 
-            font-family: var(--font-accent); 
-            font-size: clamp(80px, 15vw, 200px); 
-            color: var(--oro); 
-            line-height: 0.8;
-            margin-bottom: 20px;
-        }
-        .hero p { font-size: 14px; letter-spacing: 15px; text-transform: uppercase; opacity: 0.5; }
+        .hero span { font-family: var(--fuente-accent); font-size: 14px; letter-spacing: 12px; color: var(--oro); margin-bottom: 20px; text-transform: uppercase; }
+        .hero h2 { font-size: clamp(70px, 15vw, 180px); font-family: var(--fuente-accent); color: var(--oro); margin-bottom: 20px; line-height: 0.8; }
+        .hero p { font-size: 16px; letter-spacing: 8px; text-transform: uppercase; opacity: 0.4; }
 
         /* ==========================================================================
-           4. SECCIONES DE CONTENIDO PROFESIONAL
+           4. HISTORIA Y ORIGEN (CONTENIDO EXTENSO)
            ========================================================================== */
-        .container { max-width: 1400px; margin: auto; padding: 120px 40px; }
-        .tagline { color: var(--oro); font-family: var(--font-accent); font-size: 12px; letter-spacing: 8px; margin-bottom: 20px; display: block; }
-        .title-main { font-size: 60px; font-family: var(--font-serif); font-style: italic; margin-bottom: 60px; }
+        .section { padding: 120px 10%; }
+        .section-tag { font-family: var(--fuente-accent); color: var(--oro); font-size: 11px; letter-spacing: 6px; display: block; margin-bottom: 25px; }
+        .section-title { font-size: 65px; margin-bottom: 70px; font-style: italic; }
 
-        /* Cuadrícula de Información */
-        .info-block {
+        .grid-info {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            margin-bottom: 150px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 120px;
             align-items: center;
+            margin-bottom: 150px;
         }
-        .info-block.reverse { direction: rtl; }
-        .info-block.reverse .text-content { direction: ltr; }
 
-        .text-content h3 { font-size: 36px; font-family: var(--font-serif); margin-bottom: 30px; color: var(--oro); }
-        .text-content p { font-size: 18px; color: #999; margin-bottom: 25px; text-align: justify; }
+        .text-area h3 { font-size: 42px; color: var(--oro); margin-bottom: 35px; }
+        .text-area p { font-size: 19px; color: #999; margin-bottom: 30px; text-align: justify; line-height: 1.9; }
 
-        .image-frame {
-            position: relative;
-            border: 1px solid var(--borde-lujo);
-            padding: 15px;
-        }
-        .image-frame img { width: 100%; height: 600px; object-fit: cover; filter: brightness(0.7) sepia(0.2); }
+        .image-box { position: relative; border: 1px solid var(--borde-lujo); padding: 15px; }
+        .image-box img { width: 100%; height: 700px; object-fit: cover; filter: sepia(0.2) contrast(1.1); }
 
         /* ==========================================================================
-           5. CATÁLOGO / CAVA MAESTRA
+           5. EL PROCESO MAESTRO (10 PASOS DETALLADOS)
            ========================================================================== */
-        .cava-grid {
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .process-item {
+            padding: 40px;
+            background: #080808;
+            border-left: 2px solid var(--oro);
+            transition: 0.4s;
+        }
+        .process-item:hover { background: #111; transform: translateX(10px); }
+        .process-item h4 { color: var(--oro); font-family: var(--fuente-accent); margin-bottom: 15px; }
+        .process-item p { font-size: 14px; color: #777; }
+
+        /* ==========================================================================
+           6. CATÁLOGO / LA CAVA (SISTEMA DE FICHAS)
+           ========================================================================== */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
         }
 
         .puro-card {
-            background: #080808;
+            background: #0a0a0a;
             border: 1px solid #1a1a1a;
-            padding: 50px 30px;
+            padding: 60px 40px;
             text-align: center;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+            transition: var(--transicion);
         }
-
-        .puro-card:hover { border-color: var(--oro); transform: translateY(-10px); }
-        .puro-card img { width: 100%; height: 450px; object-fit: contain; margin-bottom: 30px; transition: 0.5s; cursor: pointer; }
+        .puro-card:hover { border-color: var(--oro); transform: translateY(-15px); }
+        
+        .puro-card .img-wrapper {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            background: radial-gradient(circle, #1a1a1a 0%, #050505 100%);
+        }
+        .puro-card img { width: 100%; height: 100%; object-fit: contain; transition: 0.8s; cursor: zoom-in; }
         .puro-card:hover img { transform: scale(1.1); }
 
-        .puro-card h3 { font-family: var(--font-accent); font-size: 28px; color: var(--oro); margin-bottom: 10px; }
-        .puro-card .vitola { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #555; margin-bottom: 25px; display: block; }
+        .puro-card h3 { font-family: var(--fuente-accent); font-size: 28px; color: var(--oro); margin-bottom: 10px; }
+        .puro-card .vitola { font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: #555; margin-bottom: 30px; display: block; }
+        
+        .pricing { margin-bottom: 40px; }
+        .usd { font-size: 36px; font-weight: 200; display: block; }
+        .clp { font-size: 14px; color: #444; }
 
-        .price-box { margin-bottom: 35px; }
-        .price-usd { font-size: 32px; font-weight: 200; display: block; }
-        .price-clp { font-size: 14px; color: #444; }
-
-        .btn-lujo {
+        .btn-action {
+            width: 100%;
+            padding: 22px;
             background: var(--oro);
             color: black;
             border: none;
-            padding: 18px 35px;
-            font-family: var(--font-accent);
-            font-size: 11px;
+            font-family: var(--fuente-accent);
+            font-weight: 900;
             letter-spacing: 3px;
-            font-weight: 700;
+            font-size: 11px;
             cursor: pointer;
             transition: 0.4s;
-            width: 100%;
         }
-        .btn-lujo:hover { background: white; box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); }
+        .btn-action:hover { background: white; box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); }
 
         /* ==========================================================================
-           6. FICHA TÉCNICA DETALLADA (OVERLAY)
+           7. FICHA TÉCNICA DETALLADA (OVERLAY)
            ========================================================================== */
-        #details-overlay {
+        #product-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--negro-puro);
+            background: var(--negro);
             z-index: 20000;
             overflow-y: auto;
         }
 
-        .details-container { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-        .details-img { position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--borde-lujo); }
-        .details-img img { width: 100%; height: 100%; object-fit: cover; }
-        .details-info { padding: 100px 10%; align-self: center; }
+        .overlay-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+        .overlay-visual { background: #000; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; height: 100vh; }
+        .overlay-visual img { max-width: 80%; max-height: 80%; object-fit: contain; }
 
-        .spec-list {
+        .overlay-info { padding: 100px 12%; align-self: center; }
+        .overlay-info h2 { font-family: var(--fuente-serif); font-size: 70px; font-style: italic; color: var(--oro); margin-bottom: 30px; }
+        
+        .spec-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 40px 0;
+            gap: 40px;
             border-top: 1px solid #222;
-            padding-top: 40px;
+            padding-top: 50px;
+            margin-bottom: 60px;
         }
-        .spec-item b { color: var(--oro); font-family: var(--font-accent); font-size: 10px; display: block; margin-bottom: 5px; letter-spacing: 2px; }
-        .spec-item span { font-size: 16px; color: var(--papel); }
+        .spec-item b { font-family: var(--fuente-accent); font-size: 10px; color: var(--oro); display: block; margin-bottom: 10px; letter-spacing: 3px; }
+        .spec-item span { font-size: 18px; color: var(--papel); font-weight: 300; }
 
-        .tasting-notes {
-            background: #0a0a0a;
-            padding: 30px;
-            border-left: 3px solid var(--oro);
-            margin-bottom: 40px;
+        .tasting-block {
+            background: #080808;
+            padding: 40px;
+            border: 1px solid #1a1a1a;
+            margin-bottom: 50px;
         }
-        .tasting-notes h5 { font-family: var(--font-accent); color: var(--oro); margin-bottom: 10px; }
+        .tasting-block h5 { font-family: var(--fuente-accent); color: var(--oro); margin-bottom: 15px; font-size: 14px; }
 
         /* ==========================================================================
-           7. CARRITO PROFESIONAL
+           8. CARRITO DE COMPRA (SHOPPING ENGINE)
            ========================================================================== */
-        #cart-panel {
-            position: fixed; top: 0; right: -500px; width: 480px; height: 100vh;
-            background: #0d0d0d; z-index: 30000; padding: 60px 40px;
-            box-shadow: -30px 0 70px rgba(0,0,0,0.9);
-            transition: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        #cart-sidebar {
+            position: fixed; top: 0; right: -550px; width: 500px; height: 100vh;
+            background: #0d0d0d; z-index: 30000; padding: 70px 50px;
+            box-shadow: -30px 0 80px rgba(0,0,0,0.9);
+            transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
             display: flex; flex-direction: column;
         }
-        #cart-panel.active { right: 0; }
+        #cart-sidebar.open { right: 0; }
 
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 25px; margin-bottom: 40px; }
-        .cart-header h3 { font-family: var(--font-accent); color: var(--oro); font-size: 24px; }
+        .cart-title { font-family: var(--fuente-accent); font-size: 28px; color: var(--oro); margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 20px; }
+        .cart-items-list { flex-grow: 1; overflow-y: auto; }
+        .cart-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #151515; }
+        .cart-row b { color: var(--oro); display: block; font-size: 16px; }
+        .cart-row small { color: #555; }
+        .item-remove { color: #ff4444; cursor: pointer; font-size: 18px; }
 
-        .cart-list { flex-grow: 1; overflow-y: auto; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px; }
-        .cart-item b { color: var(--oro); font-size: 14px; display: block; }
-        .cart-item small { color: #555; }
-        .cart-remove { color: #ff4444; cursor: pointer; font-size: 18px; }
-
-        .cart-footer { padding-top: 40px; border-top: 2px solid var(--oro); }
-        .total-line { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
-        .total-line span { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; }
-        .total-line b { font-size: 36px; font-weight: 200; }
+        .cart-summary { padding-top: 40px; border-top: 2px solid var(--oro); }
+        .total-box { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; }
+        .total-box span { font-size: 12px; text-transform: uppercase; letter-spacing: 4px; }
+        .total-box b { font-size: 40px; font-weight: 200; }
 
         .btn-whatsapp {
-            background: #25d366; color: white; display: block; text-align: center;
-            padding: 22px; text-decoration: none; font-family: var(--font-accent);
-            font-weight: 700; letter-spacing: 2px; font-size: 12px; transition: 0.3s;
+            display: block; width: 100%; padding: 25px;
+            background: #25d366; color: white; text-align: center;
+            text-decoration: none; font-family: var(--fuente-accent);
+            font-weight: 900; font-size: 12px; letter-spacing: 2px;
         }
-        .btn-whatsapp:hover { filter: brightness(1.1); }
 
         /* ==========================================================================
-           8. RESPONSIVE
+           9. RITUAL DEL FUMADOR (SECCIÓN CULTURAL)
+           ========================================================================== */
+        .ritual-section { background: #080808; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background-color: #111; }
+        .ritual-card { background: #080808; padding: 80px 50px; text-align: center; }
+        .ritual-card h4 { font-family: var(--fuente-accent); color: var(--oro); margin-bottom: 25px; }
+        .ritual-card p { font-size: 14px; color: #666; }
+
+        /* ==========================================================================
+           10. RESPONSIVE
            ========================================================================== */
         @media (max-width: 1100px) {
-            .details-container, .info-block { grid-template-columns: 1fr; }
-            .details-img { height: 40vh; position: relative; }
-            .header { padding: 20px 30px; }
-            #cart-panel { width: 100%; }
+            .grid-info, .overlay-layout, .process-grid, .ritual-section { grid-template-columns: 1fr; }
+            .overlay-visual { height: 40vh; position: relative; }
+            .navbar { padding: 20px; }
+            #cart-sidebar { width: 100%; }
+            .section-title { font-size: 40px; }
         }
 
     </style>
 </head>
 <body>
 
-<header class="header">
-    <a href="#" class="logo-container">
-        <svg class="logo-svg" viewBox="0 0 100 100">
-            <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M30 40 L50 60 L70 40" fill="none" stroke="currentColor" stroke-width="4"/>
-            <path d="M50 20 L50 80" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span class="logo-text">MAFU</span>
+<header class="navbar">
+    <a href="#" class="brand-container">
+        <img src="file_000000009bac" alt="MAFU Logo" class="main-logo">
+        <span class="brand-name">MAFU</span>
     </a>
     
     <nav class="nav-links">
-        <a href="#historia">Legado</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#cava">Catálogo</a>
+        <a href="#origen">El Legado</a>
+        <a href="#proceso">Maestría</a>
+        <a href="#cava">La Cava</a>
         <a href="#ritual">Ritual</a>
     </nav>
 
-    <div class="cart-toggle" onclick="toggleCart()">
-        🛒 <span class="cart-count" id="cart-badge">0</span>
+    <div class="cart-trigger" onclick="toggleCart()">
+        🛒 <span class="cart-badge" id="cart-count">0</span>
     </div>
 </header>
 
 <section class="hero">
-    <p>The Authentic Cuban Soul</p>
+    <span>Exclusividad de Vuelta Abajo</span>
     <h2>MAFU</h2>
-    <p>Handmade in Vuelta Abajo · 2026</p>
+    <p>Handmade Tradition · 2026</p>
 </section>
 
-<section class="container" id="historia">
-    <div class="info-block">
-        <div class="text-content">
-            <span class="tagline">Nuestra Identidad</span>
-            <h3>El Secreto de la Tierra Roja</h3>
-            <p>Un puro MAFU no es tabaco; es tiempo embotellado. Nuestra historia nace en los valles de Pinar del Río, donde el microclima único de Vuelta Abajo nutre la hoja con minerales que no existen en ninguna otra parte del globo.</p>
-            <p>Desde la semilla criolla hasta la fermentación en cámaras de cedro, cada paso es supervisado por maestros que han dedicado 40 años a entender el lenguaje del humo. Nuestra producción es limitada porque la perfección no admite prisas.</p>
+<section class="section" id="origen">
+    <div class="grid-info">
+        <div class="text-area">
+            <span class="section-tag">Nuestra Historia</span>
+            <h2 class="section-title">Nacidos del Fuego y la Tierra</h2>
+            <p>Un puro MAFU es el resultado de un siglo de paciencia. Nuestra familia ha custodiado las tierras más fértiles de Pinar del Río, donde el nitrato de la tierra roja se combina con una humedad del 70% para crear la hoja de tabaco más elástica y aromática del mundo.</p>
+            <p>No creemos en la producción masiva. Cada planta de tabaco es "tapada" manualmente con finas telas para que el sol no dañe la seda de la hoja de capa. En MAFU, el tiempo no es un costo, es el ingrediente principal.</p>
+            <p>Nuestra misión es simple: que cada vez que usted encienda un MAFU, sienta el alma de Cuba en cada bocanada.</p>
         </div>
-        <div class="image-frame">
-            <img src="https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80">
+        <div class="image-box">
+            <img src="https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80" alt="Veguero">
         </div>
     </div>
 </section>
 
-<section class="container" id="proceso" style="background: #080808;">
-    <span class="tagline">Maestría</span>
-    <h2 class="title-main">El Decálogo del Maestro Torcedor</h2>
+<section class="section" id="proceso" style="background: #050505;">
+    <span class="section-tag">Artesanía de Culto</span>
+    <h2 class="section-title" style="text-align: center;">Las 10 Etapas del Maestro</h2>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-        <div class="text-content">
-            <h4 style="color:var(--oro); margin-bottom:10px;">01. Selección de Veta</h4>
-            <p style="font-size:14px;">Solo las hojas del centro de la planta (Seco) califican para el aroma MAFU.</p>
+    <div class="process-grid">
+        <div class="process-item">
+            <h4>01. Selección de Semilla</h4>
+            <p>Usamos solo semillas Criollo 98 puras, cultivadas en semilleros protegidos antes del trasplante.</p>
         </div>
-        <div class="text-content">
-            <h4 style="color:var(--oro); margin-bottom:10px;">02. Curado Natural</h4>
-            <p style="font-size:14px;">50 días en casas de tabaco bajo humedad controlada por la brisa caribeña.</p>
+        <div class="process-item" style="border-left-color: #444;">
+            <h4>02. La Siembra Manual</h4>
+            <p>Trasplantamos a mano durante la "Luna Llena" de octubre para asegurar el vigor de la raíz.</p>
         </div>
-        <div class="text-content">
-            <h4 style="color:var(--oro); margin-bottom:10px;">03. Doble Fermentación</h4>
-            <p style="font-size:14px;">Eliminamos toda impureza mediante calor natural en pilas de 2 metros.</p>
+        <div class="process-item">
+            <h4>03. La Cosecha por Pisos</h4>
+            <p>Recolectamos las hojas de abajo hacia arriba en un periodo de 40 días, respetando la madurez.</p>
         </div>
-        <div class="text-content">
-            <h4 style="color:var(--oro); margin-bottom:10px;">04. El Añejamiento</h4>
-            <p style="font-size:14px;">Mínimo 2 años en pacas de yute antes de llegar a la mesa del torcedor.</p>
+        <div class="process-item" style="border-left-color: #444;">
+            <h4>04. Curación al Aire</h4>
+            <p>Las hojas cuelgan en cujes de cedro para que el oxígeno transforme la clorofila en azúcar natural.</p>
         </div>
+        <div class="process-item">
+            <h4>05. Primera Fermentación</h4>
+            <p>Eliminamos el amoníaco mediante calor natural generado por la propia presión de las hojas.</p>
         </div>
+        <div class="process-item" style="border-left-color: #444;">
+            <h4>06. Despalillo Maestro</h4>
+            <p>Retiramos la vena central de la hoja de capa con una precisión que solo años de oficio otorgan.</p>
+        </div>
+        <div class="process-item">
+            <h4>07. Segunda Fermentación</h4>
+            <p>Un proceso de 90 días que estabiliza el pH y define el color definitivo de la capa.</p>
+        </div>
+        <div class="process-item" style="border-left-color: #444;">
+            <h4>08. El Torcido</h4>
+            <p>Nuestros torcedores nivel 9 construyen el puro usando la técnica de entubado para un tiro perfecto.</p>
+        </div>
+        <div class="process-item">
+            <h4>09. Cámara de Frío</h4>
+            <p>Sometemos los puros a un proceso preventivo para asegurar la pureza total del producto final.</p>
+        </div>
+        <div class="process-item" style="border-left-color: #444;">
+            <h4>10. El Escaparate</h4>
+            <p>Reposo final de 6 meses en gabinetes de cedro español para que los aromas se casen.</p>
+        </div>
+    </div>
 </section>
 
-<section class="container" id="cava">
-    <span class="tagline">Colección 2026</span>
-    <h2 class="title-main" style="text-align: center;">Nuestra Cava Privada</h2>
+<section class="section" id="cava">
+    <span class="section-tag">Nuestra Selección</span>
+    <h2 class="section-title" style="text-align: center;">La Cava MAFU 2026</h2>
     
-    <div class="cava-grid">
+    <div class="catalog-grid">
         <div class="puro-card">
-            <img src="Screenshot_20260501-034528.png" onclick="openProduct('clasico')">
-            <span class="vitola">Vitola: Robusto</span>
+            <div class="img-wrapper" onclick="openProduct('clasico')">
+                <img src="Screenshot_20260501-034528.png" alt="MAFU Clásico">
+            </div>
+            <span class="vitola">Vitola: Robusto (50 x 124mm)</span>
             <h3>MAFU Clásico</h3>
-            <div class="price-box">
-                <span class="price-usd">$12 USD</span>
-                <span class="price-clp">≈ $11.400 CLP</span>
+            <div class="pricing">
+                <span class="usd">$12 USD</span>
+                <span class="clp">≈ $11.400 CLP</span>
             </div>
-            <button class="btn-lujo" onclick="addToCart('MAFU Clásico', 12)">Añadir al Humidor</button>
+            <button class="btn-action" onclick="addToCart('MAFU Clásico', 12)">Añadir al Pedido</button>
         </div>
+
         <div class="puro-card">
-            <img src="Screenshot_20260501-034604.png" onclick="openProduct('reserva')">
-            <span class="vitola">Vitola: Toro Especial</span>
+            <div class="img-wrapper" onclick="openProduct('reserva')">
+                <img src="Screenshot_20260501-034604.png" alt="MAFU Reserva">
+            </div>
+            <span class="vitola">Vitola: Toro (52 x 150mm)</span>
             <h3>MAFU Reserva</h3>
-            <div class="price-box">
-                <span class="price-usd">$18 USD</span>
-                <span class="price-clp">≈ $17.100 CLP</span>
+            <div class="pricing">
+                <span class="usd">$18 USD</span>
+                <span class="clp">≈ $17.100 CLP</span>
             </div>
-            <button class="btn-lujo" onclick="addToCart('MAFU Reserva', 18)">Añadir al Humidor</button>
+            <button class="btn-action" onclick="addToCart('MAFU Reserva', 18)">Añadir al Pedido</button>
         </div>
+
         <div class="puro-card">
-            <img src="Screenshot_20260501-034637.png" onclick="openProduct('premium')">
-            <span class="vitola">Vitola: Churchill Luxe</span>
-            <h3>MAFU Premium</h3>
-            <div class="price-box">
-                <span class="price-usd">$25 USD</span>
-                <span class="price-clp">≈ $23.750 CLP</span>
+            <div class="img-wrapper" onclick="openProduct('premium')">
+                <img src="Screenshot_20260501-034637.png" alt="MAFU Premium">
             </div>
-            <button class="btn-lujo" onclick="addToCart('MAFU Premium', 25)">Añadir al Humidor</button>
+            <span class="vitola">Vitola: Churchill (48 x 178mm)</span>
+            <h3>MAFU Premium</h3>
+            <div class="pricing">
+                <span class="usd">$25 USD</span>
+                <span class="clp">≈ $23.750 CLP</span>
+            </div>
+            <button class="btn-action" onclick="addToCart('MAFU Premium', 25)">Añadir al Pedido</button>
         </div>
     </div>
 </section>
 
-<section class="container" id="ritual">
-    <div class="info-block reverse">
-        <div class="text-content">
-            <span class="tagline">La Etiqueta</span>
-            <h3>El Arte del Humo</h3>
-            <p>Un MAFU nunca se enciende con gasolina. Use solo fósforos de madera o láminas de cedro para no contaminar el perfil aromático.</p>
-            <p>Corte el "gorro" justo por encima de la línea de costura para asegurar un tiro firme pero fluido. Disfrute lentamente; un buen puro es una conversación con uno mismo.</p>
-        </div>
-        <div class="image-frame">
-            <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?q=80">
-        </div>
+<section class="ritual-section" id="ritual">
+    <div class="ritual-card">
+        <h4>El Corte Perfecto</h4>
+        <p>Corte siempre 2mm por encima de la línea del gorro. Use guillotinas de doble hoja para evitar rasgar la capa.</p>
     </div>
-</section>
-
-<div id="details-overlay">
-    <div style="position:fixed; top:40px; right:40px; z-index:21000; cursor:pointer; color:var(--oro); font-family:var(--font-accent);" onclick="closeProduct()">✕ CERRAR</div>
-    <div class="details-container" id="details-content"></div>
-</div>
-
-<div id="cart-panel">
-    <div class="cart-header">
-        <h3>Mi Humidor</h3>
-        <span style="cursor:pointer; color:var(--oro);" onclick="toggleCart()">✕</span>
-    </div>
-    <div class="cart-list" id="cart-items"></div>
-    <div class="cart-footer">
-        <div class="total-line">
-            <span>Inversión Total</span>
-            <b id="cart-total">$0 USD</b>
-        </div>
-        <p id="total-clp" style="color:#555; text-align:right; margin-bottom:30px;">$0 CLP</p>
-        <a href="#" class="btn-whatsapp" onclick="sendWhatsApp()">Finalizar por WhatsApp</a>
-        <button onclick="clearCart()" style="background:none; border:none; color:#333; cursor:pointer; width:100%; margin-top:20px; text-transform:uppercase; font-size:10px;">Vaciar Selección</button>
-    </div>
-</div>
-
-<footer style="padding: 100px 40px; text-align: center; border-top: 1px solid #111; opacity: 0.4;">
-    <h2 style="font-family:var(--font-accent); color:var(--oro); margin-bottom: 20px;">MAFU</h2>
-    <p style="font-size:10px; letter-spacing: 5px;">CUBAN SOUL · LEGADO Y TRADICIÓN · 2026</p>
-</footer>
-
-<script>
-/* ==========================================================================
-   SISTEMA DE GESTIÓN MAFU (JS PROFESIONAL)
-   ========================================================================== */
-const CLP = 950;
-let cart = JSON.parse(localStorage.getItem('mafu_cart_2026')) || [];
-
-const productDb = {
-    clasico: {
-        name: "MAFU Clásico", price: 12, img: "Screenshot_20260501-034528.png",
-        story: "Un Robusto amable, ideal para iniciar el día. Ofrece una fumada equilibrada con evolución constante.",
-        specs: { Capa: "Connecticut Ecuador", Capote: "Jalapa", Tripa: "Mezcla de la Casa", Fortaleza: "Suave a Media", Tiempo: "45-50 min" },
-        tasting: "Notas de cedro fresco, almendras tostadas y un final cremoso con matices de vainilla."
-    },
-    reserva: {
-        name: "MAFU Reserva", price: 18, img: "Screenshot_20260501-034604.png",
-        story: "La expresión máxima del añejamiento. Hojas fermentadas por 3 años para una complejidad superior.",
-        specs: { Capa: "Habana 2000", Capote: "Vuelta Abajo", Tripa: "Ligero y Seco", Fortaleza: "Media a Fuerte", Tiempo: "60-70 min" },
-        tasting: "Cuero noble, pimienta blanca, café espresso y un retrogusto terroso muy persistente."
-    },
-    premium: {
-        name: "MAFU Premium", price: 25, img: "Screenshot_20260501-034637.png",
-        story: "El Churchill definitivo. Una arquitectura perfecta diseñada para los paladares más exigentes del mundo.",
-        specs: { Capa: "Maduro San Andrés", Capote: "Estelí", Tripa: "Selección Especial", Fortaleza: "Fuerte", Tiempo: "90 min" },
-        tasting: "Chocolate amargo, melaza, frutos secos obscuros y una densidad de humo inigualable."
-    }
-};
-
-function openProduct(id) {
-    const p = productDb[id];
-    const html = `
-        <div class="details-img"><img src="${p.img}"></div>
-        <div class="details-info">
-            <span class="tagline">Ficha Técnica de Autor
+    <div class="ritual-card" style="background: #0a0a0a
