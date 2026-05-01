@@ -5,390 +5,428 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAFU Cuban Soul | El Legado de la Tierra Roja</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@100;300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Montserrat:wght@100;300;400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ==========================================================================
-   SISTEMA DE DISEÑO RÚSTICO-MINIMALISTA (CSS)
+   DISEÑO MAFU: RÚSTICO, MINIMALISTA Y FUNCIONAL (CSS)
    ========================================================================== */
 :root {
-    --oro-apagado: #b3914d;
-    --madera: #12100e;
-    --papel-ajado: #e2ddd5;
-    --negro-carbon: #0a0a0a;
-    --borde: rgba(179, 145, 77, 0.2);
-    --transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    --oro: #d4af37;
+    --oro-viejo: #aa8c2c;
+    --madera-oscura: #0d0d0d;
+    --papel: #e5e0d8;
+    --negro: #000000;
+    --borde: rgba(212, 175, 55, 0.2);
+    --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--negro-carbon);
-    color: var(--papel-ajado);
+    background-color: var(--negro);
+    color: var(--papel);
     font-family: 'Montserrat', sans-serif;
-    line-height: 1.8;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Textura rústica global */
+/* Textura de Fondo Humidor */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-    opacity: 0.4; z-index: -1; pointer-events: none;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
+    opacity: 0.2; z-index: -1; pointer-events: none;
 }
 
-h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; font-weight: 400; }
+h1, h2, h3, .serif-mafu { font-family: 'Playfair Display', serif; }
 
-/* NAVEGACIÓN INVISIBLE / MINIMALISTA */
+/* NAVEGACIÓN ART DECÓ RÚSTICA */
 .header {
-    position: fixed;
-    top: 0; width: 100%;
+    background: rgba(0,0,0,0.95);
     padding: 30px 50px;
+    border-bottom: 1px solid var(--borde);
+    position: sticky;
+    top: 0; z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
 }
 
-.logo img { height: 50px; filter: sepia(1) brightness(0.8); transition: var(--transition); }
-.logo img:hover { filter: sepia(0) brightness(1); }
+.logo-container h1 {
+    font-size: 45px;
+    color: var(--oro);
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
 
 .nav-links a {
-    color: var(--papel-ajado);
+    color: var(--papel);
     text-decoration: none;
-    font-size: 10px;
-    letter-spacing: 4px;
+    font-size: 11px;
     text-transform: uppercase;
-    margin-left: 40px;
-    opacity: 0.5;
+    letter-spacing: 4px;
+    margin-left: 35px;
+    opacity: 0.6;
     transition: 0.3s;
 }
-.nav-links a:hover { opacity: 1; color: var(--oro-apagado); }
+.nav-links a:hover { opacity: 1; color: var(--oro); }
 
-/* SECCIÓN HERO */
+/* HERO SECCIÓN */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,1)), 
-                url('file_00000000e124720eacda71c2b88a43d3.png');
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,1)), url('file_00000000e124720eacda71c2b88a43d3.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-.hero h1 { font-size: clamp(80px, 18vw, 220px); letter-spacing: -5px; line-height: 0.8; margin-bottom: 20px; }
-.hero p { font-size: 14px; letter-spacing: 12px; text-transform: uppercase; opacity: 0.6; }
+.hero h1 { font-size: clamp(80px, 15vw, 180px); color: var(--oro); font-style: italic; line-height: 0.8; }
+.hero p { font-size: 14px; letter-spacing: 15px; text-transform: uppercase; margin-top: 20px; opacity: 0.7; }
 
-/* CONTENEDOR GENERAL */
-.container { max-width: 1400px; margin: auto; padding: 120px 20px; }
+/* CONTENEDORES Y TÍTULOS */
+.container { max-width: 1400px; margin: auto; padding: 100px 20px; }
+.section-title { font-size: 50px; color: var(--oro); text-align: center; margin-bottom: 60px; font-style: italic; }
 
-.section-tag { font-size: 10px; letter-spacing: 8px; text-transform: uppercase; color: var(--oro-apagado); display: block; margin-bottom: 20px; text-align: center; }
-.section-title { font-size: 60px; text-align: center; margin-bottom: 80px; }
-
-/* EL CORAZÓN DE LA VEGA (DISEÑO RÚSTICO) */
-.proceso-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.proceso-card {
-    height: 450px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px solid var(--borde);
-    filter: grayscale(1);
-    transition: var(--transition);
-}
-
-.proceso-card:hover { filter: grayscale(0); transform: scale(0.98); border-color: var(--oro-apagado); }
-.proceso-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 1.5s; }
-.proceso-card:hover img { opacity: 0.8; transform: scale(1.1); }
-
-.proceso-card .info {
-    position: absolute;
-    bottom: 30px; left: 30px;
-}
-.proceso-card h3 { font-size: 24px; color: var(--papel-ajado); }
-
-/* LA CAVA - GRID DE PRODUCTOS */
+/* GRID DE PRODUCTOS (LA CAVA) */
 .cava-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 60px;
+    gap: 40px;
 }
 
 .puro-card {
+    background: #080808;
+    border: 1px solid #1a1a1a;
+    padding: 30px;
+    border-radius: 4px;
     text-align: center;
-    cursor: pointer;
     transition: var(--transition);
 }
 
-.puro-card .img-container {
-    width: 100%;
-    height: 550px;
-    background: #0f0f0f;
-    margin-bottom: 30px;
-    overflow: hidden;
-    border: 1px solid transparent;
-    transition: var(--transition);
+.puro-card:hover { border-color: var(--oro); transform: translateY(-10px); }
+
+.puro-card img {
+    width: 100%; height: 450px; object-fit: cover;
+    border-radius: 2px; cursor: pointer;
+    filter: grayscale(0.2); transition: 0.5s;
 }
+.puro-card:hover img { filter: grayscale(0); }
 
-.puro-card:hover .img-container { border-color: var(--oro-apagado); }
-.puro-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: var(--transition); }
-.puro-card:hover img { filter: brightness(1); transform: scale(1.05); }
+.puro-card h3 { 
+    margin-top: 25px; font-size: 30px; color: var(--oro); 
+    cursor: pointer; transition: 0.3s;
+}
+.puro-card h3:hover { color: white; }
 
-.puro-card h3 { font-size: 36px; color: var(--oro-apagado); margin-bottom: 10px; }
-.puro-card p { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.5; }
-.puro-card .precio { display: block; margin-top: 15px; font-weight: 300; font-size: 22px; }
+.puro-card .precio-box {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: 300;
+}
+.conversión { font-size: 14px; color: #666; display: block; }
 
-/* PÁGINA DE PRODUCTO INTERNA */
-#product-view {
+/* PÁGINA DE PRODUCTO INTERNA (DETALLE) */
+#product-detail-view {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--negro-carbon);
+    background: var(--negro);
     z-index: 2000;
     overflow-y: auto;
 }
 
-.view-content {
+.detail-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
 }
 
-.view-image { height: 100vh; position: sticky; top: 0; }
-.view-image img { width: 100%; height: 100%; object-fit: cover; }
+.detail-img { height: 100vh; position: sticky; top: 0; }
+.detail-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.view-details { padding: 100px 80px; align-self: center; }
-.view-details h2 { font-size: 70px; color: var(--oro-apagado); margin-bottom: 20px; }
-.view-details .description { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: #999; margin-bottom: 40px; }
+.detail-info { padding: 80px; align-self: center; }
+.detail-info h2 { font-size: 65px; color: var(--oro); font-style: italic; margin-bottom: 20px; }
+.detail-info p { font-size: 18px; line-height: 2; margin-bottom: 40px; color: #bbb; }
 
-.tech-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    border-top: 1px solid #222;
-    padding-top: 40px;
-    margin-bottom: 60px;
+.specs-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    border-top: 1px solid #222; padding-top: 30px; margin-bottom: 40px;
 }
-.tech-item span { display: block; font-size: 10px; color: var(--oro-apagado); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
-.tech-item b { font-size: 16px; font-weight: 300; }
+.spec-item b { color: var(--oro); text-transform: uppercase; font-size: 11px; letter-spacing: 2px; display: block; }
 
-.btn-order {
-    background: var(--oro-apagado);
-    color: black;
-    padding: 20px 60px;
-    border: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.btn-order:hover { background: white; }
-
-.btn-close {
+.btn-close-view {
     position: fixed; top: 40px; right: 40px;
-    background: none; border: 1px solid var(--oro-apagado);
-    color: var(--oro-apagado); padding: 10px 20px;
-    cursor: pointer; z-index: 2100;
+    background: none; border: 1px solid var(--oro);
+    color: var(--oro); padding: 10px 25px; cursor: pointer;
+    text-transform: uppercase; font-size: 10px; z-index: 2100;
 }
 
-/* RITUAL Y GLOSARIO (MÁS CONTENIDO) */
-.ritual-box { background: #080808; padding: 80px; border: 1px solid #111; margin-top: 100px; }
-.ritual-item { margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 20px; }
-.ritual-item b { color: var(--oro-apagado); font-size: 20px; display: block; margin-bottom: 10px; }
+/* CARRITO DE COMPRAS DINÁMICO */
+.cart-drawer {
+    position: fixed; right: 30px; bottom: 40px; width: 420px;
+    background: #0f0f0f; border: 1px solid var(--oro);
+    padding: 35px; border-radius: 15px; z-index: 1500;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    display: none;
+}
 
-/* FOOTER */
-footer { padding: 100px 20px; text-align: center; border-top: 1px solid #111; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px; }
 
-/* WHATSAPP */
-.wa-link { position: fixed; bottom: 40px; right: 40px; color: var(--oro-apagado); text-decoration: none; font-size: 12px; letter-spacing: 3px; z-index: 100; }
+.cart-item {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 15px; font-size: 14px;
+}
+
+.remove-item { color: #ff4444; cursor: pointer; font-size: 12px; margin-left: 10px; }
+
+.cart-total {
+    margin-top: 25px; padding-top: 20px; border-top: 2px solid #222;
+    text-align: center; font-weight: 700;
+}
+
+.btn-action {
+    width: 100%; padding: 18px; margin-top: 15px;
+    border: none; border-radius: 50px; cursor: pointer;
+    text-transform: uppercase; font-weight: 700; letter-spacing: 2px;
+}
+.btn-wa { background: #25D366; color: white; }
+.btn-clear { background: transparent; color: #666; font-size: 10px; }
+
+/* SECCIÓN RITUAL Y PROCESO */
+.ritual-section { background: #050505; border-top: 1px solid #111; }
+.ritual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.ritual-card { padding: 40px; border: 1px solid #111; transition: 0.4s; }
+.ritual-card:hover { border-color: var(--oro); background: #000; }
+.ritual-card h4 { color: var(--oro); margin-bottom: 15px; font-size: 22px; }
+
+@media (max-width: 900px) { .detail-layout { grid-template-columns: 1fr; } .detail-img { height: 50vh; } .cart-drawer { width: 90%; right: 5%; } }
 
 </style>
 </head>
 <body>
 
 <header class="header">
-    <div class="logo"><img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU"></div>
+    <div class="logo-container">
+        <h1>MAFU</h1>
+    </div>
     <nav class="nav-links">
-        <a href="#proceso">El Origen</a>
-        <a href="#cava">La Cava</a>
-        <a href="#ritual">El Ritual</a>
+        <a href="#cava">Cava</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#ritual">Ritual</a>
     </nav>
 </header>
 
 <section class="hero">
-    <p>Desde 1924 · Pinar del Río</p>
+    <p>Legado de Vuelta Abajo</p>
     <h1>MAFU</h1>
     <p>Cuban Soul</p>
 </section>
 
-<section class="container" id="proceso">
-    <span class="section-tag">Herencia</span>
-    <h2 class="section-title">El Corazón de la Vega</h2>
-    <div class="proceso-grid">
-        <div class="proceso-card">
-            <img src="file_00000000e124720eacda71c2b88a43d3.png">
-            <div class="info"><h3>01. Siembra</h3></div>
-        </div>
-        <div class="proceso-card">
-            <img src="https://images.unsplash.com/photo-1516054144188-f93944fb4a7b?q=80">
-            <div class="info"><h3>02. Curación</h3></div>
-        </div>
-        <div class="proceso-card">
-            <img src="https://images.unsplash.com/photo-1610443425567-873836365440?q=80">
-            <div class="info"><h3>03. Fermentación</h3></div>
-        </div>
-        <div class="proceso-card">
-            <img src="https://images.unsplash.com/photo-1611689342806-0863700ce1e4?q=80">
-            <div class="info"><h3>04. Torcido</h3></div>
-        </div>
-    </div>
-</section>
-
 <section class="container" id="cava">
-    <span class="section-tag">Colección Privada</span>
-    <h2 class="section-title">Nuestra Cava</h2>
+    <h2 class="section-title">Nuestra Selección</h2>
     <div class="cava-grid">
         
-        <div class="puro-card" onclick="openPuro('clasico')">
-            <div class="img-container"><img src="Screenshot_20260501-034528.png"></div>
-            <p>Robusto</p>
-            <h3>Clásico</h3>
-            <span class="precio">$12 USD</span>
+        <div class="puro-card">
+            <img src="Screenshot_20260501-034528.png" onclick="viewProduct('clasico')">
+            <h3 onclick="viewProduct('clasico')">MAFU Clásico</h3>
+            <div class="precio-box">
+                $12 USD
+                <span class="conversión">≈ $11.400 CLP</span>
+            </div>
+            <button class="btn-action" style="background: var(--oro); color: black;" onclick="addToCart('MAFU Clásico', 12)">Añadir al Humidor</button>
         </div>
 
-        <div class="puro-card" onclick="openPuro('reserva')">
-            <div class="img-container"><img src="Screenshot_20260501-034604.png"></div>
-            <p>Toro</p>
-            <h3>Reserva</h3>
-            <span class="precio">$18 USD</span>
+        <div class="puro-card">
+            <img src="Screenshot_20260501-034604.png" onclick="viewProduct('reserva')">
+            <h3 onclick="viewProduct('reserva')">MAFU Reserva Especial</h3>
+            <div class="precio-box">
+                $18 USD
+                <span class="conversión">≈ $17.100 CLP</span>
+            </div>
+            <button class="btn-action" style="background: var(--oro); color: black;" onclick="addToCart('MAFU Reserva', 18)">Añadir al Humidor</button>
         </div>
 
-        <div class="puro-card" onclick="openPuro('premium')">
-            <div class="img-container"><img src="Screenshot_20260501-034637.png"></div>
-            <p>Churchill</p>
-            <h3>Premium</h3>
-            <span class="precio">$25 USD</span>
+        <div class="puro-card">
+            <img src="Screenshot_20260501-034637.png" onclick="viewProduct('premium')">
+            <h3 onclick="viewProduct('premium')">MAFU Premium Maduro</h3>
+            <div class="precio-box">
+                $25 USD
+                <span class="conversión">≈ $23.750 CLP</span>
+            </div>
+            <button class="btn-action" style="background: var(--oro); color: black;" onclick="addToCart('MAFU Premium', 25)">Añadir al Humidor</button>
         </div>
 
     </div>
 </section>
 
-<section class="container" id="ritual">
-    <div class="ritual-box">
-        <span class="section-tag">Connoisseur</span>
-        <h2 class="section-title" style="text-align: left;">El Ritual del Habano</h2>
-        
-        <div class="ritual-item">
-            <b>El Corte Maestro</b>
-            <p>El corte debe ser decidido y limpio. Dos milímetros por encima de la línea de la perilla es suficiente para liberar el alma del puro sin comprometer su estructura.</p>
+<section class="container" id="proceso" style="background: #080808; border-radius: 4px;">
+    <h2 class="section-title">El Arte de la Tierra</h2>
+    <div class="ritual-grid">
+        <div class="ritual-card">
+            <h4>01. El Terroir</h4>
+            <p>Cultivado en las vegas de Vuelta Abajo, donde el suelo rico en nitrógeno y el microclima cubano crean la hoja perfecta.</p>
         </div>
-        <div class="ritual-item">
-            <b>El Encendido Lento</b>
-            <p>Use solo cedro o gas butano. Caliente el pie circularmente sin que la llama toque la hoja. El anillo de fuego debe ser perfecto antes de la primera bocanada.</p>
+        <div class="ritual-card">
+            <h4>02. La Curación</h4>
+            <p>Añejamiento natural en cedro español durante meses, permitiendo que los aceites esenciales se estabilicen.</p>
         </div>
-        <div class="ritual-item">
-            <b>La Ceniza</b>
-            <p>Nunca sacuda el puro como un cigarrillo. La ceniza larga es símbolo de una construcción maestra y una temperatura de combustión ideal.</p>
+        <div class="ritual-card">
+            <h4>03. El Torcido</h4>
+            <p>Cada MAFU es torcido totalmente a mano (Hecho a Mano) por maestros de novena categoría.</p>
         </div>
     </div>
 </section>
 
-<div id="product-view">
-    <button class="btn-close" onclick="closePuro()">CERRAR</button>
-    <div class="view-content" id="view-inner">
+<div id="product-detail-view">
+    <button class="btn-close-view" onclick="closeProductView()">Cerrar</button>
+    <div class="detail-layout" id="detail-content">
         </div>
 </div>
 
-<a href="https://wa.me/56998644532" class="wa-link" target="_blank">CONSULTA DIRECTA →</a>
+<div class="cart-drawer" id="cart">
+    <div class="cart-header">
+        <h3 class="serif-mafu" style="color:var(--oro)">Mi Selección</h3>
+        <span onclick="toggleCart()" style="cursor:pointer">✕</span>
+    </div>
+    <div id="cart-items-list">
+        </div>
+    <div class="cart-total" id="total-display">
+        </div>
+    <button class="btn-action btn-wa" onclick="sendOrder()">Finalizar Pedido vía WhatsApp</button>
+    <button class="btn-clear" onclick="clearCart()">Vaciar humidor y empezar de nuevo</button>
+</div>
 
-<footer>
-    <img src="file_000000009bac71f5a5db74bc3bed2a62.png" style="height: 60px; opacity: 0.2; margin-bottom: 30px;">
-    <p style="font-size: 10px; letter-spacing: 5px; opacity: 0.4;">MAFU CUBAN SOUL · EL HUMO ES SAGRADO</p>
+<footer style="padding: 100px 20px; text-align: center; opacity: 0.4;">
+    <p class="serif-mafu" style="letter-spacing: 5px;">MAFU CUBAN SOUL · 2026</p>
 </footer>
 
 <script>
-const puros = {
+// VARIABLES GLOBALES
+const clpRate = 950;
+let cart = JSON.parse(localStorage.getItem('mafu_cart')) || [];
+
+// DATA DE PRODUCTOS
+const products = {
     clasico: {
-        title: "MAFU Clásico",
+        name: "MAFU Clásico",
         price: 12,
         img: "Screenshot_20260501-034528.png",
-        desc: "La expresión más pura de la suavidad. Un puro diseñado para el día, con una capa Connecticut clara y notas que evocan frutos secos y crema.",
-        vitola: "Robusto (50 x 124mm)",
-        capa: "Ecuadorian Connecticut",
-        tripa: "Valle de Jalapa",
-        añejamiento: "18 Meses"
+        desc: "Un puro Robusto de fortaleza suave-media. Su capa Connecticut clara ofrece notas de frutos secos, crema y un sutil toque de cedro. Perfecto para el café de la mañana.",
+        specs: ["Vitola: Robusto", "Capa: Connecticut", "Fortaleza: Suave", "Añejamiento: 18 Meses"]
     },
     reserva: {
-        title: "MAFU Reserva",
+        name: "MAFU Reserva Especial",
         price: 18,
         img: "Screenshot_20260501-034604.png",
-        desc: "Complejidad y cuerpo medio. La Reserva Especial se distingue por su tripa añejada tres años, ofreciendo un humo denso con notas de cuero y especias.",
-        vitola: "Toro (52 x 152mm)",
-        capa: "Habana 2000",
-        tripa: "Vuelta Abajo (Cuba)",
-        añejamiento: "3 Años"
+        desc: "Complejidad pura. Este Toro de cuerpo medio destaca por su tripa larga añejada por 3 años. Evoluciona en boca con notas de cuero y especias finas.",
+        specs: ["Vitola: Toro", "Capa: Habana 2000", "Fortaleza: Media", "Añejamiento: 3 Años"]
     },
     premium: {
-        title: "MAFU Premium",
+        name: "MAFU Premium Maduro",
         price: 25,
         img: "Screenshot_20260501-034637.png",
-        desc: "Para los amantes de la fortaleza. Una capa Maduro aceitosa y oscura que encierra una potencia controlada de chocolate amargo y pimienta.",
-        vitola: "Churchill (48 x 178mm)",
-        capa: "San Andrés Maduro",
-        tripa: "Ligero de Estelí",
-        añejamiento: "5 Años"
+        desc: "La joya de la corona. Un Churchill imponente envuelto en una capa San Andrés Maduro oscura y aceitosa. Notas intensas de chocolate amargo y pimienta negra.",
+        specs: ["Vitola: Churchill", "Capa: Maduro", "Fortaleza: Fuerte", "Añejamiento: 5 Años"]
     }
 };
 
-function openPuro(id) {
-    const p = puros[id];
-    const inner = document.getElementById('view-inner');
-    inner.innerHTML = `
-        <div class="view-image"><img src="${p.img}"></div>
-        <div class="view-details">
-            <span class="section-tag">Edición Limitada</span>
-            <h2>${p.title}</h2>
-            <p class="description">"${p.desc}"</p>
-            
-            <div class="tech-grid">
-                <div class="tech-item"><span>Vitola</span><b>${p.vitola}</b></div>
-                <div class="tech-item"><span>Fortaleza</span><b>${p.añejamiento}</b></div>
-                <div class="tech-item"><span>Capa</span><b>${p.capa}</b></div>
-                <div class="tech-item"><span>Origen Tripa</span><b>${p.tripa}</b></div>
+// FUNCIONES DE VISTA
+function viewProduct(key) {
+    const p = products[key];
+    const content = document.getElementById('detail-content');
+    content.innerHTML = `
+        <div class="detail-img"><img src="${p.img}"></div>
+        <div class="detail-info">
+            <h2>${p.name}</h2>
+            <p>"${p.desc}"</p>
+            <div class="specs-list">
+                ${p.specs.map(s => `<div class="spec-item"><b>Detalle</b>${s}</div>`).join('')}
             </div>
-
-            <div style="font-size: 40px; margin-bottom: 40px;">$${p.price} USD</div>
-            
-            <button class="btn-order" onclick="sendWA('${p.title}')">Solicitar Reserva</button>
+            <div style="font-size: 35px; margin-bottom: 30px;">$${p.price} USD <span style="font-size:16px; color:#666;">($${(p.price * clpRate).toLocaleString()} CLP)</span></div>
+            <button class="btn-action" style="background:var(--oro); color:black;" onclick="addToCart('${p.name}', ${p.price}); closeProductView();">Añadir al Pedido</button>
         </div>
     `;
-    document.getElementById('product-view').style.display = 'block';
+    document.getElementById('product-detail-view').style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
 
-function closePuro() {
-    document.getElementById('product-view').style.display = 'none';
+function closeProductView() {
+    document.getElementById('product-detail-view').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-function sendWA(name) {
-    window.open(`https://wa.me/56998644532?text=Deseo adquirir el ${name} de la Cava MAFU.`);
+// FUNCIONES DE CARRITO
+function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if(existing) existing.qty++;
+    else cart.push({name, price, qty: 1});
+    
+    saveAndRender();
+    document.getElementById('cart').style.display = 'block';
 }
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveAndRender();
+}
+
+function clearCart() {
+    if(confirm("¿Deseas vaciar tu selección y empezar de nuevo?")) {
+        cart = [];
+        saveAndRender();
+        document.getElementById('cart').style.display = 'none';
+    }
+}
+
+function saveAndRender() {
+    localStorage.setItem('mafu_cart', JSON.stringify(cart));
+    const list = document.getElementById('cart-items-list');
+    const totalDiv = document.getElementById('total-display');
+    
+    list.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, idx) => {
+        total += (item.price * item.qty);
+        list.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name} (x${item.qty})</span>
+                <span>$${item.price * item.qty} USD <span class="remove-item" onclick="removeFromCart(${idx})">✕</span></span>
+            </div>
+        `;
+    });
+
+    totalDiv.innerHTML = `TOTAL: $${total} USD <br> <span style="color:var(--oro)">≈ $${(total * clpRate).toLocaleString()} CLP</span>`;
+}
+
+function toggleCart() {
+    const c = document.getElementById('cart');
+    c.style.display = (c.style.display === 'block') ? 'none' : 'block';
+}
+
+function sendOrder() {
+    let msg = "Hola MAFU Cuban Soul, deseo realizar el siguiente pedido:%0A%0A";
+    cart.forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
+    msg += `%0A*TOTAL: ${document.getElementById('total-display').innerText.split('≈')[0].trim()}*`;
+    window.open(`https://wa.me/56998644532?text=${msg}`);
+}
+
+// Render inicial si hay datos
+if(cart.length > 0) {
+    saveAndRender();
+    document.getElementById('cart').style.display = 'block';
+}
+
 </script>
 
 </body>
