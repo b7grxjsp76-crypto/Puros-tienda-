@@ -1,179 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Puros - Puros Cubanos Premium</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header/Navegación -->
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">🍂 PUROS CUBANOS</h1>
-            <nav class="nav">
-                <a href="#inicio">Inicio</a>
-                <a href="#productos">Productos</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-        </div>
-    </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puros Premium</title>
 
-    <!-- Banner Principal -->
-    <section id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2>Puros Cubanos Premium</h2>
-            <p>Auténticos sabores de Cuba, directamente a tu puerta</p>
-            <a href="#productos" class="btn">Ver 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puros Premium</title>
-  <link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: url('tabaco.jpg') no-repeat center/cover;
+  color: white;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(0,0,0,0.85);
+  padding: 15px;
+  border-radius: 15px;
+  width: 260px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: gold;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: orange;
+}
+
+.clp {
+  color: #00ffcc;
+}
+</style>
+
 </head>
 
 <body>
 
 <header>
-  <h1>Puros Premium</h1>
-  <p>Selección exclusiva</p>
+<h1>🍂 Puros Premium</h1>
+<p>Selección exclusiva</p>
 </header>
 
-<main class="contenedor">
+<div class="contenedor">
 
-  <div class="card">
-    <img src="puro1.png" alt="Puro Clásico">
-    <h2>Puro Clásico</h2>
-    <p class="precio" data-usd="12">$12 USD</p>
-    <p class="clp"></p>
-    <button onclick="comprar('Puro Clásico', 12)">Comprar</button>
-  </div>
+<div class="card">
+<img src="puro1.png">
+<h3>Puro Clásico</h3>
+<p>$12 USD</p>
+<p class="clp" id="clp1"></p>
+<button onclick="comprar('Puro Clásico',12)">Comprar</button>
+</div>
 
-  <div class="card">
-    <img src="puro2.png" alt="Puro Reserva">
-    <h2>Puro Reserva</h2>
-    <p class="precio" data-usd="18">$18 USD</p>
-    <p class="clp"></p>
-    <button onclick="comprar('Puro Reserva', 18)">Comprar</button>
-  </div>
+<div class="card">
+<img src="puro2.png">
+<h3>Puro Reserva</h3>
+<p>$18 USD</p>
+<p class="clp" id="clp2"></p>
+<button onclick="comprar('Puro Reserva',18)">Comprar</button>
+</div>
 
-  <div class="card">
-    <img src="puro3.png" alt="Puro Premium">
-    <h2>Puro Premium</h2>
-    <p class="precio" data-usd="25">$25 USD</p>
-    <p class="clp"></p>
-    <button onclick="comprar('Puro Premium', 25)">Comprar</button>
-  </div>
+<div class="card">
+<img src="puro3.png">
+<h3>Puro Premium</h3>
+<p>$25 USD</p>
+<p class="clp" id="clp3"></p>
+<button onclick="comprar('Puro Premium',25)">Comprar</button>
+</div>
 
-</main>
+</div>
 
-<script src="script.js"></script>
+<script>
+const tasa = 950;
 
-</body>
-</html>
-Productos</a>
-        </div>
-    </section>
+document.getElementById("clp1").innerText = "$" + (12*tasa).toLocaleString("es-CL") + " CLP";
+document.getElementById("clp2").innerText = "$" + (18*tasa).toLocaleString("es-CL") + " CLP";
+document.getElementById("clp3").innerText = "$" + (25*tasa).toLocaleString("es-CL") + " CLP";
 
-    <!-- Sección de Productos -->
-    <section id="productos" class="productos">
-        <div class="container">
-            <h2 class="seccion-titulo">Nuestras Colecciones</h2>
-            
-            <!-- Producto 1 -->
-            <div class="producto-card">
-                <div class="producto-imagen">
-                    <img src="https://via.placeholder.com/300x400?text=Cohiba+Siglo+VI" alt="Cohiba Siglo VI">
-                </div>
-                <div class="producto-info">
-                    <h3>Cohiba Siglo VI</h3>
-                    <p class="descripcion">Los puros más icónicos de Cuba. Sabor intenso y equilibrado con notas de madera y especias.</p>
-                    <div class="caracteristicas">
-                        <span>Largo: 43 mm</span>
-                        <span>Calibre: 42</span>
-                        <span>Origen: Pinar del Río</span>
-                    </div>
-                    <div class="precio-compra">
-                        <span class="precio">$25.00 USD</span>
-                        <button class="btn-comprar">Comprar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="producto-card">
-                <div class="producto-imagen">
-                    <img src="https://via.placeholder.com/300x400?text=Montcristo+A" alt="Montecristo A">
-                </div>
-                <div class="producto-info">
-                    <h3>Montecristo A</h3>
-                    <p class="descripcion">Elegancia y complejidad en cada fumada. Tabaco premium con aroma profundo y duradero.</p>
-                    <div class="caracteristicas">
-                        <span>Largo: 52 mm</span>
-                        <span>Calibre: 52</span>
-                        <span>Origen: Villa Clara</span>
-                    </div>
-                    <div class="precio-compra">
-                        <span class="precio">$30.00 USD</span>
-                        <button class="btn-comprar">Comprar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="producto-card">
-                <div class="producto-imagen">
-                    <img src="https://via.placeholder.com/300x400?text=Partagás+Serie+D" alt="Partagás Serie D">
-                </div>
-                <div class="producto-info">
-                    <h3>Partagás Serie D</h3>
-                    <p class="descripcion">Tradición cubana con sabor robusto. Perfecto para los amantes del tabaco fuerte y aromático.</p>
-                    <div class="caracteristicas">
-                        <span>Largo: 50 mm</span>
-                        <span>Calibre: 50</span>
-                        <span>Origen: Sancti Spíritus</span>
-                    </div>
-                    <div class="precio-compra">
-                        <span class="precio">$22.00 USD</span>
-                        <button class="btn-comprar">Comprar</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Sección Información Cuba -->
-    <section class="info-cuba">
-        <div class="container">
-            <h2>El Origen: Cuba</h2>
-            <p>Nuestros puros provienen de las mejores plantaciones de tabaco en Pinar del Río, donde generaciones de agricultores cubanos han perfeccionado el arte de cultivar el tabaco de la más alta calidad.</p>
-        </div>
-    </section>
-
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            <form class="formulario">
-                <input type="text" placeholder="Tu Nombre" required>
-                <input type="email" placeholder="Tu Email" required>
-                <textarea placeholder="Tu Mensaje" rows="5" required></textarea>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Tienda de Puros Cubanos. Todos los derechos reservados.</p>
-            <p>🍂 Venta de productos para mayores de edad únicamente.</p>
-        </div>
-    </footer>
+function comprar(nombre, precio){
+  alert("Seleccionaste: " + nombre + " ($" + precio + " USD)");
+}
+</script>
 
 </body>
 </html>
