@@ -1,268 +1,278 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFU Cuban Soul | Tradición Tabacalera</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAFU Cuban Soul | El Humo Maestro de Vuelta Abajo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,900&family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --oro: #c5a059;
-            --negro: #0a0a0a;
-            --borde: #1d1d1d;
-            --blanco: #f4f1ea;
-        }
+<style>
+/* ==========================================================================
+   FUNDAMENTOS Y ESTÉTICA DE LUJO
+   ========================================================================== */
+:root {
+  --dorado: #d4af37;
+  --dorado-mate: #aa8c2c;
+  --negro-absoluto: #050505;
+  --negro-carbon: #0d0d0d;
+  --gris-tabaco: #1a1a1a;
+  --blanco-humo: #f5f5f5;
+  --transicion: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: #000; 
-            color: var(--blanco); 
-            font-family: 'Montserrat', sans-serif; 
-            line-height: 1.6;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-        /* NAVBAR SIMPLE */
-        .navbar {
-            padding: 20px;
-            text-align: center;
-            background: #000;
-        }
-        .navbar img { height: 50px; margin-bottom: 10px; }
-        .nav-links { display: flex; justify-content: center; gap: 20px; }
-        .nav-links a { 
-            color: var(--oro); 
-            text-decoration: none; 
-            font-size: 10px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--negro-absoluto);
+  color: var(--blanco-humo);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
 
-        /* HERO SECTION (MAFU Cuban Soul) */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1542125387-c7128488903c?auto=format&fit=crop&w=1500');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .hero h1 { 
-            font-family: 'Cinzel', serif; 
-            color: var(--oro); 
-            font-size: clamp(30px, 8vw, 60px);
-            margin-bottom: 10px;
-        }
-        .hero p { 
-            font-size: 14px; 
-            letter-spacing: 3px; 
-            text-transform: uppercase; 
-            opacity: 0.9;
-        }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+  opacity: 0.3; z-index: -1; pointer-events: none;
+}
 
-        /* SECCIÓN TEXTO */
-        .intro-section {
-            padding: 60px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-        .intro-section h2 { color: var(--oro); margin-bottom: 20px; font-size: 20px; }
-        .intro-section p { font-size: 14px; color: #aaa; margin-bottom: 15px; }
+h1, h2, h3, h4, .brand { font-family: 'Playfair Display', serif; }
 
-        /* PRODUCT CARDS (Diseño Horizontal) */
-        .product-list { padding: 40px 20px; max-width: 1000px; margin: auto; }
-        
-        .product-card {
-            background: var(--negro);
-            border: 1px solid var(--borde);
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-        .product-image {
-            width: 100%;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-        }
-        .product-info { padding: 25px; }
-        .product-info h3 { color: var(--oro); margin-bottom: 10px; font-size: 18px; }
-        .product-info p { font-size: 13px; color: #888; margin-bottom: 15px; }
-        .product-price { font-size: 18px; font-weight: bold; margin-bottom: 20px; }
-        .product-price span { display: block; font-size: 11px; color: #555; }
+/* ==========================================================================
+   NAVEGACIÓN
+   ========================================================================== */
+.header {
+  background: rgba(0,0,0,0.95);
+  padding: 25px 0;
+  border-bottom: 2px solid var(--dorado);
+  position: sticky;
+  top: 0; z-index: 1000;
+  backdrop-filter: blur(10px);
+}
 
-        /* CONTROLES CANTIDAD */
-        .qty-controls { display: flex; align-items: center; gap: 5px; margin-bottom: 15px; }
-        .qty-btn { 
-            background: #222; border: 1px solid #444; color: #fff;
-            width: 30px; height: 30px; cursor: pointer;
-        }
-        .qty-input { width: 40px; text-align: center; background: #000; border: 1px solid #444; color: #fff; height: 30px; font-size: 12px; }
+.header .logo { text-align: center; margin-bottom: 15px; }
+.logo img { height: 95px; filter: drop-shadow(0 0 15px rgba(212,175,55,0.4)); }
 
-        .btn-agregar {
-            width: 100%;
-            background: var(--oro);
-            color: #000;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-size: 12px;
-        }
+.nav { display: flex; justify-content: center; gap: 40px; }
+.nav a {
+  color: var(--dorado);
+  text-decoration: none;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 900;
+  transition: var(--transicion);
+}
 
-        /* SECCIÓN FINAL (Carrito e Info) */
-        .bottom-section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
-        }
-        .detailed-info h2 { color: var(--oro); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--oro); padding-bottom: 10px; }
-        
-        .cart-box {
-            background: var(--negro);
-            border: 1px solid #333;
-            padding: 20px;
-            height: fit-content;
-            border-radius: 5px;
-        }
-        .cart-box h4 { font-size: 14px; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .cart-total { margin: 20px 0; font-size: 14px; }
-        .btn-pedido {
-            background: #fff; color: #000; border: none; padding: 8px 15px;
-            font-size: 11px; font-weight: bold; cursor: pointer; width: 100%;
-        }
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1511252194373-900898695034?q=80') center/cover fixed;
+}
 
-        .wa-float {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25d366; width: 50px; height: 50px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
+.hero-box { text-align: center; padding: 40px; border: 1px solid rgba(212,175,55,0.3); }
+.hero h1 { font-size: clamp(60px, 12vw, 150px); color: var(--dorado); line-height: 1; font-style: italic; }
 
-        @media (max-width: 768px) {
-            .bottom-section { grid-template-columns: 1fr; }
-        }
-    </style>
+/* ==========================================================================
+   PRODUCTOS
+   ========================================================================== */
+.productos { padding: 120px 20px; }
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card {
+  background: var(--gris-tabaco);
+  border-radius: 30px;
+  padding: 40px;
+  border: 1px solid #222;
+  transition: var(--transicion);
+}
+
+.card h3 { color: var(--dorado); font-size: 28px; margin-bottom: 15px; }
+.precio-tag { font-size: 24px; font-weight: 900; color: white; display: block; margin-bottom: 20px; }
+
+.btn-buy {
+  width: 100%;
+  padding: 15px;
+  background: var(--dorado);
+  color: black;
+  font-weight: 900;
+  border: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   CARRITO MEJORADO
+   ========================================================================== */
+.cart-drawer {
+  position: fixed; right: 30px; bottom: 120px; width: 350px;
+  background: var(--gris-tabaco); border: 2px solid var(--dorado);
+  border-radius: 20px; padding: 25px; display: none; z-index: 1002;
+  box-shadow: 0 20px 60px rgba(0,0,0,1);
+}
+
+.cart-list { list-style: none; margin: 15px 0; max-height: 200px; overflow-y: auto; }
+.cart-list li { 
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid #333; font-size: 14px;
+}
+
+.btn-vaciar {
+  background: transparent;
+  color: #ff4444;
+  border: 1px solid #ff4444;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 10px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.btn-vaciar:hover { background: #ff4444; color: white; }
+
+.whatsapp-float {
+  position: fixed; bottom: 35px; right: 35px; background: #25D366;
+  width: 70px; height: 70px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 35px;
+  color: white; text-decoration: none; z-index: 1001;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+</style>
 </head>
+
 <body>
 
-<header class="navbar">
-    <img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU">
-    <div class="nav-links">
-        <a href="#">Inicio</a>
-        <a href="#">Historia</a>
-        <a href="#">Productos</a>
-        <a href="#">Información</a>
-    </div>
+<header class="header">
+  <div class="logo"><img src="file_000000009bac71f5a5db74bc3bed2a62.png" alt="MAFU Logo"></div>
+  <nav class="nav">
+    <a href="#productos">Catálogo</a>
+  </nav>
 </header>
 
 <section class="hero">
-    <h1>MAFU Cuban Soul</h1>
-    <p>Lujo, tradición y esencia cubana</p>
+  <div class="hero-box">
+    <h1>MAFU</h1>
+    <p>Cuban Soul</p>
+  </div>
 </section>
 
-<section class="intro-section">
-    <h2>La esencia del tabaco cubano</h2>
-    <p>Cuba es considerada la cuna de los mejores puros del mundo...</p>
-    <p>Desde el cultivo hasta el torcido, cada etapa es artesanal...</p>
-    <p>El puro cubano representa lujo, calma y tradición.</p>
+<section class="productos" id="productos">
+  <div class="prod-grid">
+    
+    <div class="card">
+      <h3>MAFU Clásico</h3>
+      <span class="precio-tag">$12 USD</span>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" value="1" min="1" id="q_clasico" style="width: 50px; background: #000; color: white; border: 1px solid var(--dorado); text-align: center;">
+        <button class="btn-buy" onclick="addToCart('MAFU Clásico', 12, 'q_clasico')">Añadir</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>MAFU Reserva</h3>
+      <span class="precio-tag">$18 USD</span>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" value="1" min="1" id="q_reserva" style="width: 50px; background: #000; color: white; border: 1px solid var(--dorado); text-align: center;">
+        <button class="btn-buy" onclick="addToCart('MAFU Reserva', 18, 'q_reserva')">Añadir</button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<div class="product-list">
-    <div class="product-card">
-        <div class="product-image" style="background-image: url('Screenshot_20260501-034528.png');"></div>
-        <div class="product-info">
-            <h3>Puro Clásico</h3>
-            <p>Suave, ideal para comenzar</p>
-            <div class="product-price">
-                $12 USD
-                <span>$11.400 CLP</span>
-            </div>
-            <div class="qty-controls">
-                <button class="qty-btn" onclick="changeQty('p1', -1)">-</button>
-                <input type="text" id="qty-p1" class="qty-input" value="1" readonly>
-                <button class="qty-btn" onclick="changeQty('p1', 1)">+</button>
-            </div>
-            <button class="btn-agregar" onclick="addToCart('p1')">Agregar</button>
-        </div>
-    </div>
-    </div>
-
-<div class="bottom-section">
-    <div class="detailed-info">
-        <h2>Información detallada</h2>
-        <div id="info-display">
-            <b style="color:var(--oro)">Puro Clásico:</b><br>
-            <span style="font-size:13px; color:#aaa;">Notas suaves, madera y crema...</span>
-        </div>
-    </div>
-
-    <div class="cart-box">
-        <h4>Carrito</h4>
-        <div id="cart-items" style="font-size: 12px; color: #888;"></div>
-        <div class="cart-total">
-            Total: <span id="total-usd">$0 USD</span> / <span id="total-clp">$0 CLP</span>
-        </div>
-        <button class="btn-pedido" onclick="sendOrder()">Enviar pedido</button>
-    </div>
+<div class="cart-drawer" id="cart-ui">
+  <h3 style="color: var(--dorado); text-align: center;">Mi Humidor</h3>
+  <ul id="cart-list" class="cart-list"></ul>
+  <div id="cart-total" style="font-weight: 700; text-align: center; margin-bottom: 15px;"></div>
+  
+  <button onclick="sendOrder()" class="btn-buy" style="background: #25D366; color: white; margin-bottom: 10px;">Pedir por WhatsApp</button>
+  <button onclick="clearCart()" class="btn-vaciar">Vaciar Carrito</button>
 </div>
 
-<div class="wa-float">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.899 3.3 1.374 5.127 1.374 5.454 0 9.893-4.439 9.895-9.895.001-2.646-1.03-5.132-2.903-7.005-1.873-1.873-4.359-2.903-7.004-2.903-5.454 0-9.894 4.44-9.896 9.896-.001 1.884.524 3.722 1.514 5.311l-.991 3.62 3.714-.974h-.347z"/></svg>
-</div>
+<a href="#" class="whatsapp-float" onclick="sendOrder(); return false;">W</a>
 
 <script>
-    const CLP_PRICE = 950;
-    const products = {
-        p1: { name: "Puro Clásico", price: 12 },
-        p2: { name: "Puro Reserva", price: 18 },
-        p3: { name: "Puro Premium", price: 25 }
-    };
+let cart = [];
+const tasaCLP = 950;
 
-    let cart = {};
+function addToCart(name, price, qtyId) {
+  const qty = parseInt(document.getElementById(qtyId).value);
+  const existing = cart.find(i => i.name === name);
+  
+  if(existing) {
+    existing.qty += qty;
+  } else {
+    cart.push({name, price, qty});
+  }
+  
+  renderCart();
+}
 
-    function changeQty(id, delta) {
-        const input = document.getElementById('qty-' + id);
-        let val = parseInt(input.value) + delta;
-        if(val < 1) val = 1;
-        input.value = val;
-    }
+function clearCart() {
+  if(confirm("¿Estás seguro de que deseas vaciar tu selección?")) {
+    cart = [];
+    renderCart();
+  }
+}
 
-    function addToCart(id) {
-        const qty = parseInt(document.getElementById('qty-' + id).value);
-        cart[id] = (cart[id] || 0) + qty;
-        updateUI();
-    }
+function renderCart() {
+  const cartUI = document.getElementById('cart-ui');
+  const list = document.getElementById('cart-list');
+  const totalDiv = document.getElementById('cart-total');
+  
+  if (cart.length === 0) {
+    cartUI.style.display = 'none';
+    return;
+  }
 
-    function updateUI() {
-        const container = document.getElementById('cart-items');
-        let total = 0;
-        container.innerHTML = "";
-        
-        for(let id in cart) {
-            const p = products[id];
-            total += p.price * cart[id];
-            container.innerHTML += `<div>${p.name} x${cart[id]}</div>`;
-        }
+  cartUI.style.display = 'block';
+  list.innerHTML = "";
+  let totalUSD = 0;
+  
+  cart.forEach((item, index) => {
+    const subtotal = item.price * item.qty;
+    totalUSD += subtotal;
+    list.innerHTML += `
+      <li>
+        <span>${item.name} (x${item.qty})</span>
+        <b>$${subtotal} USD</b>
+      </li>`;
+  });
+  
+  const totalCLP = totalUSD * tasaCLP;
+  totalDiv.innerHTML = `Total: $${totalUSD} USD <br> <small style="color:var(--dorado)">≈ $${totalCLP.toLocaleString()} CLP</small>`;
+}
 
-        document.getElementById('total-usd').innerText = `$${total} USD`;
-        document.getElementById('total-clp').innerText = `$${(total * CLP_PRICE).toLocaleString()} CLP`;
-    }
-
-    function sendOrder() {
-        let text = "Hola MAFU, mi pedido es:%0A";
-        for(let id in cart) text += `• ${products[id].name} x${cart[id]}%0A`;
-        window.open(`https://wa.me/56998644532?text=${text}`);
-    }
+function sendOrder() {
+  if(cart.length === 0) {
+    alert("El carrito está vacío");
+    return;
+  }
+  
+  let msg = "Hola MAFU Cuban Soul, deseo adquirir:%0A";
+  cart.forEach(i => msg += `• ${i.name} (x${i.qty})%0A`);
+  msg += `%0A*Monto Total: $${document.getElementById('cart-total').innerText.split('≈')[0].replace('Total: ', '').trim()}*`;
+  
+  window.open(`https://wa.me/56998644532?text=${msg}`);
+}
 </script>
 
 </body>
