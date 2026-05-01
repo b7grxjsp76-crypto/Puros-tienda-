@@ -10,6 +10,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: url('tabaco.jpg') no-repeat center/cover;
     color: white;
+    scroll-behavior: smooth;
 }
 
 /* capa oscura */
@@ -18,13 +19,13 @@ body::before {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.75);
     top: 0;
     left: 0;
     z-index: -1;
 }
 
-/* ==================== CONTENEDOR BASE ==================== */
+/* ==================== CONTENEDOR ==================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -33,12 +34,14 @@ body::before {
 
 /* ==================== HEADER ==================== */
 .header {
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     color: #d4af37;
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #d4af37;
 }
 
 .header .container {
@@ -47,27 +50,41 @@ body::before {
     align-items: center;
 }
 
-.logo {
-    font-size: 24px;
+.logo img {
+    height: 55px;
 }
 
+/* NAV */
 .nav {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav a {
     color: #d4af37;
     text-decoration: none;
+    letter-spacing: 1px;
+    position: relative;
 }
 
-.nav a:hover {
-    color: white;
+.nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    background: #d4af37;
+    left: 0;
+    bottom: -5px;
+    transition: .3s;
+}
+
+.nav a:hover::after {
+    width: 100%;
 }
 
 /* ==================== HERO ==================== */
 .hero {
-    height: 500px;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,51 +92,71 @@ body::before {
 }
 
 .hero h2 {
-    font-size: 40px;
+    font-size: 50px;
+    color: #d4af37;
+    letter-spacing: 2px;
 }
 
 .hero p {
-    color: #d4af37;
+    color: #ccc;
+    margin-top: 10px;
 }
 
 /* ==================== BOTÓN ==================== */
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 30px;
-    background: gold;
-    color: black;
+    margin-top: 25px;
+    padding: 12px 35px;
+    border: 1px solid #d4af37;
+    color: #d4af37;
     text-decoration: none;
-    border-radius: 5px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #d4af37;
+    color: black;
 }
 
 /* ==================== PRODUCTOS ==================== */
 .productos {
-    padding: 60px 0;
-    background: #111;
+    padding: 80px 0;
+    background: #0f0f0f;
 }
 
-/* GRID SOLO PARA PRODUCTOS */
+/* GRID */
 .productos .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px;
 }
 
 /* CARD */
 .producto-card {
-    background: #222;
+    background: #1a1a1a;
+    border: 1px solid #222;
     border-radius: 10px;
     overflow: hidden;
-    transition: 0.3s;
+    transition: .4s;
 }
 
 .producto-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
+    border-color: #d4af37;
+    box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+}
+
+.producto-imagen {
+    overflow: hidden;
 }
 
 .producto-imagen img {
     width: 100%;
+    transition: .4s;
+}
+
+.producto-card:hover img {
+    transform: scale(1.1);
 }
 
 .producto-info {
@@ -128,34 +165,63 @@ body::before {
 
 .producto-info h3 {
     color: #d4af37;
+    margin-bottom: 10px;
 }
 
 .descripcion {
-    color: #ccc;
+    color: #bbb;
+    font-size: 14px;
 }
 
+/* PRECIO */
 .precio-compra {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
 }
 
 .precio {
-    color: gold;
+    color: #d4af37;
+    font-weight: bold;
 }
 
 /* BOTÓN COMPRA */
 .btn-comprar {
-    background: gold;
+    background: #d4af37;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 15px;
     cursor: pointer;
+    transition: .3s;
+}
+
+.btn-comprar:hover {
+    background: #fff;
+}
+
+/* ==================== SECCIÓN EXPERIENCIA ==================== */
+.experiencia {
+    padding: 80px 20px;
+    text-align: center;
+    background: #111;
+}
+
+.experiencia h2 {
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.experiencia p {
+    max-width: 700px;
+    margin: auto;
+    color: #bbb;
+    line-height: 1.6;
 }
 
 /* ==================== CONTACTO ==================== */
 .contacto {
     padding: 60px 0;
-    background: #111;
+    background: #0f0f0f;
 }
 
 .formulario {
@@ -163,29 +229,66 @@ body::before {
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .formulario input,
 .formulario textarea {
-    padding: 10px;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+}
+
+.formulario button {
+    background: #d4af37;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* ==================== WHATSAPP ==================== */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0,0,0,.4);
+    z-index: 1000;
+    transition: .3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
 }
 
 /* ==================== FOOTER ==================== */
 .footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background: black;
-    color: #d4af37;
+    color: #777;
+    border-top: 1px solid #222;
 }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
+
     .hero h2 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .nav {
         flex-direction: column;
+        align-items: center;
     }
 }
