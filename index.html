@@ -7,94 +7,104 @@
         body {
             margin: 0;
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80'); /* Fondo: cultivo de tabaco */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             color: #fff;
             min-height: 100vh;
         }
-        .container {
-            background: rgba(0,0,0,0.6);
-            padding: 40px 0;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 8px #222;
-        }
-        .recuadros {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .caja {
-            background: rgba(255,255,255,0.9);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            color: #222;
-            width: 300px;
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-        .caja:hover {
-            transform: scale(1.05);
-        }
-        .img-cuba, .img-puro {
-            border-radius: 8px;
-            width: 100%;
-            object-fit: cover;
-        }
-        .img-cuba {
-            height: 140px;
-            margin-bottom: 14px;
-        }
-        .img-puro {
-            height: 50px;
-            margin-top: 10px;
-            background: #eee;
-            padding: 8px;
-        }
-        .marca {
-            font-weight: bold;
-            margin-top: 14px;
-            font-size: 1.1em;
-            letter-spacing: 1px;
-        }
-        .lugar {
-            margin-bottom: 7px;
-            font-style: italic;
-        }
+        /* Algunos estilos asumiendo que tu web puede tener más contenido */
+        /* ... aquí irían tus estilos previos ... */
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Puros y Lugares Icónicos de Cuba</h1>
-        <div class="recuadros">
-            <!-- Primer recuadro -->
-            <div class="caja">
-                <div class="marca">Habano Real</div>
-                <div class="lugar">La Habana - Capitolio</div>
-                <img class="img-cuba" src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=600&q=80" alt="Capitolio de La Habana">
-                <img class="img-puro" src="https://cdn.pixabay.com/photo/2016/02/23/17/46/cigar-1210482_1280.jpg" alt="Habano Real">
-            </div>
-            <!-- Segundo recuadro -->
-            <div class="caja">
-                <div class="marca">Tabaco del Valle</div>
-                <div class="lugar">Viñales - Valle del Tabaco</div>
-                <img class="img-cuba" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Valle de Viñales">
-                <img class="img-puro" src="https://cdn.pixabay.com/photo/2015/12/07/10/37/cigar-1079401_1280.jpg" alt="Tabaco del Valle">
-            </div>
-            <!-- Tercer recuadro -->
-            <div class="caja">
-                <div class="marca">Cohíba Sol</div>
-                <div class="lugar">Santiago - Castillo del Morro</div>
-                <img class="img-cuba" src="https://images.unsplash.com/photo-1503863937795-711cb4700a36?auto=format&fit=crop&w=600&q=80" alt="Castillo del Morro, Santiago">
-                <img class="img-puro" src="https://cdn.pixabay.com/photo/2014/11/17/11/22/cigar-534395_1280.jpg" alt="Cohíba Sol">
-            </div>
+    <!-- ... aquí tu contenido original de la web ... -->
+
+    <!-- Galería de Puros y Lugares de Cuba -->
+    <style>
+    .galeria-cuba-bg {
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+        padding: 40px 0;
+        margin-top: 40px;
+    }
+    .galeria-cuba-inner {
+        background: rgba(0,0,0,0.6);
+        max-width: 1200px;
+        margin: auto;
+        border-radius: 12px;
+        padding: 20px 10px 40px 10px;
+    }
+    .galeria-cuba-inner h2 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 35px;
+        text-shadow: 2px 2px 8px #222;
+    }
+    .galeria-recuadros {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    .galeria-caja {
+        background: rgba(255,255,255,0.9);
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        color: #222;
+        width: 300px;
+        padding: 18px;
+        margin-bottom: 15px;
+        transition: transform 0.2s;
+    }
+    .galeria-caja:hover {
+        transform: scale(1.04);
+    }
+    .galeria-img-cuba, .galeria-img-puro {
+        border-radius: 8px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .galeria-img-cuba {
+        height: 140px;
+        margin-bottom: 14px;
+    }
+    .galeria-img-puro {
+        height: 50px;
+        margin-top: 10px;
+        background: #eee;
+        padding: 8px;
+    }
+    .galeria-marca { font-weight: bold; margin-top: 14px; font-size: 1.1em; letter-spacing: 1px;}
+    .galeria-lugar {margin-bottom: 7px; font-style: italic;}
+    </style>
+    <div class="galeria-cuba-bg">
+      <div class="galeria-cuba-inner">
+        <h2>Puros y Lugares Icónicos de Cuba</h2>
+        <div class="galeria-recuadros">
+
+          <div class="galeria-caja">
+            <div class="galeria-marca">Habano Real</div>
+            <div class="galeria-lugar">La Habana - Capitolio</div>
+            <img class="galeria-img-cuba" src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=600&q=80" alt="Capitolio de La Habana">
+            <img class="galeria-img-puro" src="https://cdn.pixabay.com/photo/2016/02/23/17/46/cigar-1210482_1280.jpg" alt="Habano Real">
+          </div>
+          <div class="galeria-caja">
+            <div class="galeria-marca">Tabaco del Valle</div>
+            <div class="galeria-lugar">Viñales - Valle del Tabaco</div>
+            <img class="galeria-img-cuba" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Valle de Viñales">
+            <img class="galeria-img-puro" src="https://cdn.pixabay.com/photo/2015/12/07/10/37/cigar-1079401_1280.jpg" alt="Tabaco del Valle">
+          </div>
+          <div class="galeria-caja">
+            <div class="galeria-marca">Cohíba Sol</div>
+            <div class="galeria-lugar">Santiago - Castillo del Morro</div>
+            <img class="galeria-img-cuba" src="https://images.unsplash.com/photo-1503863937795-711cb4700a36?auto=format&fit=crop&w=600&q=80" alt="Castillo del Morro, Santiago">
+            <img class="galeria-img-puro" src="https://cdn.pixabay.com/photo/2014/11/17/11/22/cigar-534395_1280.jpg" alt="Cohíba Sol">
+          </div>
         </div>
+      </div>
     </div>
+    <!-- Fin de Galería -->
+
 </body>
 </html>
