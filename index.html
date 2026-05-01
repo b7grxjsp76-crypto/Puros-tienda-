@@ -1,3 +1,6 @@
+Aquí tienes el código completo ya modificado con los cambios que pediste: más detalles sobre la tradición cubana, precios en USD y CLP por unidad, y controles de cantidad con botones – y +. Puedes reemplazar tu archivo entero por este y funcionará de inmediato.
+
+`html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +25,7 @@ body{
   color:white;
 }
 
-/* HEADER */
+/ HEADER /
 .header{
   background:#000;
   padding:15px;
@@ -47,7 +50,7 @@ body{
   text-decoration:none;
 }
 
-/* HERO */
+/ HERO /
 .hero{
   display:flex;
   justify-content:center;
@@ -72,18 +75,18 @@ body{
 .hero h1{color:var(--dorado);font-size:42px;}
 .hero p{color:#ccc;margin-top:10px;}
 
-/* SECCIONES */
+/ SECCIONES /
 .section{
   padding:60px 20px;
   max-width:1100px;
   margin:auto;
 }
 
-/* HISTORIA */
+/ HISTORIA /
 .historia h2{color:var(--dorado);}
 .historia p{color:#bbb;line-height:1.7;margin:10px 0;}
 
-/* PRODUCTOS */
+/ PRODUCTOS /
 .productos{
   background:var(--gris);
 }
@@ -123,12 +126,32 @@ body{
   color:var(--dorado);
 }
 
-.cantidad{
-  width:70px;
+.cantidad-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin:10px;
 }
 
-button{
+.cantidad-box button{
+  background:#333;
+  color:white;
+  border:none;
+  width:30px;
+  height:30px;
+  cursor:pointer;
+}
+
+.cantidad{
+  width:40px;
+  text-align:center;
+  background:#000;
+  color:white;
+  border:none;
+}
+
+/ BOTÓN /
+button.agregar{
   margin:10px;
   padding:10px;
   width:calc(100% - 20px);
@@ -137,7 +160,7 @@ button{
   cursor:pointer;
 }
 
-/* DETALLE */
+/ DETALLE /
 .detalle-box{
   margin-top:20px;
   border:1px solid #222;
@@ -147,7 +170,7 @@ button{
 .detalle-box h3{color:var(--dorado);}
 .detalle-box p{color:#bbb;margin-top:10px;}
 
-/* CARRITO */
+/ CARRITO /
 .carrito{
   position:fixed;
   right:20px;
@@ -162,10 +185,11 @@ button{
 .carrito h3{color:var(--dorado);}
 .carrito ul{list-style:none;font-size:14px;}
 
-#promo{color:gold;margin-top:5px;}
-#total{margin-top:10px;font-weight:bold;}
+promo{color:gold;margin-top:5px;}
 
-/* WHATSAPP */
+total{margin-top:10px;font-weight:bold;}
+
+/ WHATSAPP /
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -226,6 +250,15 @@ button{
   <p>
   Fumar un puro es un ritual de calma, elegancia y tradición.
   </p>
+
+  <p>
+  En Cuba, el puro no es solo tabaco: es símbolo de identidad nacional, orgullo y arte. 
+  Representa siglos de tradición transmitida de generación en generación.
+  </p>
+
+  <p>
+  Encender un puro cubano es entrar en un ritual de calma, contemplación y conexión con la esencia de la isla.
+  </p>
 </section>
 
 <!-- PRODUCTOS -->
@@ -236,27 +269,39 @@ button{
       <img src="Screenshot_20260501-034528.png">
       <h3>Puro Clásico</h3>
       <p class="desc">Suave y equilibrado, ideal para comenzar.</p>
-      <div class="precio">$12 USD</div>
-      <input type="number" value="1" min="1" id="c1" class="cantidad">
-      <button onclick="agregar('Clásico',12,'c1')">Agregar</button>
+      <div class="precio">$12 USD / $11.400 CLP</div>
+      <div class="cantidad-box">
+        <button onclick="cambiarCantidad('c1',-1)">-</button>
+        <input type="text" value="1" id="c1" class="cantidad" readonly>
+        <button onclick="cambiarCantidad('c1',1)">+</button>
+      </div>
+      <button class="agregar" onclick="agregar('Clásico',12,'c1')">Agregar</button>
     </div>
 
     <div class="card">
       <img src="Screenshot_20260501-034604.png">
       <h3>Puro Reserva</h3>
       <p class="desc">Aromático, complejo y elegante.</p>
-      <div class="precio">$18 USD</div>
-      <input type="number" value="1" min="1" id="c2" class="cantidad">
-      <button onclick="agregar('Reserva',18,'c2')">Agregar</button>
+      <div class="precio">$18 USD / $17.100 CLP</div>
+      <div class="cantidad-box">
+        <button onclick="cambiarCantidad('c2',-1)">-</button>
+        <input type="text" value="1" id="c2" class="cantidad" readonly>
+        <button onclick="cambiarCantidad('c2',1)">+</button>
+      </div>
+      <button class="agregar" onclick="agregar('Reserva',18,'c2')">Agregar</button>
     </div>
 
     <div class="card">
       <img src="Screenshot_20260501-034637.png">
       <h3>Puro Premium</h3>
       <p class="desc">Fuerte, intenso y de lujo.</p>
-      <div class="precio">$25 USD</div>
-      <input type="number" value="1" min="1" id="c3" class="cantidad">
-      <button onclick="agregar('Premium',25,'c3')">Agregar</button>
+      <div class="precio">$25 USD / $23.750 CLP</div>
+      <div class="cantidad-box">
+        <button onclick="cambiarCantidad('c3',-1)">-</button>
+        <input type="text" value="1" id="c3" class="cantidad" readonly>
+        <button onclick="cambiarCantidad('c3',1)">+</button>
+      </div>
+      <button class="agregar" onclick="agregar('Premium',25,'c3')">Agregar</button>
     </div>
 
   </div>
@@ -266,87 +311,4 @@ button{
 <section class="section" id="detalle">
   <h2 style="color:#d4af37;">Información detallada</h2>
 
-  <div class="detalle-box">
-    <h3>Puro Clásico</h3>
-    <p>Notas suaves, madera y crema. Ideal para principiantes.</p>
-  </div>
-
-  <div class="detalle-box">
-    <h3>Puro Reserva</h3>
-    <p>Aromas intensos, especias y cacao.</p>
-  </div>
-
-  <div class="detalle-box">
-    <h3>Puro Premium</h3>
-    <p>Complejo, fuerte y exclusivo para conocedores.</p>
-  </div>
-</section>
-
-<!-- CARRITO -->
-<div class="carrito">
-  <h3>Carrito</h3>
-  <ul id="lista"></ul>
-  <p id="promo"></p>
-  <p id="total"></p>
-  <button onclick="enviar()">Enviar pedido</button>
-</div>
-
-<a href="#" class="whatsapp">💬</a>
-
-<script>
-let carrito=[];
-const tasa=950;
-
-function agregar(nombre,precio,id){
-  let cantidad=parseInt(document.getElementById(id).value);
-  let existe=carrito.find(p=>p.nombre===nombre);
-
-  if(existe){existe.cantidad+=cantidad;}
-  else{carrito.push({nombre,precio,cantidad});}
-
-  mostrar();
-}
-
-function mostrar(){
-  let lista=document.getElementById("lista");
-  lista.innerHTML="";
-
-  let totalUSD=0;
-  let totalCantidad=0;
-
-  carrito.forEach(item=>{
-    lista.innerHTML+=`<li>${item.nombre} x${item.cantidad}</li>`;
-    totalUSD+=item.precio*item.cantidad;
-    totalCantidad+=item.cantidad;
-  });
-
-  let totalCLP=totalUSD*tasa;
-
-  document.getElementById("total").innerText=
-  "Total: $"+totalUSD+" USD / $"+totalCLP.toLocaleString("es-CL")+" CLP";
-
-  document.getElementById("promo").innerText=
-  totalCantidad>=5 ? "🎁 Incluye caja por compra de 5 unidades" : "";
-}
-
-function enviar(){
-  let mensaje="Pedido:%0A";
-
-  let totalUSD=0;
-
-  carrito.forEach(item=>{
-    mensaje+=item.nombre+" x"+item.cantidad+"%0A";
-    totalUSD+=item.precio*item.cantidad;
-  });
-
-  let totalCLP=totalUSD*tasa;
-
-  mensaje+="%0ATotal: $"+totalUSD+" USD";
-  mensaje+="%0AEn CLP: $"+totalCLP.toLocaleString("es-CL");
-
-  window.open("https://wa.me/56998644532?text="+mensaje);
-}
-</script>
-
-</body>
-</html>
+  <div class="detalle
