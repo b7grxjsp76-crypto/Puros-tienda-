@@ -12,7 +12,7 @@
 
 body{
     font-family:'Playfair Display', serif;
-    background:url('tabaco.jpg') no-repeat center/cover;
+    background:url('fondo.jpg') no-repeat center/cover;
     color:white;
 }
 
@@ -32,8 +32,6 @@ body::before{
 .header{
     background:rgba(0,0,0,0.95);
     padding:20px;
-    position:sticky;
-    top:0;
     text-align:center;
     border-bottom:1px solid #d4af37;
 }
@@ -42,15 +40,10 @@ body::before{
     height:65px;
 }
 
-.nav{
-    margin-top:10px;
-}
-
 .nav a{
     color:#d4af37;
     margin:0 15px;
     text-decoration:none;
-    letter-spacing:2px;
 }
 
 /* HERO */
@@ -68,7 +61,6 @@ body::before{
 }
 
 .btn{
-    display:inline-block;
     margin-top:20px;
     padding:12px 30px;
     border:1px solid #d4af37;
@@ -76,10 +68,27 @@ body::before{
     text-decoration:none;
 }
 
+/* HISTORIA */
+.historia{
+    padding:80px 20px;
+    text-align:center;
+    background:#111;
+}
+
+.historia h2{
+    color:#d4af37;
+}
+
+.historia p{
+    max-width:800px;
+    margin:10px auto;
+    color:#bbb;
+}
+
 /* PRODUCTOS */
 .productos{
     padding:80px 20px;
-    background:#111;
+    background:#0f0f0f;
 }
 
 .grid{
@@ -113,17 +122,28 @@ body::before{
     color:#d4af37;
 }
 
+.detalles{
+    color:#bbb;
+    font-size:14px;
+    margin:10px 0;
+}
+
 .precio{
     color:#d4af37;
-    margin-top:10px;
+    font-size:18px;
+}
+
+.clp{
+    color:#aaa;
+    font-size:14px;
 }
 
 .btn-comprar{
     margin-top:10px;
     padding:10px;
     width:100%;
-    border:none;
     background:#d4af37;
+    border:none;
     cursor:pointer;
 }
 
@@ -133,12 +153,10 @@ body::before{
     text-align:center;
 }
 
-/* FOOTER */
 .footer{
     text-align:center;
     padding:20px;
     background:black;
-    color:#777;
 }
 
 /* WHATSAPP */
@@ -158,7 +176,6 @@ body::before{
     text-decoration:none;
 }
 </style>
-
 </head>
 
 <body>
@@ -167,10 +184,10 @@ body::before{
     <div class="logo">
         <img src="file_000000009bac71f5a5db74bc3bed2a62.png">
     </div>
-
     <nav class="nav">
-        <a href="#inicio">INICIO</a>
-        <a href="#productos">COLECCIÓN</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#historia">Historia</a>
+        <a href="#productos">Productos</a>
     </nav>
 </header>
 
@@ -178,65 +195,83 @@ body::before{
     <div>
         <h1>MAFU Cuban Soul</h1>
         <p>Lujo, tradición y esencia cubana</p>
-        <a href="#productos" class="btn">DESCUBRIR</a>
+        <a href="#productos" class="btn">Descubrir</a>
     </div>
+</section>
+
+<section class="historia" id="historia">
+    <h2>Historia del Tabaco Cubano</h2>
+    <p>
+    Cuba es reconocida mundialmente por producir los mejores puros gracias a su clima y suelo únicos.
+    Desde hace siglos, los torcedores elaboran cada puro a mano, creando una experiencia de lujo incomparable.
+    </p>
 </section>
 
 <section class="productos" id="productos">
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <img src="Screenshot_20260501-034528.png">
-            <div class="info">
-                <h3>Puro Clásico</h3>
-                <p>Elegante y suave.</p>
-                <div class="precio">$12 USD</div>
-                <button onclick="comprar('Clásico',12)" class="btn-comprar">Comprar</button>
-            </div>
-        </div>
+<div class="card">
+<img src="Screenshot_20260501-034528.png">
+<div class="info">
+<h3>Puro Clásico</h3>
+<p class="detalles">Suave y elegante, ideal para comenzar.</p>
+<div class="precio" data-usd="12">$12 USD</div>
+<div class="clp"></div>
+<button onclick="comprar('Clásico',12)" class="btn-comprar">Comprar</button>
+</div>
+</div>
 
-        <div class="card">
-            <img src="Screenshot_20260501-034604.png">
-            <div class="info">
-                <h3>Puro Reserva</h3>
-                <p>Intenso y refinado.</p>
-                <div class="precio">$18 USD</div>
-                <button onclick="comprar('Reserva',18)" class="btn-comprar">Comprar</button>
-            </div>
-        </div>
+<div class="card">
+<img src="Screenshot_20260501-034604.png">
+<div class="info">
+<h3>Puro Reserva</h3>
+<p class="detalles">Aromático e intenso.</p>
+<div class="precio" data-usd="18">$18 USD</div>
+<div class="clp"></div>
+<button onclick="comprar('Reserva',18)" class="btn-comprar">Comprar</button>
+</div>
+</div>
 
-        <div class="card">
-            <img src="Screenshot_20260501-034637.png">
-            <div class="info">
-                <h3>Puro Premium</h3>
-                <p>Experiencia de lujo.</p>
-                <div class="precio">$25 USD</div>
-                <button onclick="comprar('Premium',25)" class="btn-comprar">Comprar</button>
-            </div>
-        </div>
+<div class="card">
+<img src="Screenshot_20260501-034637.png">
+<div class="info">
+<h3>Puro Premium</h3>
+<p class="detalles">Fuerte y sofisticado.</p>
+<div class="precio" data-usd="25">$25 USD</div>
+<div class="clp"></div>
+<button onclick="comprar('Premium',25)" class="btn-comprar">Comprar</button>
+</div>
+</div>
 
-    </div>
+</div>
 </section>
 
 <section class="experiencia">
-    <h2>Experiencia MAFU</h2>
-    <p>Más que un puro, es una experiencia exclusiva.</p>
+<h2>Experiencia MAFU</h2>
+<p>Más que un puro, una experiencia exclusiva.</p>
 </section>
 
 <footer class="footer">
-    © 2026 MAFU Cuban Soul
+© 2026 MAFU Cuban Soul
 </footer>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/56998644532?text=Hola%20quiero%20información%20sobre%20los%20puros%20MAFU"
-   class="whatsapp-btn"
-   target="_blank">💬</a>
+<a href="https://wa.me/56998644532?text=Hola%20quiero%20información"
+class="whatsapp-btn" target="_blank">💬</a>
 
 <script>
+const tasa = 950;
+
+// convertir USD a CLP
+document.querySelectorAll(".precio").forEach(el=>{
+    let usd = el.dataset.usd;
+    let clp = usd * tasa;
+    el.nextElementSibling.innerText = "$" + clp.toLocaleString("es-CL") + " CLP";
+});
+
+// compra por whatsapp
 function comprar(nombre, precio){
-    let mensaje = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
-    let url = "https://wa.me/56998644532?text=" + encodeURIComponent(mensaje);
-    window.open(url, "_blank");
+    let msg = "Hola, quiero comprar: " + nombre + " ($" + precio + " USD)";
+    window.open("https://wa.me/56998644532?text=" + encodeURIComponent(msg));
 }
 </script>
 
